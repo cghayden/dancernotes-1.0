@@ -252,15 +252,17 @@
 
 			<div class="tab-pane" id="setup" role="tabpanel">
 				<div class="container pt-3">
-					<div id="checkboxes">
+					<div id="setup__checkboxes">
 						<h5>Routines to Display:</h5>
-						<div class="row pt-2" id="checkboxesRow">								
+						<div class="row pt-2" id="setup__allDancesList">								
 						</div> <!-- end row -->	
 						<div class="row justify-content-around" id="setupButtons">
+
+							<button type="button" class="btn btn-sm btn-primary" id="showDelete">DEL</button>
 							<button type="button" class="btn btn-primary" id="create">Create</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteOrEditModal" data-dismiss="modal" id="editCustomDanceButton">Delete/Edit</button>							
 						</div>
-					</div> <!--end checkboxes div-->
+					</div> <!--end setup__checkboxes div-->
 					
 					<div id="custom_input_container">
 						<form id="inline_addCustomForm">				
