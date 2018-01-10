@@ -1,5 +1,4 @@
 // ** return true or false for localStorage available ** //
-
 function storageAvailable(type) {
 	try {
 		const storage = window[type],
@@ -23,53 +22,6 @@ function contains(arr, obj) {
 	return false;
 }
 
-var juniors = ['juniorHiphop', 'juniorJazz', 'juniorLyric', 'juniorTap', 'juniors']; //unused
-var studioDances = []; // stock dances supplied by app.js used to populate checkboxes and div for each dance
-var customDances = [];  // list of the ids of the custom dances to render ...
-var displayedDances = [];  // dances checked to display, saved to redisplay the same dances when broswer is re-opened  
-var idContainer;  //when seleting a dance to edit, save its id to be used in a later function
-
-$(document).ready( function() {
-	if (storageAvailable('localStorage')) {
-		
-	// if (localStorage.getItem('access') !== 'true'){  
-	// 	unlock();  // run password prompt if access !true
-	// }
-		
-	parseStudioDances('studioDances'); // parse list of allDances containing Dance objects, or create it 
-	parseCustomDances('customDances'); 
-	parseDisplayedDances('displayedDances'); // parse list of displayedDances if it is in localStorage
-	renderDances(studioDances);
-	renderDances(customDances);
-	sort();
-}	else {console.log("no local storage available");}
-		
-	$('form input').on('keypress', function(e) {  //disable return button trigger submit on form input
-    return e.which !== 13;
-	});
-});
-
-// function unlock() {
-// 	enableSite = prompt("please enter the password");
-// 		if (enableSite !== "Jazz") {
-//   		$('.page-wrapper').hide();
-// 			$(".nav-tabs a").attr("disabled", true);
-// 			alert("access denied: email cghayden@gmail.com for assistance");
-// 		} else {
-// 			localStorage.setItem("access","true");
-// 		}
-// }
-
-//add/remove dance DisplayedDances array 
-function toggleDisplayedDance(danceid) {
-		if ( contains(displayedDances, danceid) ) {
-			var index = displayedDances.indexOf(danceid);
-			displayedDances.splice(index, 1);
-		} else {
-			displayedDances.push(danceid);
-		}
-}
-
 function Dance(id, name, song, tights, shoes, notes, num, day, time) {
 	this.id = id;
 	this.name = name;
@@ -82,69 +34,33 @@ function Dance(id, name, song, tights, shoes, notes, num, day, time) {
 	this.time = time || "";
 }
 
-// save array, 'li' under key, 'name'. name is a string
-function saveInStorage(li, name) {
-	localStorage.setItem(name, JSON.stringify(li));
-}
-
-function storeStudioDances(li) {
-	localStorage.setItem('studioDances', JSON.stringify(li));
-}
-
-function storeCustomDances(li) {
-	localStorage.setItem('customDances', JSON.stringify(li));
-}
-
-function storeDisplayedDances(li) {
-	localStorage.setItem('displayedDances', JSON.stringify(li));
-}
-
-function parseStudioDances(str) {
-	if (localStorage.str) {
-	var studiodanceobjects = localStorage.getItem(str);
-	studioDances = JSON.parse(studiodanceobjects);
-	} else {
-		populateStudioDances();
-		storeStudioDances(studioDances);
-	}
-}
-
-function parseCustomDances(str) {
-	if (localStorage.getItem(str)) {
-	customDances = JSON.parse(localStorage.getItem(str));
-	}
-}
-
-function parseDisplayedDances(str) {
-	if ( localStorage.getItem(str) ) {
-	displayedDances = JSON.parse(localStorage.getItem(str));
-	}
-}
-
 /// will be populated from studio, each parameter in a variable
+var studioDances = []; // array of stock dance OBJ's supplied by app.js used to populate checkboxes and div for each dance
 function populateStudioDances() {
-	var teen1Hiphop = new Dance ("teen1Hiphop", 
-																"Teen 1 Hip Hop",
-															 	"Instruction",
-																"N/A (Black Pants)",
-																"Pastry White Pop Tart Glitter",
-																["Jacket: Zip up to bottom of sports bra"],
-																"",
-																"",
-																""
-																);
+	var teen1Hiphop = new Dance (
+		"teen1Hiphop", 
+		"Teen 1 Hip Hop",
+		"Instruction",
+		"N/A (Black Pants)",
+		"Pastry White Pop Tart Glitter",
+		["Jacket: Zip up to bottom of sports bra"],
+		"",
+		"",
+		""
+	);
 	studioDances.push(teen1Hiphop);
 	
-	var teen1Jazz = new Dance ("teen1Jazz",
-														 "Teen 1 Jazz",
-															"Outlaw Pete",
-														 "N/A (Black Pants)",
-														 "None",
-														 ["Flannel Shirt: Button only the 2nd and 3rd buttons down from the top "],
-														 "",
-														 "",
-														 ""
-														 );
+	var teen1Jazz = new Dance (
+		"teen1Jazz",
+		"Teen 1 Jazz",
+		"Outlaw Pete",
+		"N/A (Black Pants)",
+		"None",
+		["Flannel Shirt: Button only the 2nd and 3rd buttons down from the top "],
+		"",
+		"",
+		""
+	);
 	studioDances.push(teen1Jazz);
 	
 	var teen1Lyric = new Dance ("teen1Lyric",
@@ -195,77 +111,163 @@ function populateStudioDances() {
 															);
 	studioDances.push(production);
 	
-	var smallGroupTap = new Dance ("smallGroupTap",
-															"Small Group Tap",
-															"In the Mood",
-															"Black Fishnet Tights (Body Wrappers Seamless) OVER Light Suntan Capezio",
-															"Bloch Respect Oxford S0361 - Black",
-															["Gloves: Plain Red, (NOT the sequined ones)", "Tank top should fall below the hips"],
-															"",
-															"",
-															""
-														 );
+	var smallGroupTap = new Dance (
+		"smallGroupTap",
+		"Small Group Tap",
+		"In the Mood",
+		"Black Fishnet Tights (Body Wrappers Seamless) OVER Light Suntan Capezio",
+		"Bloch Respect Oxford S0361 - Black",
+		["Gloves: Plain Red, (NOT the sequined ones)", "Tank top should fall below the hips"],
+		"",
+		"",
+		""
+	);
 	studioDances.push(smallGroupTap);
 
-	var juniorContemporary = new Dance ("juniorContemporary",
-															"Junior Contemporary",
-															"Sound of Silence",
-															"Light Suntan Capezio Ultra Soft Stirrup",
-															"None",
-															[""],
-															"",
-															"",
-															""
-														 );
+	var juniorContemporary = new Dance (
+		"juniorContemporary",
+		"Junior Contemporary",
+		"Sound of Silence",
+		"Light Suntan Capezio Ultra Soft Stirrup",
+		"None",
+		[""],
+		"",
+		"",
+		""
+	);
 	studioDances.push(juniorContemporary);
 
-	var miniLyric = new Dance ("miniLyric",
-	"Mini Lyric",
-	"Song",
-	"Light Suntan Capezio Ultra Soft Stirrup",
-	"None",
-	[""],
-	"",
-	"",
-	""
- );
-studioDances.push(miniLyric);
+	var miniLyric = new Dance (
+		"miniLyric",
+		"Mini Lyric",
+		"Song",
+		"Light Suntan Capezio Ultra Soft Stirrup",
+		"None",
+		[""],
+		"",
+		"",
+		""
+	);
+	studioDances.push(miniLyric);
 
-var miniJazz = new Dance ("miniJazz",
-"Mini Jazz",
-"Candy Girl",
-"Light Suntan Capezio Ultra Soft Stirrup",
-"None",
-[""],
-"",
-"",
-""
-);
-studioDances.push(miniJazz);
+	var miniJazz = new Dance (
+		"miniJazz",
+		"Mini Jazz",
+		"Candy Girl",
+		"Light Suntan Capezio Ultra Soft Stirrup",
+		"None",
+		[""],
+		"",
+		"",
+		""
+	);
+	studioDances.push(miniJazz);
 
-var juniorBallet = new Dance ("juniorBallet",
-"Junior Ballet",
-"Guests From the Orient (Snow White)",
-"Body Wrappers mesh seamed tights in Ballet Pink",
-"Danshuz Pro Soft Canvas Ballet Slippers",
-["Remove top two layers from the tutu","Hair piece above bun in center"],
-"",
-"",
-""
-);
-studioDances.push(juniorBallet);
+	var juniorBallet = new Dance (
+		"juniorBallet",
+		"Junior Ballet",
+		"Guests From the Orient (Snow White)",
+		"Body Wrappers mesh seamed tights in Ballet Pink",
+		"Danshuz Pro Soft Canvas Ballet Slippers",
+		["Remove top two layers from the tutu","Hair piece above bun in center"],
+		"",
+		"",
+		""
+	);
+	studioDances.push(juniorBallet);
 
-var TeenBallet = new Dance ("TeenBallet",
-"Teen Ballet",
-"The Flower Garden (Alice in Wonderland)",
-"Body Wrappers mesh seamed tights in Ballet Pink",
-"Danshuz Pro Soft Canvas Ballet Slippers",
-[""],
-"",
-"",
-""
-);
-studioDances.push(TeenBallet);
+	var teenBallet = new Dance (
+		"teenBallet",
+		"Teen Ballet",
+		"The Flower Garden (Alice in Wonderland)",
+		"Body Wrappers mesh seamed tights in Ballet Pink",
+		"Danshuz Pro Soft Canvas Ballet Slippers",
+		[""],
+		"",
+		"",
+		""
+	);
+	studioDances.push(teenBallet);
+
+}; // end populateDances
+
+
+var hiddenStudioDances = []; //studio dances the user never wants to see
+var customDances = [];  // array of custom dance objects to render ...
+var displayedDances = [];  // array of ids of dances checked to display, saved to redisplay the same dances and check their boxes when broswer is re-opened
+var idContainer;  //when selecting a dance to edit, save its id to be used in a later function
+
+$(document).ready( function() {
+	populateStudioDances();
+	if (storageAvailable('localStorage')) {
+	// if (localStorage.getItem('access') !== 'true'){  
+	// 	unlock();  // run password prompt if access !true
+	// }
+	// parseStudioDances('studioDances'); // parse list of allDances containing Dance objects, or create it 
+	parseCustomDances('customDances'); 
+	parseDisplayedDances('displayedDances'); // parse list of displayedDances if it is in localStorage
+	// renderDances(studioDances);
+	renderDances(studioDances);
+	renderDances(customDances);
+	sort();
+}	else {
+	console.log("no local storage available");
+	alert("Local Storage is not available on this device. You will not be able to create your own dances, and the studio dances you choose to display in 'Setup' will not be saved when your browser is refreshed");
+	renderDances(studioDances);
+}
+		
+	$('form input').on('keypress', function(e) {  //disable return button trigger submit on form input
+    return e.which !== 13;
+	});
+});
+
+//add/remove dance in DisplayedDances array 
+function toggleDisplayedDance(danceid) {
+		if ( contains(displayedDances, danceid) ) {
+			var index = displayedDances.indexOf(danceid);
+			displayedDances.splice(index, 1);
+		} else {
+			displayedDances.push(danceid);
+		}
+}
+
+// save array, 'li' under key, 'name'. name is a string
+function saveInLocalStorage(key, array) {
+	localStorage.setItem(key, JSON.stringify(array));
+}
+
+// function storeStudioDances(li) {
+// 	localStorage.setItem('studioDances', JSON.stringify(li));
+// }// why set this?  it is supplied by app.js  for if no internet connection? if so, need to write script for that
+
+// function storeCustomDances(array) {
+// 	localStorage.setItem('customDances', JSON.stringify(array));
+// }
+
+// function storeDisplayedDances(array) {
+// 	localStorage.setItem('displayedDances', JSON.stringify(array));
+// }
+
+// function parseStudioDances(str) {
+// 	if (localStorage.str) {
+// 	var studiodanceobjects = localStorage.getItem(str);
+// 	studioDances = JSON.parse(studiodanceobjects);
+// 	} else {
+// 		populateStudioDances();
+// 		storeStudioDances(studioDances);
+// 	}
+// }
+
+function parseCustomDances(str) {
+	if (localStorage.getItem(str)) {
+	customDances = JSON.parse(localStorage.getItem(str));
+	}
+}
+
+function parseDisplayedDances(str) {
+	if ( localStorage.getItem(str) ) {
+	displayedDances = JSON.parse(localStorage.getItem(str));
+	}
 }
 
 function renderDances(array) {
@@ -308,31 +310,23 @@ function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
 }
 
 function createCheckbox(id, title, song) {
-	let checkboxHTML = '<div class="form-check col-6 col-lg-4"><label class="form-check-label">';
+	let checkboxHTML = '<div class="form-check col-6 col-lg-4">';
+	checkboxHTML += '<span class="dance__delete">X</span>';
+	checkboxHTML += '<label class="form-check-label">';
 	checkboxHTML += '<input class="form-check-input" type="checkbox" data-toggles="' + id;
 	checkboxHTML += '" value="' +id+ '">';  //default = not checked, (render NewDance will check it)
 	checkboxHTML += ' ' + title + ' -- ' + song;
 	checkboxHTML += '</label></div>';
-	$("#checkboxesRow").append(checkboxHTML);
+	$("#setup__allDancesList").append(checkboxHTML);
 }
 
-//todo: write a toggle function as change handler
-$('#checkboxesRow').change(function(event) {
+$('#setup__allDancesList').change(function(event) {
 	var checkbox = event.target;
 	var choice = $(checkbox).val();
 	console.log(choice);
-	
-	if (choice === "juniors") { 
-		for (var i = 0; i < juniors.length; i++) {
-			var dance = juniors[i];
-			$('#'+ dance).toggle();
-			toggleDisplayedDance(dance);
-	}
-	} else {
-		$('#'+choice).toggle();
-		toggleDisplayedDance(choice);
-		}
-	storeDisplayedDances(displayedDances);
+	$('#'+choice).toggle();
+	toggleDisplayedDance(choice);
+	saveInLocalStorage('displayedDances', displayedDances);
 	sort();
 });
 	
@@ -353,8 +347,8 @@ function createCustom() {
 	var custom = new Dance(customId, customTitle, customSong, customTights, customShoes, customNotes, customNum, customDay, customTime);
 	displayedDances.push(customId);
 	customDances.push(custom);
-	storeDisplayedDances(displayedDances);
-	storeCustomDances(customDances);
+	saveInLocalStorage('displayedDances', displayedDances);
+	saveInLocalStorage('customDances', customDances);
 	createCheckbox(customId, customTitle, customSong);
 	renderNewDance(customId, customTitle, customSong, customTights, customShoes, customNotes, customNum, customDay, customTime);
 	$("input[value=" + customId +"]").prop("checked", true);
@@ -368,9 +362,16 @@ function createCustom() {
 
 $("#create").click( function(evt){
 	// evt.preventDefault();
-		$("#checkboxes").hide("slide", function() {
+		$("#setup__checkboxes").hide("slide", function() {
 		$("#custom_input_container").show("slide");	
 	});
+});
+
+// reveal / hide delte button next to each listed dance// 
+// THIS BUTTON IS NOT CURRENTLY USED
+$("#showDelete").click( function(evt) {
+	$(".dance__delete").toggle();
+	// $('.form-check').hide();
 });
 
 $("#inline_addCustomForm").click( function(evt){
@@ -387,13 +388,13 @@ $("#inline_addCustomForm").click( function(evt){
 		}
 	if (evt.target.id === "cancelCustom") {
 		$("#custom_input_container").hide("slide", function() {
-		$("#checkboxes").show("fade");
+		$("#setup__checkboxes").show("fade");
 		});
 	}
 });
 	
 // create a list of all custom dances with edit and delete buttons
-function renderEditList(customDances) { 
+function renderEditList(customDances, studioDances) { 
 	for(var i = 0; i < customDances.length; i++) {
 		var dancename = customDances[i].name;
 		var danceId = customDances[i].id;
@@ -403,26 +404,20 @@ function renderEditList(customDances) {
 					</li>`;
 		$('#editCustomList').append(editListItemHTML);
 	}
+	for(var i = 0; i < studioDances.length; i++) {
+		var dancename = studioDances[i].name;
+		var danceId = studioDances[i].id;
+		var editListItemHTML= '<li class="' + danceId + ' list-group-item">' + dancename + 
+						`<button class="btn btn-primary btn-sm">Edit</button>
+						<button class="btn btn-danger btn-sm">Delete</button>					
+					</li>`;
+		$('#editCustomList').append(editListItemHTML);
+	}
 }
 
 $('#editCustomDanceButton').click(function() {
-	renderEditList(customDances);
+	renderEditList(customDances, studioDances);
 });
-
-function deleteCustomDance(item){
-	console.log('delete function on ' + item);
-	for (let i = 0; i < customDances.length; i++){
-		if (customDances[i].id === item) {
-			$("#"+item).remove();
-			$("input[value="+ item +"]").parent().parent().remove();
-			customDances.splice(i, 1);
-			$("."+item).remove();
-			displayedDances.splice(displayedDances.indexOf(item), 1);
-		}
-	}
-	storeCustomDances(customDances);
-	storeDisplayedDances(displayedDances);
-}
 
 function renderEditModal(item) {
 	idContainer = item;
@@ -467,8 +462,8 @@ function saveChanges(id){
 	var custom = new Dance(customId, customTitle, customSong, customTights, customShoes, customNotes, customNum, customDay, customTime);
 	displayedDances.push(customId);
 	customDances.push(custom);
-	storeDisplayedDances(displayedDances);
-	storeCustomDances(customDances);
+	saveInLocalStorage('displayedDances', displayedDances);
+	saveInLocalStorage('customDances', customDances);
 	createCheckbox(customId, customTitle, customSong);
 	renderNewDance(customId, customTitle, customSong, customTights, customShoes, customNotes, customNum, customDay, customTime);
 	$("input[value=" + customId +"]").prop("checked", true);
@@ -478,6 +473,31 @@ function saveChanges(id){
 	sort();
 	$('#closeEditCustom').click();
 };
+
+function hideStudioDance(item) {
+	console.log(`hide studio dance ${item}`);
+	hiddenStudioDances.push(item);
+	for (var i = 0; i < studioDances.length; i++) {
+		if (studioDances[i].id === item) {
+			console.log(studioDances[i]);
+		}
+	}
+}
+
+function deleteCustomDance(item){
+	// console.log('delete function on ' + item);
+	for (var i = 0; i < customDances.length; i++){
+		if (customDances[i].id === item) {
+			$("#"+item).remove();
+			$("input[value="+ item +"]").parent().parent().remove();
+			customDances.splice(i, 1);
+			$("."+item).remove();
+			displayedDances.splice(displayedDances.indexOf(item), 1);
+		}
+	}
+	saveInLocalStorage('customDances', customDances);
+	saveInLocalStorage('displayedDances', displayedDances);
+}
 
 $("#edit_custom_container").click( function(event){
 	event.preventDefault();
@@ -495,18 +515,28 @@ $("#edit_custom_container").click( function(event){
 		$("#editCustomNotesList li").remove();
 		$("#editNumTimeDiv input").val('');
 		$("#edit_custom_container").hide("slide", function() {
-		$("#checkboxes").show("fade");
+		$("#setup__checkboxes").show("fade");
 		});
 	}
 });
 
 $("#editCustomList").click(function (){
 	let li = event.target.parentNode.classList[0];
+	console.log(li);
 	if (event.target.textContent === 'Delete') {
-		deleteCustomDance(li);
+		for (var i = 0; i < customDances.length; i++){
+			if (customDances[i].id === li) {
+				deleteCustomDance(li);
+			}
+		}
+		for (var i = 0; i < studioDances.length; i++){
+			if (studioDances[i].id === li) {
+				hideStudioDance(li);
+			}
+		}
 	}
 	if (event.target.textContent === 'Edit') {
-		$("#checkboxes").hide("slide", function() {
+		$("#setup__checkboxes").hide("slide", function() {
 		$("#edit_custom_container").show("slide"); });
 		renderEditModal(li);
 		$("#close_deleteOrEditModal").click();
@@ -537,11 +567,16 @@ function sort(){
 	$("#dancesRow").html(numOrdered);
 };
 
-
-
-
-
-
+// function unlock() {
+// 	enableSite = prompt("please enter the password");
+// 		if (enableSite !== "Jazz") {
+//   		$('.page-wrapper').hide();
+// 			$(".nav-tabs a").attr("disabled", true);
+// 			alert("access denied: email cghayden@gmail.com for assistance");
+// 		} else {
+// 			localStorage.setItem("access","true");
+// 		}
+// }
 
 /// old method of storage, one entry for each item, now each is in a list
 

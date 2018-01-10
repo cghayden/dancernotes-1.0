@@ -1,381 +1,283 @@
-/*Custom CSS for dancer notes*/
+#setup {
+  color: #1e1e1e;
+  background: #f0f0f0; }
+
+#setup label {
+  padding-bottom: 1rem; }
+
+#setupButtons {
+  padding-bottom: 1rem; }
+
+.dance__delete {
+  color: #a71c1c;
+  display: none; }
 
 body {
-	background-color: rgb(30, 30, 30);
-	font-family: "Kalam", cursive;
-	color: rgb(243, 232, 232);
-	font-weight: 400;
-}
+  background-color: #1e1e1e;
+  font-family: "Kalam", cursive;
+  color: #f3e8e8;
+  font-weight: 400; }
 
 .highlight {
-	color: yellow
-}
+  color: yellow; }
 
 #disclaimer {
-	color: yellow;
-}
+  color: yellow; }
 
 ul {
-	list-style: none;
-	padding-left: 0;
-}
+  list-style: none;
+  padding-left: 0; }
 
 dt {
- 	font-size: larger;
-}
+  font-size: larger; }
 
 dl .col-10 {
-	padding-right: 0;
-	/*margin-left: -10px;*/
-}
+  padding-right: 0;
+  /*margin-left: -10px;*/ }
 
 dl .col-2 {
-	padding-left: 0;
-}
+  padding-left: 0; }
 
 .navbar {
-	background: linear-gradient(to top, rgb(30, 30, 30), rgba(0, 0, 255, 0.639) 120%);
-	font-family: 'Dancing Script', cursive;
-}
+  background: linear-gradient(to top, #1e1e1e, rgba(0, 0, 255, 0.639) 120%);
+  font-family: 'Dancing Script', cursive; }
 
 .navbar i {
-	margin-top: 6px;
-}
+  margin-top: 6px; }
 
 .navbar a {
-	font-size: 1.5rem;
-}
+  font-size: 1.5rem; }
 
 #navlinks a {
-	color: white;
-}
+  color: white; }
 
 #navlinks {
-	padding: 1rem;
-	background: linear-gradient(rgb(30,30,30), blue 120%);
-}
+  padding: 1rem;
+  background: linear-gradient(#1e1e1e, blue 120%); }
 
 .navbar-brand {
-	text-align: center;
-}
+  text-align: center; }
 
 .navbar-toggler {
-	border: none;
-}
+  border: none; }
 
 .fa-exclamation-circle {
-	color: red;
-}
+  color: red; }
 
 #competitions {
-	padding-top: 1rem;
-	padding-bottom: 0;
-	text-align: center;
-}
+  padding-top: 1rem;
+  padding-bottom: 0;
+  text-align: center; }
 
 .comp {
-	padding: 1.5rem;
-	background: radial-gradient(rgba(0, 0, 255, 0.639), rgb(30,30,30) 80%);
-}
+  padding: 1.5rem;
+  background: radial-gradient(rgba(0, 0, 255, 0.639), #1e1e1e 80%); }
 
 .comp p {
-	margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 .comp a {
-	color: aqua;
-}
+  color: aqua; }
 
 .stream {
-	padding-top: 2rem;
-}
+  padding-top: 2rem; }
+
 .stream a {
-	color: yellow;
-	padding-top: 1rem;
-}
+  color: yellow;
+  padding-top: 1rem; }
 
 .schedule {
-	/*background: #eee;	*/
-	color: yellow;
-  	display: inline-block;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding: 17px 15px;
-	border: 2px solid yellow;
-	border-radius: 45%;
-	font-size: 1.2rem;
-}
+  /*background: #eee;	*/
+  color: yellow;
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 17px 15px;
+  border: 2px solid yellow;
+  border-radius: 45%;
+  font-size: 1.2rem; }
 
 .front_page_schedule {
-	background: radial-gradient(rgba(0, 0, 255, 0.639), rgb(30,30,30) 80%);	
-	color: yellow;
-  	display: inline-block;
-	margin-top: 10px;
-	margin-bottom: -5px;
-	padding: 20px 20px;
-	border-radius: 45%;
-	font-size: 1.2rem;
-}
+  background: radial-gradient(rgba(0, 0, 255, 0.639), #1e1e1e 80%);
+  color: yellow;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: -5px;
+  padding: 20px 20px;
+  border-radius: 45%;
+  font-size: 1.2rem; }
+
 .front_page_schedule h5 {
-	margin: 0;
-}
+  margin: 0; }
 
 .revised {
-	font-size: .9rem;
-	padding: 0;
-	font-weight: 300;
-	margin: 0;
-}
+  font-size: .9rem;
+  padding: 0;
+  font-weight: 300;
+  margin: 0; }
 
 .front_page_schedule:link,
 .front_page_schedule:hover,
 .front_page_schedule:visited,
 .front_page_schedule:focus {
-	color: yellow;
-}
-
+  color: yellow; }
 
 .nav-tabs {
   font-size: 1.25rem;
-	border-bottom: 3px solid blue;
-	background-color: rgb(240, 240, 240);
-	margin-bottom: .5rem;
-}
+  border-bottom: 3px solid blue;
+  background-color: #f0f0f0;
+  margin-bottom: .5rem; }
 
 .dance-container {
-	padding-top: 10px;
-	background: radial-gradient(rgba(0, 0, 255, 0.639), rgb(30,30,30) 80%);
-}
+  padding-top: 10px;
+  background: radial-gradient(rgba(0, 0, 255, 0.639), #1e1e1e 80%); }
 
 .dance-container dl {
-	border-top: 1px solid white;
-	padding-top: 5px;
-}
+  border-top: 1px solid white;
+  padding-top: 5px; }
 
 .dance-container dd ul li {
-	padding-bottom: 7px;
-}
+  padding-bottom: 7px; }
 
 .dance-body {
-	font-weight: 400;
-}
-
-#setup {
-	color: rgb(30,30,30);
-	background: rgb(240, 240, 240);
-}
-
-#setup label {
-	padding-bottom: 1rem;
-}
-
-#setupButtons {
-	padding-bottom: 1rem;
-}
+  font-weight: 400; }
 
 .dance-header {
-	text-align: center;
-	/*border-bottom: 1px solid white;*/
-	margin-bottom: 10px;
-}
+  text-align: center;
+  /*border-bottom: 1px solid white;*/
+  margin-bottom: 10px; }
 
 .dance-header p {
-	font-size: 1rem;
-	margin-bottom: 5px;
-}
+  font-size: 1rem;
+  margin-bottom: 5px; }
 
 .dance-header-title {
-	flex: 2;
-}
-
+  flex: 2; }
 
 .time {
-	color: yellow;	
-}
+  color: yellow; }
 
 .time h5 {
-	font-size: 1rem;
-	font-weight: 400;
-	text-align: center;
-	display: inline;
-}
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  display: inline; }
 
 img[src*="hair"] {
-	width: 270px;
-}
+  width: 270px; }
 
 #hair {
-	font-size: larger;
-	text-align: center;
-	padding-top: 1rem;
-}
+  font-size: larger;
+  text-align: center;
+  padding-top: 1rem; }
 
 #makeup {
-	background-color: rgb(240, 240, 240);
-	color: rgb(30,30,30);
-	padding: 1rem;
-}
+  background-color: #f0f0f0;
+  color: #1e1e1e;
+  padding: 1rem; }
 
 #makeup .container-fluid {
-	padding-left: 0;
-	padding-right: 0;
-}
+  padding-left: 0;
+  padding-right: 0; }
 
 #makeup h5 {
-	text-align: center;
-}
+  text-align: center; }
 
 #preMakeup {
-	text-align: center;
-	margin: 1rem;
-}
+  text-align: center;
+  margin: 1rem; }
 
 #preMakeup h4 {
-	display: inline-block;
-	border-bottom: 1px solid rgb(30, 30,30);
-	margin-bottom: 1rem;
-}
+  display: inline-block;
+  border-bottom: 1px solid #1e1e1e;
+  margin-bottom: 1rem; }
 
 #makeup header {
-	text-align: center;
-	border-bottom: 1px solid rgb(30,30,30);
-	padding-top: 1rem;
-}
+  text-align: center;
+  border-bottom: 1px solid #1e1e1e;
+  padding-top: 1rem; }
 
 .makeup-item:first-of-type {
-	border: none;
-}
+  border: none; }
 
 .makeup-item ul {
-	list-style-type: disc;
-	margin-left: 1rem;
-}
+  list-style-type: disc;
+  margin-left: 1rem; }
 
 .makeup-item {
-	border-top: 1px solid rgb(30,30,30);
-	padding-top: 1rem;
-	margin-top: .5rem;
-}
+  border-top: 1px solid #1e1e1e;
+  padding-top: 1rem;
+  margin-top: .5rem; }
 
 .makeup-item .col-4 {
-	padding-left: 0;
-}
+  padding-left: 0; }
 
 .makeup-item .col-8 {
-	padding-right: 0;
-	padding-left: 0;
-}
+  padding-right: 0;
+  padding-left: 0; }
 
 #custom_input_container,
 #edit_custom_container {
-	display: none;
-}
+  display: none; }
 
 #deleteOrEditModal,
-#editCustom, 
-#createCustom			{
-	color:rgb(30,30,30);
-}
+#editCustom,
+#createCustom {
+  color: #1e1e1e; }
 
 #showEntry i,
 #showEditEntry i {
-	margin-right: 3px;
-	color: red;
-}
+  margin-right: 3px;
+  color: red; }
 
-#editCustomList li{
-	display: flex;
-	align-items: center;	
-}
+#editCustomList li {
+  display: flex;
+  align-items: center; }
 
 #editCustomList li button:first-child {
-	margin-left: auto;
-}
+  margin-left: auto; }
 
 #editCustomList li button + button {
-    margin-left: 1rem;
-}
+  margin-left: 1rem; }
 
 input::-webkit-input-placeholder {
-	color: darkgrey !important;
-}
+  color: darkgrey !important; }
 
 #customNotesList input,
 #editCustomNotesList input {
-	margin-bottom: 5px;
-}
+  margin-bottom: 5px; }
 
 #numTimeDiv,
 #editNumTimeDiv {
-	display: none;
-}
+  display: none; }
 
 #addNoteInput,
 #editAddNoteInput {
-	color: red;
-}
+  color: red; }
 
 #footer {
-	font-family: monospace;
-	margin-top: 2rem;
-}
+  font-family: monospace;
+  margin-top: 2rem; }
 
 #footer a {
-	color: inherit;
-	font-size: 1.25rem;
-}
-
+  color: inherit;
+  font-size: 1.25rem; }
 
 /*** iphone 5 media query ***/
-
 @media screen and (max-width: 370px) {
-	.nav-tabs {
-		font-size: 1rem;
-	}
-	
-	dt {
-		font-size: 1rem;
-	}
-	
-	dd {
-		padding-top: 0;
-	}
+  .nav-tabs {
+    font-size: 1rem; }
 
-	.time h5 {
-		font-size: 1rem;
-		font-weight: 300;
-		/*margin-left: -10px;*/
-		/*text-align: left;*/
-	}
-}
+  dt {
+    font-size: 1rem; }
 
+  dd {
+    padding-top: 0; }
 
+  .time h5 {
+    font-size: 1rem;
+    font-weight: 300; } }
 [data-toggle~="collapse"] {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
-/***********
-TEST DANCE CONTAINER
-
-dt,
-.dance-items ul li span {
-	font-size: larger;
-	padding-right: 10px;
-}
-
-
-.dance-items {
-	text-align: center;
-}
-
-.dance-items ul{
-	display: flex;
-}
-
-.dance-items ul{
-	display: flex;
-	flex-direction: column;
-}
-***************/
-
-
+/*# sourceMappingURL=custom.css.map */
