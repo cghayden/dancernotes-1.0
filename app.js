@@ -190,11 +190,9 @@ function populateStudioDances() {
 	studioDances.push(teenBallet);
 
 }; // end populateDances
-
-
-var hiddenStudioDances = []; //studio dances the user never wants to see
 var customDances = [];  // array of custom dance objects to render ...
-var displayedDances = [];  // array of ids of dances checked to display, saved to redisplay the same dances and check their boxes when broswer is re-opened
+var hiddenStudioDances = []; //array of ids; studio dances the user never wants to see
+var displayedDances = [];  // array of ids; dances checked to display on load
 var idContainer;  //when selecting a dance to edit, save its id to be used in a later function
 
 $(document).ready( function() {
@@ -202,11 +200,12 @@ $(document).ready( function() {
 	if (storageAvailable('localStorage')) {
 	// if (localStorage.getItem('access') !== 'true'){  
 	// 	unlock();  // run password prompt if access !true
-	// }
-	// parseStudioDances('studioDances'); // parse list of allDances containing Dance objects, or create it 
-	parseCustomDances('customDances'); 
-	parseDisplayedDances('displayedDances'); // parse list of displayedDances if it is in localStorage
-	// renderDances(studioDances);
+	// } 
+	// hiddenStudioDances = retrieveFromLocalStorage("hiddenStudioDances");
+
+	parseHiddenStudioDances("hiddenStudioDances"); 
+	parseCustomDances("customDances"); 
+	parseDisplayedDances("displayedDances");
 	renderDances(studioDances);
 	renderDances(customDances);
 	sort();
@@ -222,41 +221,19 @@ $(document).ready( function() {
 });
 
 //add/remove dance in DisplayedDances array 
-function toggleDisplayedDance(danceid) {
-		if ( contains(displayedDances, danceid) ) {
-			var index = displayedDances.indexOf(danceid);
-			displayedDances.splice(index, 1);
-		} else {
-			displayedDances.push(danceid);
-		}
+function toggleDance(danceid, array) {
+	if ( contains(array, danceid) ) {
+		var index = array.indexOf(danceid);
+		array.splice(index, 1);
+	} else {
+		array.push(danceid);
+	}
 }
 
 // save array, 'li' under key, 'name'. name is a string
 function saveInLocalStorage(key, array) {
 	localStorage.setItem(key, JSON.stringify(array));
 }
-
-// function storeStudioDances(li) {
-// 	localStorage.setItem('studioDances', JSON.stringify(li));
-// }// why set this?  it is supplied by app.js  for if no internet connection? if so, need to write script for that
-
-// function storeCustomDances(array) {
-// 	localStorage.setItem('customDances', JSON.stringify(array));
-// }
-
-// function storeDisplayedDances(array) {
-// 	localStorage.setItem('displayedDances', JSON.stringify(array));
-// }
-
-// function parseStudioDances(str) {
-// 	if (localStorage.str) {
-// 	var studiodanceobjects = localStorage.getItem(str);
-// 	studioDances = JSON.parse(studiodanceobjects);
-// 	} else {
-// 		populateStudioDances();
-// 		storeStudioDances(studioDances);
-// 	}
-// }
 
 function parseCustomDances(str) {
 	if (localStorage.getItem(str)) {
@@ -270,26 +247,42 @@ function parseDisplayedDances(str) {
 	}
 }
 
+function parseHiddenStudioDances(str) {
+	if ( localStorage.getItem(str) ) {
+	hiddenStudioDances = JSON.parse(localStorage.getItem(str));
+	}
+}
+// function retrieveFromLocalStorage(str, array) {
+// 	if (localStorage.getItem(str)) {
+// 		array = JSON.parse(localStorage.getItem(str));
+// 	} 
+// }
+
 function renderDances(array) {
 	for (var i = 0; i < array.length; i++) {
-		createCheckbox(array[i].id, array[i].name, array[i].song);
-		renderNewDance(	array[i].id, //renderHTML, default = shown
-									 	array[i].name, 
-										array[i].song, 
-										array[i].tights, 
-										array[i].shoes, 
-										array[i].notes,
-									 	array[i].num,
-									 	array[i].day,
-									  array[i].time);
+		if( !contains(hiddenStudioDances, array[i].id) ){
+			createCheckbox(array[i].id, array[i].name, array[i].song);
+			renderNewDance(	array[i].id, //renderHTML, default = shown
+											array[i].name, 
+											array[i].song, 
+											array[i].tights, 
+											array[i].shoes, 
+											array[i].notes,
+											array[i].num,
+											array[i].day,
+											array[i].time);
+									
 		if ( contains(displayedDances, array[i].id)) {
 				$("input[value=" + array[i].id +"]").prop("checked", true);
-				} else {$('#'+array[i].id).toggle(); } 
+				} else {
+					$('#'+array[i].id).toggle(); 
+					} 
+			}
 	}
 }
 
 //show dance div and check its checkbox
-function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) { //notes is an array of strings,li text
+function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
 	let customHtml = '<div class="col-12 col-md-6 dance-container" id="'+ id + '">';
 	customHtml += '<div class="dance-header row" data-toggle="collapse" href="#' + id + '-body">';
 	customHtml += '<div class="col-3 text-left align-self-end time">';
@@ -325,7 +318,7 @@ $('#setup__allDancesList').change(function(event) {
 	var choice = $(checkbox).val();
 	console.log(choice);
 	$('#'+choice).toggle();
-	toggleDisplayedDance(choice);
+	toggleDance(choice, displayedDances);
 	saveInLocalStorage('displayedDances', displayedDances);
 	sort();
 });
@@ -367,13 +360,6 @@ $("#create").click( function(evt){
 	});
 });
 
-// reveal / hide delte button next to each listed dance// 
-// THIS BUTTON IS NOT CURRENTLY USED
-$("#showDelete").click( function(evt) {
-	$(".dance__delete").toggle();
-	// $('.form-check').hide();
-});
-
 $("#inline_addCustomForm").click( function(evt){
 	evt.preventDefault();
 	if (evt.target.id === 'showEntry'){
@@ -405,13 +391,14 @@ function renderEditList(customDances, studioDances) {
 		$('#editCustomList').append(editListItemHTML);
 	}
 	for(var i = 0; i < studioDances.length; i++) {
+		if ( !contains(hiddenStudioDances, studioDances[i].id) ){
 		var dancename = studioDances[i].name;
 		var danceId = studioDances[i].id;
 		var editListItemHTML= '<li class="' + danceId + ' list-group-item">' + dancename + 
-						`<button class="btn btn-primary btn-sm">Edit</button>
-						<button class="btn btn-danger btn-sm">Delete</button>					
+						`<button class="btn btn-danger btn-sm">Delete</button>					
 					</li>`;
 		$('#editCustomList').append(editListItemHTML);
+		};
 	}
 }
 
@@ -474,12 +461,15 @@ function saveChanges(id){
 	$('#closeEditCustom').click();
 };
 
-function hideStudioDance(item) {
+function deleteStudioDance(item) {
 	console.log(`hide studio dance ${item}`);
-	hiddenStudioDances.push(item);
+	toggleDance(item, hiddenStudioDances);
+	saveInLocalStorage("hiddenStudioDances", hiddenStudioDances);
 	for (var i = 0; i < studioDances.length; i++) {
 		if (studioDances[i].id === item) {
-			console.log(studioDances[i]);
+			$("."+item).remove();
+			$("input[value="+ item +"]").parent().parent().remove();
+			$("#"+item).remove();
 		}
 	}
 }
@@ -521,24 +511,24 @@ $("#edit_custom_container").click( function(event){
 });
 
 $("#editCustomList").click(function (){
-	let li = event.target.parentNode.classList[0];
-	console.log(li);
+	let danceId = event.target.parentNode.classList[0];
+	console.log(danceId);
 	if (event.target.textContent === 'Delete') {
 		for (var i = 0; i < customDances.length; i++){
-			if (customDances[i].id === li) {
-				deleteCustomDance(li);
+			if (customDances[i].id === danceId) {
+				deleteCustomDance(danceId);
 			}
 		}
 		for (var i = 0; i < studioDances.length; i++){
-			if (studioDances[i].id === li) {
-				hideStudioDance(li);
+			if (studioDances[i].id === danceId) {
+				deleteStudioDance(danceId);
 			}
 		}
 	}
 	if (event.target.textContent === 'Edit') {
 		$("#setup__checkboxes").hide("slide", function() {
 		$("#edit_custom_container").show("slide"); });
-		renderEditModal(li);
+		renderEditModal(danceId);
 		$("#close_deleteOrEditModal").click();
 	}
 });
@@ -546,7 +536,6 @@ $("#editCustomList").click(function (){
 $("#close_deleteOrEditModal").click( function() {
 	$('#editCustomList').empty();
 });
-
 
 // toggle accordion arrows when clicked
 $(".fa-angle-double-up").hide();
@@ -567,6 +556,8 @@ function sort(){
 	$("#dancesRow").html(numOrdered);
 };
 
+
+
 // function unlock() {
 // 	enableSite = prompt("please enter the password");
 // 		if (enableSite !== "Jazz") {
@@ -577,6 +568,51 @@ function sort(){
 // 			localStorage.setItem("access","true");
 // 		}
 // }
+
+// function storeStudioDances(li) {
+// 	localStorage.setItem('studioDances', JSON.stringify(li));
+// }// why set this?  it is supplied by app.js  for if no internet connection? if so, need to write script for that
+
+// function storeCustomDances(array) {
+// 	localStorage.setItem('customDances', JSON.stringify(array));
+// }
+
+// function storeDisplayedDances(array) {
+// 	localStorage.setItem('displayedDances', JSON.stringify(array));
+// }
+
+// function parseCustomDances(str) {
+	// 	if (localStorage.getItem(str)) {
+	// 	customDances = JSON.parse(localStorage.getItem(str));
+	// 	}
+	// }
+	
+	// function parseDisplayedDances(str) {
+	// 	if ( localStorage.getItem(str) ) {
+	// 	displayedDances = JSON.parse(localStorage.getItem(str));
+	// 	}
+	// }
+	
+
+// function parseStudioDances(str) {
+// 	if (localStorage.str) {
+// 	var studiodanceobjects = localStorage.getItem(str);
+// 	studioDances = JSON.parse(studiodanceobjects);
+// 	} else {
+// 		populateStudioDances();
+// 		storeStudioDances(studioDances);
+// 	}
+// }
+
+// function toggleDisplayedDance(danceid) {
+// 		if ( contains(displayedDances, danceid) ) {
+// 			var index = displayedDances.indexOf(danceid);
+// 			displayedDances.splice(index, 1);
+// 		} else {
+// 			displayedDances.push(danceid);
+// 		}
+// }
+
 
 /// old method of storage, one entry for each item, now each is in a list
 
