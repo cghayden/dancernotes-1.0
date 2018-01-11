@@ -220,7 +220,7 @@ $(document).ready( function() {
 	});
 });
 
-//add/remove dance in DisplayedDances array 
+//add/remove danceId in an array 
 function toggleDance(danceid, array) {
 	if ( contains(array, danceid) ) {
 		var index = array.indexOf(danceid);
@@ -354,7 +354,6 @@ function createCustom() {
 }
 
 $("#create").click( function(evt){
-	// evt.preventDefault();
 		$("#setup__checkboxes").hide("slide", function() {
 		$("#custom_input_container").show("slide");	
 	});
@@ -401,13 +400,22 @@ function renderEditList(customDances, studioDances) {
 		};
 	}
 	// render hidden dances with 'restore' button
-	studioDances.forEach(function(dance) {
-		if ( contains(hiddenStudioDances, dance.id) ) {
-		var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item">' + dance.name + `<button class="btn btn-danger btn-sm">Restore</button></li>`;
-		$('#editCustomList').append(restoreListItemHtml);
-		};
-	});
+	if(hiddenStudioDances.length>0) {
+		$('#deleteOrEditModal .modal-body').append('<div id="deleteOrEditModal-restoreDanceDiv"><p class="deleteOrEditList__message">The following studio dances can be restored to your site</p><ul class="list-group" id="restoreDanceList"></ul></div>');
+		studioDances.forEach(function(dance) {
+			if ( contains(hiddenStudioDances, dance.id) ) {
+			var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item">' + dance.name + `<button class="btn btn-danger btn-sm">Restore</button></li>`;
+			$('#restoreDanceList').append(restoreListItemHtml);
+			};
+		});
+	}
 }
+
+$('#deleteOrEditList__restoreListButton').click(function() {
+	$('#deleteOrEditModal-restoreDanceDiv').toggle();
+	$('.restoreButton-hide').toggle();
+	$('.restoreButton-show').toggle();
+});
 
 $('#editCustomDanceButton').click(function() {
 	renderEditList(customDances, studioDances);
@@ -538,6 +546,10 @@ $("#editCustomList").click(function (){
 		renderEditModal(danceId);
 		$("#close_deleteOrEditModal").click();
 	}
+});
+
+$("#deleteOrEditModal-CloseIcon").click( function () {
+	$('#close_deleteOrEditModal').click();
 });
 
 $("#close_deleteOrEditModal").click( function() {

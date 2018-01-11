@@ -12,6 +12,44 @@
   color: #a71c1c;
   display: none; }
 
+#deleteOrEditModal {
+  color: #1e1e1e; }
+  #deleteOrEditModal .modal-header {
+    padding: 10px 15px; }
+  #deleteOrEditModal .modal-body {
+    padding-bottom: 0; }
+  #deleteOrEditModal .modal-footer {
+    justify-content: space-between; }
+
+#editCustomList li button:first-child {
+  margin-left: auto; }
+#editCustomList li button + button {
+  margin-left: 1rem; }
+
+#deleteOrEditModal-restoreDanceDiv {
+  border-radius: .3em;
+  margin-top: 2rem;
+  display: none;
+  background-color: #f4e0e0; }
+
+.list-group-item {
+  background-color: inherit; }
+
+#restoreDanceList li button:first-child {
+  margin-left: auto; }
+
+.deleteOrEditList__message {
+  padding: .5rem 0;
+  text-align: center;
+  margin: 0;
+  font-size: 1.1rem; }
+
+#deleteOrEditList__restoreListButton {
+  background-color: #f4e0e0; }
+
+.restoreButton-hide {
+  display: none; }
+
 body {
   background-color: #1e1e1e;
   font-family: "Kalam", cursive;
@@ -220,7 +258,6 @@ img[src*="hair"] {
 #edit_custom_container {
   display: none; }
 
-#deleteOrEditModal,
 #editCustom,
 #createCustom {
   color: #1e1e1e; }
@@ -229,16 +266,6 @@ img[src*="hair"] {
 #showEditEntry i {
   margin-right: 3px;
   color: red; }
-
-#editCustomList li {
-  display: flex;
-  align-items: center; }
-
-#editCustomList li button:first-child {
-  margin-left: auto; }
-
-#editCustomList li button + button {
-  margin-left: 1rem; }
 
 input::-webkit-input-placeholder {
   color: darkgrey !important; }

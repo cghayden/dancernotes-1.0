@@ -404,13 +404,21 @@
 		<div data-backdrop="static" class="modal fade" id="deleteOrEditModal">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
+					<div class="modal-header">
+							<h5 class="modal-title">Choose a Dance to Edit or Delete</h5>
+							<button type="button" id="deleteOrEditModal-CloseIcon" class="close" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
 					<div class="modal-body">
 						<ul class="list-group" id="editCustomList">
-
 						</ul>
 
 					</div>
 					<div class="modal-footer">
+						<button type="button" class="btn btn-sm" id="deleteOrEditList__restoreListButton">
+							<span class="restoreButton-show">Restore Deleted Studio Dances</span>
+							<span class="restoreButton-hide">Close Deleted Studios</span></button>
 						<button type="button" class="btn btn-danger" id="close_deleteOrEditModal" data-dismiss="modal">Close</button>
 					</div>
 				</div>

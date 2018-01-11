@@ -1,0 +1,51 @@
+#deleteOrEditModal {
+  color: #1e1e1e;
+  .modal-header {
+    padding: 10px 15px;
+  }
+  .modal-body {
+    padding-bottom: 0;
+  }
+  .modal-footer {
+    justify-content: space-between;
+  }
+}
+
+#editCustomList {
+  li button:first-child {
+    margin-left: auto; 
+  }
+  li button + button {
+  margin-left: 1rem; 
+  }
+}
+
+#deleteOrEditModal-restoreDanceDiv{
+  border-radius: .3em;
+  margin-top: 2rem;
+  display: none;
+  background-color: rgb(244, 224, 224);
+} .list-group-item  {
+  background-color: inherit;
+}
+
+#restoreDanceList {
+    li button:first-child {
+    margin-left: auto; 
+  }
+}
+
+.deleteOrEditList__message {
+  padding: .5rem 0;
+  text-align: center;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+#deleteOrEditList__restoreListButton {
+  background-color: rgb(244, 224, 224);
+}
+
+.restoreButton-hide {
+  display: none;
+}

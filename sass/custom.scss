@@ -1,5 +1,6 @@
 @import 'partials/variables';
 @import 'partials/setup';
+@import 'partials/deleteOrEditList';
 
 
 body {
@@ -259,7 +260,6 @@ img[src*="hair"] {
 	display: none;
 }
 
-#deleteOrEditModal,
 #editCustom, 
 #createCustom			{
 	color:rgb(30,30,30);
@@ -269,19 +269,6 @@ img[src*="hair"] {
 #showEditEntry i {
 	margin-right: 3px;
 	color: red;
-}
-
-#editCustomList li{
-	display: flex;
-	align-items: center;	
-}
-
-#editCustomList li button:first-child {
-	margin-left: auto;
-}
-
-#editCustomList li button + button {
-    margin-left: 1rem;
 }
 
 input::-webkit-input-placeholder {
