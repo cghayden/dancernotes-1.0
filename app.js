@@ -400,6 +400,13 @@ function renderEditList(customDances, studioDances) {
 		$('#editCustomList').append(editListItemHTML);
 		};
 	}
+	// render hidden dances with 'restore' button
+	studioDances.forEach(function(dance) {
+		if ( contains(hiddenStudioDances, dance.id) ) {
+		var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item">' + dance.name + `<button class="btn btn-danger btn-sm">Restore</button></li>`;
+		$('#editCustomList').append(restoreListItemHtml);
+		};
+	});
 }
 
 $('#editCustomDanceButton').click(function() {
