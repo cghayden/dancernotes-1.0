@@ -401,21 +401,30 @@ function renderEditList(customDances, studioDances) {
 	}
 	// render hidden dances with 'restore' button
 	if(hiddenStudioDances.length>0) {
-		$('#deleteOrEditModal .modal-body').append('<div id="deleteOrEditModal-restoreDanceDiv"><p class="deleteOrEditList__message">The following studio dances can be restored to your site</p><ul class="list-group" id="restoreDanceList"></ul></div>');
+		$('#editCustomList').append('<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>');
 		studioDances.forEach(function(dance) {
 			if ( contains(hiddenStudioDances, dance.id) ) {
-			var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item">' + dance.name + `<button class="btn btn-danger btn-sm">Restore</button></li>`;
-			$('#restoreDanceList').append(restoreListItemHtml);
+			var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item restore">' + dance.name + `<button class="btn btn-danger btn-sm">Restore</button></li>`;
+			$('#editCustomList').append(restoreListItemHtml);
 			};
 		});
 	}
 }
 
 $('#deleteOrEditList__restoreListButton').click(function() {
-	$('#deleteOrEditModal-restoreDanceDiv').toggle();
-	$('.restoreButton-hide').toggle();
-	$('.restoreButton-show').toggle();
+	$('.restore').css("display", "flex");
+	$(this).hide();
+	$('#hideRestoreList').show();
+	// $('.restoreButton-hide').toggle();
+	// $('.restoreButton-show').toggle();
 });
+
+$('#hideRestoreList').click(function() {
+	$('.restore').css("display", "none");
+	$(this).hide();
+	$('#deleteOrEditList__restoreListButton').show();
+});
+
 
 $('#editCustomDanceButton').click(function() {
 	renderEditList(customDances, studioDances);
@@ -525,9 +534,17 @@ $("#edit_custom_container").click( function(event){
 	}
 });
 
-$("#editCustomList").click(function (){
+$("#restoreDanceList").click(function() {
+	console.log('restore clicked');
 	let danceId = event.target.parentNode.classList[0];
-	console.log(danceId);
+	if (event.target.textContent === 'Restore') {
+		console.log(`restore ${danceId}`)
+		}
+});
+
+$("#editCustomList").click(function (){
+	console.log('click');
+	let danceId = event.target.parentNode.classList[0];
 	if (event.target.textContent === 'Delete') {
 		for (var i = 0; i < customDances.length; i++){
 			if (customDances[i].id === danceId) {
@@ -554,6 +571,7 @@ $("#deleteOrEditModal-CloseIcon").click( function () {
 
 $("#close_deleteOrEditModal").click( function() {
 	$('#editCustomList').empty();
+	$('#restoreDanceList').empty();
 });
 
 // toggle accordion arrows when clicked

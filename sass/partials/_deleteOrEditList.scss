@@ -8,6 +8,7 @@
   }
   .modal-footer {
     justify-content: space-between;
+    border-top: none;
   }
 }
 
@@ -18,21 +19,16 @@
   li button + button {
   margin-left: 1rem; 
   }
-}
-
-#deleteOrEditModal-restoreDanceDiv{
-  border-radius: .3em;
-  margin-top: 2rem;
-  display: none;
-  background-color: rgb(244, 224, 224);
-} .list-group-item  {
-  background-color: inherit;
-}
-
-#restoreDanceList {
-    li button:first-child {
-    margin-left: auto; 
+  p {
+    padding-left: 1rem;
+    margin-top: .5rem;
+    border-top-left-radius: .4em;
+    border-top-right-radius: .4em;
   }
+}
+
+.restore{
+  background-color: rgb(244, 224, 224);
 }
 
 .deleteOrEditList__message {
@@ -47,5 +43,11 @@
 }
 
 .restoreButton-hide {
+  display: none;
+  background-color: rgb(244, 224, 224);
+
+}
+
+.restore {
   display: none;
 }

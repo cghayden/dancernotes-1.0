@@ -19,24 +19,21 @@
   #deleteOrEditModal .modal-body {
     padding-bottom: 0; }
   #deleteOrEditModal .modal-footer {
-    justify-content: space-between; }
+    justify-content: space-between;
+    border-top: none; }
 
 #editCustomList li button:first-child {
   margin-left: auto; }
 #editCustomList li button + button {
   margin-left: 1rem; }
+#editCustomList p {
+  padding-left: 1rem;
+  margin-top: .5rem;
+  border-top-left-radius: .4em;
+  border-top-right-radius: .4em; }
 
-#deleteOrEditModal-restoreDanceDiv {
-  border-radius: .3em;
-  margin-top: 2rem;
-  display: none;
+.restore {
   background-color: #f4e0e0; }
-
-.list-group-item {
-  background-color: inherit; }
-
-#restoreDanceList li button:first-child {
-  margin-left: auto; }
 
 .deleteOrEditList__message {
   padding: .5rem 0;
@@ -48,6 +45,10 @@
   background-color: #f4e0e0; }
 
 .restoreButton-hide {
+  display: none;
+  background-color: #f4e0e0; }
+
+.restore {
   display: none; }
 
 body {
