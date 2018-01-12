@@ -260,24 +260,25 @@ function parseHiddenStudioDances(str) {
 
 function renderDances(array) {
 	for (var i = 0; i < array.length; i++) {
-		if( !contains(hiddenStudioDances, array[i].id) ){
-			createCheckbox(array[i].id, array[i].name, array[i].song);
-			renderNewDance(	array[i].id, //renderHTML, default = shown
-											array[i].name, 
-											array[i].song, 
-											array[i].tights, 
-											array[i].shoes, 
-											array[i].notes,
-											array[i].num,
-											array[i].day,
-											array[i].time);
-									
+		createCheckbox(array[i].id, array[i].name, array[i].song);
+		renderNewDance(	array[i].id,
+										array[i].name, 
+										array[i].song, 
+										array[i].tights, 
+										array[i].shoes, 
+										array[i].notes,
+										array[i].num,
+										array[i].day,
+										array[i].time);
 		if ( contains(displayedDances, array[i].id)) {
 				$("input[value=" + array[i].id +"]").prop("checked", true);
 				} else {
-					$('#'+array[i].id).toggle(); 
+					$('#'+array[i].id).hide(); // hide if not in displayedDances
 					} 
-			}
+		if ( contains(hiddenStudioDances, array[i].id) ) {
+			$("input[value="+ array[i].id +"]").parent().parent().hide();
+				$("#"+ array[i].id).hide();
+		}	
 	}
 }
 
@@ -286,7 +287,7 @@ function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
 	let customHtml = '<div class="col-12 col-md-6 dance-container" id="'+ id + '">';
 	customHtml += '<div class="dance-header row" data-toggle="collapse" href="#' + id + '-body">';
 	customHtml += '<div class="col-3 text-left align-self-end time">';
-	customHtml += '<span># </span><h5>'+ num + '</h5></div>';
+	customHtml += '<h5>'+ num + '</h5></div>';
 	customHtml += '<div class="col-6"><h4>'+ title + '</h4><p>' + song +'</p></div>';  
 	customHtml += '<div class="col-3 align-self-end time"><p>'+ day +'</p>';
 	customHtml += '<h5>' + time + '</h5></div></div>';
@@ -381,30 +382,25 @@ $("#inline_addCustomForm").click( function(evt){
 // create a list of all custom dances with edit and delete buttons
 function renderEditList(customDances, studioDances) { 
 	for(var i = 0; i < customDances.length; i++) {
-		var dancename = customDances[i].name;
-		var danceId = customDances[i].id;
-		var editListItemHTML= '<li class="' + danceId + ' list-group-item">' + dancename + 
-						`<button class="btn btn-primary btn-sm">Edit</button>
-						<button class="btn btn-danger btn-sm">Delete</button>					
-					</li>`;
+		var editListItemHTML= '<li class="' + customDances[i].id + ' list-group-item">' + customDances[i].name + '  -  ' + customDances[i].song + `<button class="btn btn-primary btn-sm">Edit</button>
+				<button class="btn btn-danger btn-sm">Delete</button>					
+				</li>`;
 		$('#editCustomList').append(editListItemHTML);
 	}
 	for(var i = 0; i < studioDances.length; i++) {
 		if ( !contains(hiddenStudioDances, studioDances[i].id) ){
-		var dancename = studioDances[i].name;
-		var danceId = studioDances[i].id;
-		var editListItemHTML= '<li class="' + danceId + ' list-group-item">' + dancename + 
-						`<button class="btn btn-danger btn-sm">Delete</button>					
-					</li>`;
+		var editListItemHTML= '<li class="' + studioDances[i].id + ' list-group-item">' + studioDances[i].name +  '  -  ' + studioDances[i].song +`<button class="btn btn-danger btn-sm">Delete</button>					
+			</li>`;
 		$('#editCustomList').append(editListItemHTML);
 		};
 	}
+	$('#editCustomList').append('<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>');
 	// render hidden dances with 'restore' button
 	if(hiddenStudioDances.length>0) {
-		$('#editCustomList').append('<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>');
+		$('#deleteOrEditList__restoreListButton').prop('disabled', false);
 		studioDances.forEach(function(dance) {
 			if ( contains(hiddenStudioDances, dance.id) ) {
-			var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item restore">' + dance.name + `<button class="btn btn-danger btn-sm">Restore</button></li>`;
+			var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item restore">' + dance.name + '<button class="btn btn-danger btn-sm">Restore</button></li>';
 			$('#editCustomList').append(restoreListItemHtml);
 			};
 		});
@@ -485,15 +481,44 @@ function saveChanges(id){
 	$('#closeEditCustom').click();
 };
 
-function deleteStudioDance(item) {
-	console.log(`hide studio dance ${item}`);
-	toggleDance(item, hiddenStudioDances);
+function restoreStudioDance(danceId) {
+	toggleDance(danceId, hiddenStudioDances);
+	saveInLocalStorage('hiddenStudioDances', hiddenStudioDances);
+	for (var i = 0; i < studioDances.length; i++){
+		if (studioDances[i].id === danceId) {
+			$("."+ danceId).remove();
+			$("input[value="+ danceId +"]").parent().parent().show();
+			$("input[value=" + danceId +"]").prop("checked", false);
+			// $("#"+ danceId).show();
+			var editListItemHTML= '<li class="' + danceId + ' list-group-item">' + studioDances[i].name +  '  -  ' + studioDances[i].song + `<button class="btn btn-danger btn-sm">Delete</button>
+			</li>`;
+			$('#editCustomList').prepend(editListItemHTML);
+		}
+	}
+	if(hiddenStudioDances.length === 0) {
+		$('#hideRestoreList').click();
+		$('#deleteOrEditList__restoreListButton').prop('disabled', true);
+	}
+}
+
+function deleteStudioDance(danceId) {
+	toggleDance(danceId, hiddenStudioDances);
 	saveInLocalStorage("hiddenStudioDances", hiddenStudioDances);
+	//enable button to show list of restored dances
+	$('#deleteOrEditList__restoreListButton').prop('disabled', false);
+		// remove from displayed dances, Not Toggle!!
+	if ( contains(displayedDances, danceId) ) {
+		var index = displayedDances.indexOf(danceId);
+		displayedDances.splice(index, 1);
+		saveInLocalStorage("displayedDances", displayedDances);
+	} 
 	for (var i = 0; i < studioDances.length; i++) {
-		if (studioDances[i].id === item) {
-			$("."+item).remove();
-			$("input[value="+ item +"]").parent().parent().remove();
-			$("#"+item).remove();
+		if (studioDances[i].id === danceId) {
+			$("."+ danceId).remove();
+			$("input[value="+ danceId +"]").parent().parent().hide(); // hide from Setup
+			$("#"+ danceId).hide(); // hide main Div
+			var restoreListItemHtml= '<li class="' + danceId + ' list-group-item restore">' + studioDances[i].name + '  -  ' + studioDances[i].song +'<button class="btn btn-danger btn-sm">Restore</button></li>';
+			$('#editCustomList').append(restoreListItemHtml);
 		}
 	}
 }
@@ -534,14 +559,6 @@ $("#edit_custom_container").click( function(event){
 	}
 });
 
-$("#restoreDanceList").click(function() {
-	console.log('restore clicked');
-	let danceId = event.target.parentNode.classList[0];
-	if (event.target.textContent === 'Restore') {
-		console.log(`restore ${danceId}`)
-		}
-});
-
 $("#editCustomList").click(function (){
 	console.log('click');
 	let danceId = event.target.parentNode.classList[0];
@@ -562,6 +579,9 @@ $("#editCustomList").click(function (){
 		$("#edit_custom_container").show("slide"); });
 		renderEditModal(danceId);
 		$("#close_deleteOrEditModal").click();
+	}
+	if (event.target.textContent === 'Restore') {
+		restoreStudioDance(danceId);
 	}
 });
 
