@@ -94,8 +94,8 @@ function populateStudioDances() {
 	
 	var acro = new Dance("acro",
 											"Acro Team",
-											"Song",
-											"?",
+											"",
+											"",
 											"None",
 											[""],
 											"",
@@ -145,7 +145,7 @@ function populateStudioDances() {
 	var miniLyric = new Dance (
 		"miniLyric",
 		"Mini Lyric",
-		"Song",
+		"The Children Will Listen",
 		"Light Suntan Capezio Ultra Soft Stirrup",
 		"None",
 		[""],
@@ -404,7 +404,7 @@ $("#inline_addCustomForm").click( function(evt){
 // create a list of all custom dances with edit and delete buttons
 function renderEditList(customDances, studioDances) { 
 	for(var i = 0; i < customDances.length; i++) {
-		var editListItemHTML= '<li class="' + customDances[i].id + ' list-group-item">' + customDances[i].name + '  -  ' + customDances[i].song + `<button class="btn btn-primary btn-sm">Edit</button>
+		var editListItemHTML= '<li class="' + customDances[i].id + ' list-group-item">' + customDances[i].name + `<button class="btn btn-primary btn-sm">Edit</button>
 				<button class="btn btn-danger btn-sm">Delete</button>					
 				</li>`;
 		$('#edit-delete-list').append(editListItemHTML);
