@@ -156,7 +156,7 @@ a {
   font-size: 1.1rem; }
 
 #disclaimer {
-  color: yellow; }
+  color: #1c1c1c; }
 
 ul {
   list-style: none;
@@ -170,6 +170,9 @@ dl .col-10 {
 
 dl .col-2 {
   padding-left: 0; }
+
+#aboutModal {
+  background-color: #1c1c1c; }
 
 .navbar {
   background: linear-gradient(to top, rgba(55, 66, 215, 0.7), #1c1c1c 120%);

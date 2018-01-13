@@ -15,10 +15,17 @@
 
 	<body>
 		
-		<div class="pos-f-t"> <!-- nav/brand bar and content behind it-->
-			<div class="collapse" id="navlinks"> <!-- content -->
-
-				<p id="disclaimer">Disclaimer: This is a parent-run site, not meant to replace official studio communcation. Please verify all information!!!<br>
+			<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div id="disclaimer" class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="aboutModalLabel"></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>Disclaimer: This is a parent-run site, not meant to replace official studio communcation. Please verify all information!!!<br>
 				All Scheduled times are approximate.  Be ready to dance two hours early!!
 				</p>
 				<h5> About dancer notes </h5>
@@ -30,10 +37,21 @@
 					<li>(Enter competition entry information to have them put in scheduled order.  Entry can be edited or deleted after the comps)</li>
 				
 				</ul>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+		<div class="pos-f-t"> <!-- nav/brand bar and content behind it-->
+			<div class="collapse" id="navlinks"> <!-- content -->
+
 
 			</div>
 			<nav class="navbar navbar-inverse sticky-top"> <!--bar-->
-				<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navlinks" aria-controls="navlinks" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="modal" data-target="#aboutModal" aria-controls="navlinks" aria-expanded="false" aria-label="Toggle navigation">
 					<span><i class="fa fa-lg fa-exclamation-circle" aria-hidden="true"></i></span>
 				</button>
 				<a class="navbar-brand pt-1.5" href="#" target="_blank">dancer notes</a>
