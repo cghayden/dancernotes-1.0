@@ -94,7 +94,7 @@ function populateStudioDances() {
 	
 	var acro = new Dance("acro",
 											"Acro Team",
-											"",
+											"Egypt",
 											"",
 											"None",
 											[""],
@@ -548,10 +548,6 @@ function addStudioNote (danceId) {
 	$('#addStudioNote').show();
 }
 
-// $('#addStudioNote-save').click(function () {
-	
-// });
-
 function closeAddStudioNoteForm() {
 	$('#addStudioNote-header').empty();
 	$("#studioNote-DanceId").remove();
@@ -585,6 +581,27 @@ $("#addStudioNote").click(function(evt){
 			customStudioNotes.push(newNote);
 		}
 		saveInLocalStorage('customStudioNotes', customStudioNotes);
+		// delete old dancediv and re-render to reset new notes
+		$('#'+ danceId).remove();
+		studioDances.forEach(function (dance) {
+			if(dance.id == danceId) {
+				renderNewDance(	dance.id,
+					dance.name, 
+					dance.song, 
+					dance.tights, 
+					dance.shoes, 
+					dance.notes,
+					dance.num,
+					dance.day,
+					dance.time);
+				}
+			if ( contains(displayedDances, dance.id)) {
+				$("input[value=" + dance.id +"]").prop("checked", true);
+				} else {
+					$('#'+ dance.id).hide(); // hide if not in displayedDances
+					}
+			});
+
 		closeAddStudioNoteForm();
 	}
 	if (evt.target.id === 'addStudioNote-cancel') {
