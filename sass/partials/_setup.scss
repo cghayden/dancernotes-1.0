@@ -16,3 +16,23 @@
   color: $red;
   display: none;
 }
+
+#addStudioNote {
+	display: none;
+	padding: 1rem 0;
+} 
+
+#addStudioNotes-buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
+#addStudioNote {
+	li {
+		margin-bottom: .25rem;
+		span {
+			font-size: 1.25rem;
+		}
+	}
+	
+}

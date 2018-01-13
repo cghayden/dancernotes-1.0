@@ -12,6 +12,19 @@
   color: #a71c1c;
   display: none; }
 
+#addStudioNote {
+  display: none;
+  padding: 1rem 0; }
+
+#addStudioNotes-buttons {
+  display: flex;
+  justify-content: space-around; }
+
+#addStudioNote li {
+  margin-bottom: .25rem; }
+  #addStudioNote li span {
+    font-size: 1.25rem; }
+
 #deleteOrEditModal {
   color: #1e1e1e; }
   #deleteOrEditModal .modal-header {
@@ -22,11 +35,11 @@
     justify-content: space-between;
     border-top: none; }
 
-#editCustomList li button:first-child {
+#edit-delete-list li button:first-child {
   margin-left: auto; }
-#editCustomList li button + button {
+#edit-delete-list li button + button {
   margin-left: 1rem; }
-#editCustomList p {
+#edit-delete-list p {
   padding-left: 1rem;
   margin-top: .5rem;
   border-top-left-radius: .4em;

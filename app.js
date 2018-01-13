@@ -34,6 +34,11 @@ function Dance(id, name, song, tights, shoes, notes, num, day, time) {
 	this.time = time || "";
 }
 
+function customNote(id, notes) {
+	this.id = id;
+	this.notes = notes;
+}
+
 /// will be populated from studio, each parameter in a variable
 var studioDances = []; // array of stock dance OBJ's supplied by app.js used to populate checkboxes and div for each dance
 function populateStudioDances() {
@@ -193,7 +198,8 @@ function populateStudioDances() {
 var customDances = [];  // array of custom dance objects to render ...
 var hiddenStudioDances = []; //array of ids; studio dances the user never wants to see
 var displayedDances = [];  // array of ids; dances checked to display on load
-var idContainer;  //when selecting a dance to edit, save its id to be used in a later function
+var idContainer;  //when selecting a dance to edit, save its id to be used in a later function\
+var customStudioNotes = [];
 
 $(document).ready( function() {
 	populateStudioDances();
@@ -206,6 +212,7 @@ $(document).ready( function() {
 	parseHiddenStudioDances("hiddenStudioDances"); 
 	parseCustomDances("customDances"); 
 	parseDisplayedDances("displayedDances");
+	parseCustomStudioNotes("customStudioNotes");
 	renderDances(studioDances);
 	renderDances(customDances);
 	sort();
@@ -250,6 +257,12 @@ function parseDisplayedDances(str) {
 function parseHiddenStudioDances(str) {
 	if ( localStorage.getItem(str) ) {
 	hiddenStudioDances = JSON.parse(localStorage.getItem(str));
+	}
+}
+
+function parseCustomStudioNotes(str) {
+	if (localStorage.getItem(str)) {
+	customStudioNotes = JSON.parse(localStorage.getItem(str));
 	}
 }
 // function retrieveFromLocalStorage(str, array) {
@@ -301,6 +314,16 @@ function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
 	} 
 	customHtml += '</ul></dd></dl></div></div>';
 	$("#dancesRow").append(customHtml);
+	if (customStudioNotes.length>0) {
+		customStudioNotes.forEach(function(item){
+			if (item.id == id) {
+				let notes = item.notes;
+				notes.forEach(function(note){
+					$('#'+ id + ' ul').append(`<li>${note}</li>`);
+				});
+			}
+		});
+	}
 }
 
 function createCheckbox(id, title, song) {
@@ -366,7 +389,6 @@ $("#inline_addCustomForm").click( function(evt){
 		$("#numTimeDiv").toggle("blind");
 	}
 	if (evt.target.id === 'submitCustom') {
-		console.log("submit custom dance clicked");
 		createCustom();
 	}
 	if (evt.target.id === "addNoteInput") {
@@ -385,27 +407,62 @@ function renderEditList(customDances, studioDances) {
 		var editListItemHTML= '<li class="' + customDances[i].id + ' list-group-item">' + customDances[i].name + '  -  ' + customDances[i].song + `<button class="btn btn-primary btn-sm">Edit</button>
 				<button class="btn btn-danger btn-sm">Delete</button>					
 				</li>`;
-		$('#editCustomList').append(editListItemHTML);
+		$('#edit-delete-list').append(editListItemHTML);
 	}
 	for(var i = 0; i < studioDances.length; i++) {
 		if ( !contains(hiddenStudioDances, studioDances[i].id) ){
-		var editListItemHTML= '<li class="' + studioDances[i].id + ' list-group-item">' + studioDances[i].name +  '  -  ' + studioDances[i].song +`<button class="btn btn-danger btn-sm">Delete</button>					
-			</li>`;
-		$('#editCustomList').append(editListItemHTML);
+		var editListItemHTML= '<li class="' + studioDances[i].id + ' list-group-item">' + studioDances[i].name +  '  -  ' + studioDances[i].song +`
+		<button class="btn btn-primary btn-sm">+Note</button>
+		<button class="btn btn-danger btn-sm">Delete</button>					
+		</li>`;
+		$('#edit-delete-list').append(editListItemHTML);
 		};
 	}
-	$('#editCustomList').append('<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>');
+	$('#edit-delete-list').append('<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>');
 	// render hidden dances with 'restore' button
 	if(hiddenStudioDances.length>0) {
 		$('#deleteOrEditList__restoreListButton').prop('disabled', false);
 		studioDances.forEach(function(dance) {
 			if ( contains(hiddenStudioDances, dance.id) ) {
 			var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item restore">' + dance.name + '<button class="btn btn-danger btn-sm">Restore</button></li>';
-			$('#editCustomList').append(restoreListItemHtml);
+			$('#edit-delete-list').append(restoreListItemHtml);
 			};
 		});
 	}
 }
+
+// listeners for 'edit' 'delete' 'restore' 
+$("#edit-delete-list").click(function (){
+	console.log('click');
+	let danceId = event.target.parentNode.classList[0];
+	if (event.target.textContent === 'Delete') {
+		for (var i = 0; i < customDances.length; i++){
+			if (customDances[i].id === danceId) {
+				deleteCustomDance(danceId);
+			}
+		}
+		for (var i = 0; i < studioDances.length; i++){
+			if (studioDances[i].id === danceId) {
+				deleteStudioDance(danceId);
+			}
+		}
+	}
+	if (event.target.textContent === 'Edit') {
+		$("#setup__checkboxes").hide("slide", function() {
+		$("#edit_custom_container").show("slide"); });
+		renderEditForm(danceId);
+		$("#close_deleteOrEditModal").click();
+	}
+	if (event.target.textContent === '+Note') {
+		$("#setup__checkboxes").hide("slide", function() {
+		$("addStudioNote").show("slide"); });
+		addStudioNote(danceId);
+		$("#close_deleteOrEditModal").click();
+	}
+	if (event.target.textContent === 'Restore') {
+		restoreStudioDance(danceId);
+	}
+});
 
 $('#deleteOrEditList__restoreListButton').click(function() {
 	$('.restore').css("display", "flex");
@@ -421,35 +478,119 @@ $('#hideRestoreList').click(function() {
 	$('#deleteOrEditList__restoreListButton').show();
 });
 
-
 $('#editCustomDanceButton').click(function() {
 	renderEditList(customDances, studioDances);
 });
 
-function renderEditModal(item) {
-	idContainer = item;
+function renderEditForm(danceId) {
+	idContainer = danceId;
 	$("#editCustomNotesList").empty();
-	for (var i = 0; i < customDances.length; i++){  /// prefill custom inputs with existing values.
-		if( customDances[i].id === item) {
-			$('#editTitle').val(customDances[i].name);
-			$('#editSong').val(customDances[i].song);
-			$('#editTights').val(customDances[i].tights);
-			$('#editShoes').val(customDances[i].shoes);
-			var notes = customDances[i].notes;
-			console.log(notes);
-			for (var ii = 0; ii<notes.length; ii++) {
-				var liValue = notes[ii];
-				$("#editCustomNotesList").append('<li><input class="form-control" type="text" value="' +liValue+ '"></li>');
-			}
-			if(customDances[i].num || customDances[i].time) {
-				$("#editNumTimeDiv").show();
-				$("#editCustomNum").val(customDances[i].num);
-				$("#editCustomDay").val(customDances[i].day);
-			    $("#editCustomTime").val(customDances[i].time);
+		for (var i = 0; i < customDances.length; i++){  /// prefill custom inputs with existing values.
+			if( customDances[i].id === danceId) {
+				$('#editTitle').val(customDances[i].name);
+				$('#editSong').val(customDances[i].song);
+				$('#editTights').val(customDances[i].tights);
+				$('#editShoes').val(customDances[i].shoes);
+				var notes = customDances[i].notes;
+				for (var ii = 0; ii<notes.length; ii++) {
+					var liValue = notes[ii];
+					$("#editCustomNotesList").append('<li><input class="form-control" type="text" value="' +liValue+ '"></li>');
+				}
+				if(customDances[i].num || customDances[i].time) {
+					$("#editNumTimeDiv").show();
+					$("#editCustomNum").val(customDances[i].num);
+					$("#editCustomDay").val(customDances[i].day);
+						$("#editCustomTime").val(customDances[i].time);
+				}
 			}
 		}
-	}
 }
+
+function addStudioNote (danceId) {
+	studioDances.forEach(function(dance) {
+		if (dance.id === danceId) {
+			let html = `
+			<h4>${dance.name}</h4>
+			<h5>${dance.song}</h5>
+			<ul>
+				<li><span>Tights:</span> ${dance.tights}</li>
+				<li><span>Shoes:</span> ${dance.shoes}</li>
+			`
+			if (dance.notes.length > 0){
+				let notes = dance.notes;
+				notes.forEach(function(item) {
+					html += `<li><span>Studio Note: </span>${item}<li>`
+				});
+			}
+			html += `</ul>`
+			$('#addStudioNote-header').append(html);
+			$('#addStudioNote-body').append(`<input id="studioNote-DanceId" name="studioNote-DanceId" type="hidden" value="${danceId}">`);
+		}
+	});
+	if(customStudioNotes.length>0) {
+		var match = 0;
+		customStudioNotes.forEach(function(item) {
+			if (item.id === danceId) {
+				match += 1;
+				var notes = item.notes;
+				console.log(notes);
+				notes.forEach(function(note){
+					$("#addStudioNotes-list").append(`<li><input class="form-control" type="text" value="${note}"></li>`);
+					});
+			}
+		});
+		if (match===0){
+			$("#addStudioNotes-list").append(`<li><input class="form-control" type="text" value=""></li>`);
+		}
+	} else {
+		$("#addStudioNotes-list").append(`<li><input class="form-control" type="text" value=""></li>`);
+	}
+	$('#addStudioNote').show();
+}
+
+// $('#addStudioNote-save').click(function () {
+	
+// });
+
+function closeAddStudioNoteForm() {
+	$('#addStudioNote-header').empty();
+	$("#studioNote-DanceId").remove();
+	$("#addStudioNotes-list").empty();
+	$('#addStudioNote').hide("slide", function() {
+		$('#setup__checkboxes').show("slide"); 
+	});
+}
+
+$("#addStudioNote").click(function(evt){
+	event.preventDefault();
+	if (evt.target.id === "anotherCustomNote") {
+		$("#addStudioNotes-list").append('<li><input class="form-control" type="text" value=""></li>');
+		}
+	if (evt.target.id === 'addStudioNote-save') {
+		var danceId = $('#studioNote-DanceId').val();
+		var customNotes = [];
+		$("#addStudioNotes-list li input").each(function(){
+			var $note = $(this).val(); 
+			customNotes.push($note);
+		});
+		const newNote = new customNote(danceId, customNotes);
+		if(customStudioNotes.length>0) {
+			customStudioNotes.forEach(function(item){
+				if(item.id === danceId) {
+					customStudioNotes.splice(customStudioNotes.indexOf(item), 1);
+				}
+			});
+			customStudioNotes.push(newNote);
+		} else {
+			customStudioNotes.push(newNote);
+		}
+		saveInLocalStorage('customStudioNotes', customStudioNotes);
+		closeAddStudioNoteForm();
+	}
+	if (evt.target.id === 'addStudioNote-cancel') {
+		closeAddStudioNoteForm();
+	}
+});
 
 function saveChanges(id){
 	var customId = id;
@@ -492,7 +633,7 @@ function restoreStudioDance(danceId) {
 			// $("#"+ danceId).show();
 			var editListItemHTML= '<li class="' + danceId + ' list-group-item">' + studioDances[i].name +  '  -  ' + studioDances[i].song + `<button class="btn btn-danger btn-sm">Delete</button>
 			</li>`;
-			$('#editCustomList').prepend(editListItemHTML);
+			$('#edit-delete-list').prepend(editListItemHTML);
 		}
 	}
 	if(hiddenStudioDances.length === 0) {
@@ -518,13 +659,12 @@ function deleteStudioDance(danceId) {
 			$("input[value="+ danceId +"]").parent().parent().hide(); // hide from Setup
 			$("#"+ danceId).hide(); // hide main Div
 			var restoreListItemHtml= '<li class="' + danceId + ' list-group-item restore">' + studioDances[i].name + '  -  ' + studioDances[i].song +'<button class="btn btn-danger btn-sm">Restore</button></li>';
-			$('#editCustomList').append(restoreListItemHtml);
+			$('#edit-delete-list').append(restoreListItemHtml);
 		}
 	}
 }
 
 function deleteCustomDance(item){
-	// console.log('delete function on ' + item);
 	for (var i = 0; i < customDances.length; i++){
 		if (customDances[i].id === item) {
 			$("#"+item).remove();
@@ -559,38 +699,12 @@ $("#edit_custom_container").click( function(event){
 	}
 });
 
-$("#editCustomList").click(function (){
-	console.log('click');
-	let danceId = event.target.parentNode.classList[0];
-	if (event.target.textContent === 'Delete') {
-		for (var i = 0; i < customDances.length; i++){
-			if (customDances[i].id === danceId) {
-				deleteCustomDance(danceId);
-			}
-		}
-		for (var i = 0; i < studioDances.length; i++){
-			if (studioDances[i].id === danceId) {
-				deleteStudioDance(danceId);
-			}
-		}
-	}
-	if (event.target.textContent === 'Edit') {
-		$("#setup__checkboxes").hide("slide", function() {
-		$("#edit_custom_container").show("slide"); });
-		renderEditModal(danceId);
-		$("#close_deleteOrEditModal").click();
-	}
-	if (event.target.textContent === 'Restore') {
-		restoreStudioDance(danceId);
-	}
-});
-
 $("#deleteOrEditModal-CloseIcon").click( function () {
 	$('#close_deleteOrEditModal').click();
 });
 
 $("#close_deleteOrEditModal").click( function() {
-	$('#editCustomList').empty();
+	$('#edit-delete-list').empty();
 	$('#restoreDanceList').empty();
 });
 
