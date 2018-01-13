@@ -1,0 +1,57 @@
+@function mix-neutral($color) {
+	@if (is-highest-key-value($color)) {
+		@if is-high-key-value(complement($color)) {
+			@return mix(complement($color), $color, 19%);
+		}
+		@else {
+			@return mix(complement($color), $color, 13%);
+		}
+	}
+	@else if (is-high-key-value($color)) {
+		@if is-high-key-value(complement($color)) {
+			@return mix(complement($color), $color, 31%);
+		}
+		@else {
+			@return mix(complement($color), $color, 23%);
+		}
+	}
+	@else {
+		@if is-highest-key-value(complement($color)) {
+			@return mix(complement($color), $color, 31%);
+		}
+		@if is-high-key-value(complement($color)) {
+			@return mix(complement($color), $color, 26%);
+		}
+		@else {
+			@return mix(complement($color), $color, 23%);
+		}
+	}
+}
+
+$black: rgb(20, 20, 20);
+$white: rgb(237, 227, 227);
+
+$lime: hsl(120, 100%, 50%);
+$darkgreen: hsl(120, 100%, 25%);
+$pastelgreen: hsl(120, 75%, 75%);
+
+$red: 	 	hsl(355, 100%, 50%);
+$orange: 	hsl(20, 100%, 50%);
+$opp_d_indigo: hsl(54, 70%, 30%);
+$yellow: 	hsl(60, 100%, 50%);
+$green:  	hsl(120, 100%, 50%);
+$cyan:   	hsl(180, 100%, 50%);
+$dark_indigo: hsl(235, 66%, 30%);
+$blue:   	hsl(240, 100%, 50%);
+$blueBackground:   	rgba(78, 58, 211, 0.557);
+$violet: 	hsl(300, 100%, 50%);
+
+$first-color: hsl(50, 80%, 50%);
+$second-color: complement($first-color);
+
+$primary_neutral: mix-neutral($first-color);
+$primary_neutral_dark: darken($primary_neutral, 15%);
+$primary_neutral_light: lighten($primary_neutral, 35%);
+$secondary_neutral: mix-neutral($second-color);
+$secondary_neutral_dark: darken($secondary_neutral, 20%);
+$secondary_neutral_light: lighten($secondary_neutral, 35%);

@@ -1,12 +1,14 @@
 @import 'partials/variables';
 @import 'partials/setup';
 @import 'partials/deleteOrEditList';
+@import 'partials/colors';
 
 
 body {
 	background-color: $black;
-	font-family: "Kalam", cursive;
-	color: rgb(243, 232, 232);
+	font-family: "Kalam", 'Comic Sans MS', 'cursive';
+	// font-family: 'Comic Sans MS';
+	color: $white;
 	font-weight: 400;
 }
 
@@ -37,7 +39,7 @@ dl .col-2 {
 }
 
 .navbar {
-	background: linear-gradient(to top, rgb(30, 30, 30), rgba(0, 0, 255, 0.639) 120%);
+	background: linear-gradient(to top, $black, $blueBackground 120%);
 	font-family: 'Dancing Script', cursive;
 }
 
@@ -55,7 +57,7 @@ dl .col-2 {
 
 #navlinks {
 	padding: 1rem;
-	background: linear-gradient(rgb(30,30,30), blue 120%);
+	background: linear-gradient($black, $blueBackground);
 }
 
 .navbar-brand {
@@ -147,7 +149,7 @@ dl .col-2 {
 
 .dance-container {
 	padding-top: 10px;
-	background: radial-gradient(rgba(0, 0, 255, 0.639), rgb(30,30,30) 80%);
+	background: radial-gradient($blueBackground, $black 80%);
 }
 
 .dance-container dl {

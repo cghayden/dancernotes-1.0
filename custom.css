@@ -65,9 +65,9 @@
   display: none; }
 
 body {
-  background-color: #1e1e1e;
-  font-family: "Kalam", cursive;
-  color: #f3e8e8;
+  background-color: #141414;
+  font-family: "Kalam", 'Comic Sans MS', 'cursive';
+  color: #ede3e3;
   font-weight: 400; }
 
 .highlight {
@@ -91,7 +91,7 @@ dl .col-2 {
   padding-left: 0; }
 
 .navbar {
-  background: linear-gradient(to top, #1e1e1e, rgba(0, 0, 255, 0.639) 120%);
+  background: linear-gradient(to top, #141414, rgba(78, 58, 211, 0.557) 120%);
   font-family: 'Dancing Script', cursive; }
 
 .navbar i {
@@ -105,7 +105,7 @@ dl .col-2 {
 
 #navlinks {
   padding: 1rem;
-  background: linear-gradient(#1e1e1e, blue 120%); }
+  background: linear-gradient(#141414, rgba(78, 58, 211, 0.557)); }
 
 .navbar-brand {
   text-align: center; }
@@ -182,7 +182,7 @@ dl .col-2 {
 
 .dance-container {
   padding-top: 10px;
-  background: radial-gradient(rgba(0, 0, 255, 0.639), #1e1e1e 80%); }
+  background: radial-gradient(rgba(78, 58, 211, 0.557), #141414 80%); }
 
 .dance-container dl {
   border-top: 1px solid white;
