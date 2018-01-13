@@ -5,6 +5,17 @@
 	font-weight: 400;
 }
 
+#setup__allDancesList {
+	span {
+		font-size: 1.1rem;
+	}
+	p {
+		font-size: .9rem;
+		color: $primary_dark;
+		margin-bottom: 0;
+	}
+}
+
 #setup label {
 	padding-bottom: 1rem;
 }

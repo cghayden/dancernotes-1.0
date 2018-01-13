@@ -1,6 +1,7 @@
 @import 'partials/variables';
 @import 'partials/colors';
-@import 'partials/setup';
+@import 'partials/makeupTab';
+@import 'partials/setupTab';
 @import 'partials/deleteOrEditList';
 
 
@@ -17,8 +18,17 @@ body {
 	border: 0 !important; 
 }
 
+a {
+	color: $primary_dark;
+	text-decoration: none !important;
+	:active {
+		text-decoration: none !important;
+	}
+}
+
 .highlight {
-	color: yellow
+	color: yellow;
+	font-size: 1.1rem;
 }
 
 #disclaimer {
@@ -36,7 +46,6 @@ dt {
 
 dl .col-10 {
 	padding-right: 0;
-	/*margin-left: -10px;*/
 }
 
 dl .col-2 {
@@ -85,23 +94,33 @@ dl .col-2 {
 
 .comp {
 	padding: 1.5rem;
+	margin-bottom: 2rem;
 	background: radial-gradient($blueBackground, $black 80%);
+	p {
+		margin-bottom: 0;
+	}
+	a {
+		color: aqua;
+	}
+	h4 {
+		display: inline-block;
+	}
+	i {
+		margin-left: .3rem;
+		font-size: .5rem;
+	}
 }
 
-.comp p {
-	margin-bottom: 0;
-}
-
-.comp a {
-	color: aqua;
+.hotel {
+	margin-top: 1rem;
 }
 
 .stream {
 	padding-top: 2rem;
-}
-.stream a {
-	color: yellow;
-	padding-top: 1rem;
+	a {
+		color: yellow;
+		padding-top: 1rem;
+	}
 }
 
 .schedule {
@@ -125,9 +144,9 @@ dl .col-2 {
 	padding: 20px 20px;
 	border-radius: 45%;
 	font-size: 1.2rem;
-}
-.front_page_schedule h5 {
-	margin: 0;
+	h5 {
+		margin: 0;
+	}
 }
 
 .revised {
@@ -144,19 +163,17 @@ dl .col-2 {
 	color: yellow;
 }
 
-
 .nav-tabs {
-  font-size: 1.25rem;
-	border-bottom: 3px solid blue;
+  font-size: 1.2rem;
+	border-bottom: 3px solid $blueBackground;
 	background-color: $white;
 	margin-bottom: .5rem;
 	.active {
 		background-color: $whiteActive !important;
-		font-size: 1.4rem;
+		font-size: 1.3rem;
 		font-weight: bolder; 
 	}
 }
-
 
 .dance-container {
 	padding-top: 10px;
@@ -199,72 +216,6 @@ dl .col-2 {
 	font-weight: 400;
 	text-align: center;
 	display: inline;
-}
-
-img[src*="hair"] {
-	width: 270px;
-}
-
-#hair {
-	font-size: larger;
-	text-align: center;
-	padding-top: 1rem;
-}
-
-#makeup {
-	background-color: $black;
-	color: $white;
-	padding: 1rem;
-}
-
-#makeup .container-fluid {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-#makeup h5 {
-	text-align: center;
-}
-
-#preMakeup {
-	text-align: center;
-	margin: 1rem;
-}
-
-#preMakeup h4 {
-	display: inline-block;
-	border-bottom: 2px solid $primary_neutral_light;
-	margin-bottom: 1rem;
-}
-
-#makeup header {
-	text-align: center;
-	border-bottom: 2px solid $primary_neutral_light;
-	padding-top: 1rem;
-}
-
-.makeup-item:first-of-type {
-	border: none;
-}
-
-.makeup-item ul {
-	list-style-type: disc;
-	margin-left: 1rem;
-}
-
-.makeup-item {
-	border-top: 2px solid $primary_neutral_light;
-	padding-top: 1rem;
-	margin-top: .5rem;
-}
-
-.makeup-item .col-4 {
-	padding-left: 0;
-}
-
-.makeup-item .col-8 {
-	padding-right: 0;
-	padding-left: 0;
 }
 
 #custom_input_container,

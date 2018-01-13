@@ -51,6 +51,8 @@ $pink: 	hsl(300, 100%, 50%);
 
 $first-color: $blueBackground;
 $second-color: complement($first-color);
+$primary_dark: darken($first-color, 20%);
+$primary_light: lighten($first-color, 40%);
 $primary_neutral: mix-neutral($first-color);
 $primary_neutral_dark: darken($primary_neutral, 35%);
 $primary_neutral_light: lighten($primary_neutral, 35%);

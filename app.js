@@ -148,7 +148,7 @@ function populateStudioDances() {
 		"The Children Will Listen",
 		"Light Suntan Capezio Ultra Soft Stirrup",
 		"None",
-		[""],
+		["Tie to secure the back, do not snap"],
 		"",
 		"",
 		""
@@ -326,14 +326,14 @@ function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
 	}
 }
 
-function createCheckbox(id, title, song) {
-	let checkboxHTML = '<div class="form-check col-6 col-lg-4">';
-	checkboxHTML += '<span class="dance__delete">X</span>';
-	checkboxHTML += '<label class="form-check-label">';
-	checkboxHTML += '<input class="form-check-input" type="checkbox" data-toggles="' + id;
-	checkboxHTML += '" value="' +id+ '">';  //default = not checked, (render NewDance will check it)
-	checkboxHTML += ' ' + title + ' -- ' + song;
-	checkboxHTML += '</label></div>';
+function createCheckbox(id, name, song) {
+	let checkboxHTML = `
+	<div class="form-check col-6 col-lg-4">
+		<label class="form-check-label">
+			<input class="form-check-input" type="checkbox" data-toggles="${id}" value="${id}">
+			<span>${name}</span>  <p>${song}</p>
+		</label>
+	</div>`;
 	$("#setup__allDancesList").append(checkboxHTML);
 }
 
@@ -411,7 +411,7 @@ function renderEditList(customDances, studioDances) {
 	}
 	for(var i = 0; i < studioDances.length; i++) {
 		if ( !contains(hiddenStudioDances, studioDances[i].id) ){
-		var editListItemHTML= '<li class="' + studioDances[i].id + ' list-group-item">' + studioDances[i].name +  '  -  ' + studioDances[i].song +`
+		var editListItemHTML= '<li class="' + studioDances[i].id + ' list-group-item">' + studioDances[i].name  + `
 		<button class="btn btn-primary btn-sm">+Note</button>
 		<button class="btn btn-danger btn-sm">Delete</button>					
 		</li>`;

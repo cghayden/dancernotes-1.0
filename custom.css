@@ -9,10 +9,70 @@
 .card-header {
   background-color: #f6f6f9; }
 
+#hair {
+  font-size: larger;
+  text-align: center;
+  padding-top: 1rem; }
+
+#makeup {
+  background-color: #1c1c1c;
+  color: #f6f6f9;
+  padding: 1rem; }
+  #makeup header {
+    text-align: center;
+    border-bottom: 2px solid rgba(211, 213, 237, 0.7);
+    padding-top: 1rem; }
+  #makeup h5 {
+    text-align: center; }
+  #makeup a {
+    color: cyan; }
+
+#makeup .container-fluid {
+  padding-left: 0;
+  padding-right: 0; }
+
+#preMakeup {
+  text-align: center;
+  margin: 1rem; }
+  #preMakeup h4 {
+    display: inline-block;
+    border-bottom: 2px solid rgba(211, 213, 237, 0.7);
+    margin-bottom: 1rem; }
+  #preMakeup header {
+    text-align: center;
+    border-bottom: 2px solid rgba(211, 213, 237, 0.7);
+    padding-top: 1rem; }
+
+.makeup-item:first-of-type {
+  border: none; }
+
+.makeup-item {
+  border-top: 2px solid rgba(211, 213, 237, 0.7);
+  padding-top: 1rem;
+  margin-top: .5rem; }
+  .makeup-item ul {
+    list-style-type: disc;
+    margin-left: 1rem; }
+  .makeup-item .col-4 {
+    padding-left: 0; }
+  .makeup-item .col-8 {
+    padding-right: 0;
+    padding-left: 0; }
+
+img[src*="hair"] {
+  width: 270px; }
+
 #setup {
   color: #1c1c1c;
   background: #f6f6f9;
   font-weight: 400; }
+
+#setup__allDancesList span {
+  font-size: 1.1rem; }
+#setup__allDancesList p {
+  font-size: .9rem;
+  color: rgba(28, 35, 141, 0.7);
+  margin-bottom: 0; }
 
 #setup label {
   padding-bottom: 1rem; }
@@ -85,8 +145,15 @@ body {
 .btn {
   border: 0 !important; }
 
+a {
+  color: rgba(28, 35, 141, 0.7);
+  text-decoration: none !important; }
+  a :active {
+    text-decoration: none !important; }
+
 .highlight {
-  color: yellow; }
+  color: yellow;
+  font-size: 1.1rem; }
 
 #disclaimer {
   color: yellow; }
@@ -99,8 +166,7 @@ dt {
   font-size: larger; }
 
 dl .col-10 {
-  padding-right: 0;
-  /*margin-left: -10px;*/ }
+  padding-right: 0; }
 
 dl .col-2 {
   padding-left: 0; }
@@ -138,20 +204,26 @@ dl .col-2 {
 
 .comp {
   padding: 1.5rem;
+  margin-bottom: 2rem;
   background: radial-gradient(rgba(55, 66, 215, 0.7), #1c1c1c 80%); }
+  .comp p {
+    margin-bottom: 0; }
+  .comp a {
+    color: aqua; }
+  .comp h4 {
+    display: inline-block; }
+  .comp i {
+    margin-left: .3rem;
+    font-size: .5rem; }
 
-.comp p {
-  margin-bottom: 0; }
-
-.comp a {
-  color: aqua; }
+.hotel {
+  margin-top: 1rem; }
 
 .stream {
   padding-top: 2rem; }
-
-.stream a {
-  color: yellow;
-  padding-top: 1rem; }
+  .stream a {
+    color: yellow;
+    padding-top: 1rem; }
 
 .schedule {
   /*background: #eee;	*/
@@ -173,9 +245,8 @@ dl .col-2 {
   padding: 20px 20px;
   border-radius: 45%;
   font-size: 1.2rem; }
-
-.front_page_schedule h5 {
-  margin: 0; }
+  .front_page_schedule h5 {
+    margin: 0; }
 
 .revised {
   font-size: .9rem;
@@ -190,13 +261,13 @@ dl .col-2 {
   color: yellow; }
 
 .nav-tabs {
-  font-size: 1.25rem;
-  border-bottom: 3px solid blue;
+  font-size: 1.2rem;
+  border-bottom: 3px solid rgba(55, 66, 215, 0.7);
   background-color: #f6f6f9;
   margin-bottom: .5rem; }
   .nav-tabs .active {
     background-color: #fbfbfc !important;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: bolder; }
 
 .dance-container {
@@ -232,59 +303,6 @@ dl .col-2 {
   font-weight: 400;
   text-align: center;
   display: inline; }
-
-img[src*="hair"] {
-  width: 270px; }
-
-#hair {
-  font-size: larger;
-  text-align: center;
-  padding-top: 1rem; }
-
-#makeup {
-  background-color: #1c1c1c;
-  color: #f6f6f9;
-  padding: 1rem; }
-
-#makeup .container-fluid {
-  padding-left: 0;
-  padding-right: 0; }
-
-#makeup h5 {
-  text-align: center; }
-
-#preMakeup {
-  text-align: center;
-  margin: 1rem; }
-
-#preMakeup h4 {
-  display: inline-block;
-  border-bottom: 2px solid rgba(211, 213, 237, 0.7);
-  margin-bottom: 1rem; }
-
-#makeup header {
-  text-align: center;
-  border-bottom: 2px solid rgba(211, 213, 237, 0.7);
-  padding-top: 1rem; }
-
-.makeup-item:first-of-type {
-  border: none; }
-
-.makeup-item ul {
-  list-style-type: disc;
-  margin-left: 1rem; }
-
-.makeup-item {
-  border-top: 2px solid rgba(211, 213, 237, 0.7);
-  padding-top: 1rem;
-  margin-top: .5rem; }
-
-.makeup-item .col-4 {
-  padding-left: 0; }
-
-.makeup-item .col-8 {
-  padding-right: 0;
-  padding-left: 0; }
 
 #custom_input_container,
 #edit_custom_container {
