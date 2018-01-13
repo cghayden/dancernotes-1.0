@@ -28,30 +28,46 @@
 	}
 }
 
-$black: rgb(20, 20, 20);
-$white: rgb(237, 227, 227);
+$black: hsl(0, 0%, 11%);
+$white: hsl(240, 23%, 97%);
+$whiteActive: #fbfbfc;
 
 $lime: hsl(120, 100%, 50%);
 $darkgreen: hsl(120, 100%, 25%);
 $pastelgreen: hsl(120, 75%, 75%);
 
+$violet: rgb(203, 14, 255);
+$hello: #FFC40E;
 $red: 	 	hsl(355, 100%, 50%);
 $orange: 	hsl(20, 100%, 50%);
 $opp_d_indigo: hsl(54, 70%, 30%);
-$yellow: 	hsl(60, 100%, 50%);
+$yellow: 	hsl(60, 23%, 86%);
 $green:  	hsl(120, 100%, 50%);
 $cyan:   	hsl(180, 100%, 50%);
 $dark_indigo: hsl(235, 66%, 30%);
-$blue:   	hsl(240, 100%, 50%);
-$blueBackground:   	rgba(78, 58, 211, 0.557);
-$violet: 	hsl(300, 100%, 50%);
+$blue:   	hsl(240, 94%, 43%);
+$blueBackground:   	hsla(236, 67%, 53%, 0.7);
+$pink: 	hsl(300, 100%, 50%);
 
-$first-color: hsl(50, 80%, 50%);
+$first-color: $blueBackground;
 $second-color: complement($first-color);
-
 $primary_neutral: mix-neutral($first-color);
-$primary_neutral_dark: darken($primary_neutral, 15%);
+$primary_neutral_dark: darken($primary_neutral, 35%);
 $primary_neutral_light: lighten($primary_neutral, 35%);
 $secondary_neutral: mix-neutral($second-color);
-$secondary_neutral_dark: darken($secondary_neutral, 20%);
+$secondary_neutral_dark: darken($secondary_neutral, 35%);
 $secondary_neutral_light: lighten($secondary_neutral, 35%);
+
+.btn-primary {
+	color: $white;
+	background-color: $primary_neutral_dark;
+}
+
+.btn-danger {
+	background-color: $secondary_neutral_dark;
+	color: $white;
+}
+
+.card-header {
+	background-color: $white;
+}

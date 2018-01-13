@@ -1,6 +1,18 @@
+.btn-primary {
+  color: #f6f6f9;
+  background-color: rgba(27, 29, 65, 0.7); }
+
+.btn-danger {
+  background-color: rgba(65, 63, 27, 0.7);
+  color: #f6f6f9; }
+
+.card-header {
+  background-color: #f6f6f9; }
+
 #setup {
-  color: #1e1e1e;
-  background: #f0f0f0; }
+  color: #1c1c1c;
+  background: #f6f6f9;
+  font-weight: 400; }
 
 #setup label {
   padding-bottom: 1rem; }
@@ -9,7 +21,7 @@
   padding-bottom: 1rem; }
 
 .dance__delete {
-  color: #a71c1c;
+  color: #ff0015;
   display: none; }
 
 #addStudioNote {
@@ -65,10 +77,13 @@
   display: none; }
 
 body {
-  background-color: #141414;
+  background-color: #1c1c1c;
   font-family: "Kalam", 'Comic Sans MS', 'cursive';
-  color: #ede3e3;
-  font-weight: 400; }
+  color: #f6f6f9;
+  font-weight: 300; }
+
+.btn {
+  border: 0 !important; }
 
 .highlight {
   color: yellow; }
@@ -91,7 +106,7 @@ dl .col-2 {
   padding-left: 0; }
 
 .navbar {
-  background: linear-gradient(to top, #141414, rgba(78, 58, 211, 0.557) 120%);
+  background: linear-gradient(to top, rgba(55, 66, 215, 0.7), #1c1c1c 120%);
   font-family: 'Dancing Script', cursive; }
 
 .navbar i {
@@ -101,11 +116,11 @@ dl .col-2 {
   font-size: 1.5rem; }
 
 #navlinks a {
-  color: white; }
+  color: #f6f6f9; }
 
 #navlinks {
   padding: 1rem;
-  background: linear-gradient(#141414, rgba(78, 58, 211, 0.557)); }
+  background: linear-gradient(#1c1c1c, rgba(55, 66, 215, 0.7)); }
 
 .navbar-brand {
   text-align: center; }
@@ -123,7 +138,7 @@ dl .col-2 {
 
 .comp {
   padding: 1.5rem;
-  background: radial-gradient(rgba(0, 0, 255, 0.639), #1e1e1e 80%); }
+  background: radial-gradient(rgba(55, 66, 215, 0.7), #1c1c1c 80%); }
 
 .comp p {
   margin-bottom: 0; }
@@ -150,7 +165,7 @@ dl .col-2 {
   font-size: 1.2rem; }
 
 .front_page_schedule {
-  background: radial-gradient(rgba(0, 0, 255, 0.639), #1e1e1e 80%);
+  background: radial-gradient(rgba(55, 66, 215, 0.7), #1c1c1c 80%);
   color: yellow;
   display: inline-block;
   margin-top: 10px;
@@ -177,22 +192,26 @@ dl .col-2 {
 .nav-tabs {
   font-size: 1.25rem;
   border-bottom: 3px solid blue;
-  background-color: #f0f0f0;
+  background-color: #f6f6f9;
   margin-bottom: .5rem; }
+  .nav-tabs .active {
+    background-color: #fbfbfc !important;
+    font-size: 1.4rem;
+    font-weight: bolder; }
 
 .dance-container {
   padding-top: 10px;
-  background: radial-gradient(rgba(78, 58, 211, 0.557), #141414 80%); }
+  background: radial-gradient(rgba(55, 66, 215, 0.7), #1c1c1c 80%); }
 
 .dance-container dl {
-  border-top: 1px solid white;
+  border-top: 1px solid #f6f6f9;
   padding-top: 5px; }
 
 .dance-container dd ul li {
   padding-bottom: 7px; }
 
 .dance-body {
-  font-weight: 400; }
+  font-weight: 300; }
 
 .dance-header {
   text-align: center;
@@ -200,7 +219,6 @@ dl .col-2 {
   margin-bottom: 10px; }
 
 .dance-header p {
-  font-size: 1rem;
   margin-bottom: 5px; }
 
 .dance-header-title {
@@ -224,8 +242,8 @@ img[src*="hair"] {
   padding-top: 1rem; }
 
 #makeup {
-  background-color: #f0f0f0;
-  color: #1e1e1e;
+  background-color: #1c1c1c;
+  color: #f6f6f9;
   padding: 1rem; }
 
 #makeup .container-fluid {
@@ -241,12 +259,12 @@ img[src*="hair"] {
 
 #preMakeup h4 {
   display: inline-block;
-  border-bottom: 1px solid #1e1e1e;
+  border-bottom: 2px solid rgba(211, 213, 237, 0.7);
   margin-bottom: 1rem; }
 
 #makeup header {
   text-align: center;
-  border-bottom: 1px solid #1e1e1e;
+  border-bottom: 2px solid rgba(211, 213, 237, 0.7);
   padding-top: 1rem; }
 
 .makeup-item:first-of-type {
@@ -257,7 +275,7 @@ img[src*="hair"] {
   margin-left: 1rem; }
 
 .makeup-item {
-  border-top: 1px solid #1e1e1e;
+  border-top: 2px solid rgba(211, 213, 237, 0.7);
   padding-top: 1rem;
   margin-top: .5rem; }
 
@@ -274,7 +292,7 @@ img[src*="hair"] {
 
 #editCustom,
 #createCustom {
-  color: #1e1e1e; }
+  color: #1c1c1c; }
 
 #showEntry i,
 #showEditEntry i {
@@ -298,7 +316,7 @@ input::-webkit-input-placeholder {
 
 #footer {
   font-family: monospace;
-  margin-top: 2rem; }
+  margin-top: 4rem; }
 
 #footer a {
   color: inherit;

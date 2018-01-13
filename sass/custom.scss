@@ -1,7 +1,8 @@
 @import 'partials/variables';
+@import 'partials/colors';
 @import 'partials/setup';
 @import 'partials/deleteOrEditList';
-@import 'partials/colors';
+
 
 
 body {
@@ -9,7 +10,11 @@ body {
 	font-family: "Kalam", 'Comic Sans MS', 'cursive';
 	// font-family: 'Comic Sans MS';
 	color: $white;
-	font-weight: 400;
+	font-weight: 300;
+}
+
+.btn {
+	border: 0 !important; 
 }
 
 .highlight {
@@ -39,7 +44,7 @@ dl .col-2 {
 }
 
 .navbar {
-	background: linear-gradient(to top, $black, $blueBackground 120%);
+	background: linear-gradient(to top, $blueBackground, $black 120%);
 	font-family: 'Dancing Script', cursive;
 }
 
@@ -52,7 +57,7 @@ dl .col-2 {
 }
 
 #navlinks a {
-	color: white;
+	color: $white;
 }
 
 #navlinks {
@@ -80,7 +85,7 @@ dl .col-2 {
 
 .comp {
 	padding: 1.5rem;
-	background: radial-gradient(rgba(0, 0, 255, 0.639), rgb(30,30,30) 80%);
+	background: radial-gradient($blueBackground, $black 80%);
 }
 
 .comp p {
@@ -112,7 +117,7 @@ dl .col-2 {
 }
 
 .front_page_schedule {
-	background: radial-gradient(rgba(0, 0, 255, 0.639), rgb(30,30,30) 80%);	
+	background: radial-gradient($blueBackground, $black 80%);	
 	color: yellow;
   	display: inline-block;
 	margin-top: 10px;
@@ -143,9 +148,15 @@ dl .col-2 {
 .nav-tabs {
   font-size: 1.25rem;
 	border-bottom: 3px solid blue;
-	background-color: rgb(240, 240, 240);
+	background-color: $white;
 	margin-bottom: .5rem;
+	.active {
+		background-color: $whiteActive !important;
+		font-size: 1.4rem;
+		font-weight: bolder; 
+	}
 }
+
 
 .dance-container {
 	padding-top: 10px;
@@ -153,7 +164,7 @@ dl .col-2 {
 }
 
 .dance-container dl {
-	border-top: 1px solid white;
+	border-top: 1px solid $white;
 	padding-top: 5px;
 }
 
@@ -162,7 +173,7 @@ dl .col-2 {
 }
 
 .dance-body {
-	font-weight: 400;
+	font-weight: 300;
 }
 
 .dance-header {
@@ -172,7 +183,6 @@ dl .col-2 {
 }
 
 .dance-header p {
-	font-size: 1rem;
 	margin-bottom: 5px;
 }
 
@@ -202,8 +212,8 @@ img[src*="hair"] {
 }
 
 #makeup {
-	background-color: rgb(240, 240, 240);
-	color: rgb(30,30,30);
+	background-color: $black;
+	color: $white;
 	padding: 1rem;
 }
 
@@ -223,13 +233,13 @@ img[src*="hair"] {
 
 #preMakeup h4 {
 	display: inline-block;
-	border-bottom: 1px solid rgb(30, 30,30);
+	border-bottom: 2px solid $primary_neutral_light;
 	margin-bottom: 1rem;
 }
 
 #makeup header {
 	text-align: center;
-	border-bottom: 1px solid rgb(30,30,30);
+	border-bottom: 2px solid $primary_neutral_light;
 	padding-top: 1rem;
 }
 
@@ -243,7 +253,7 @@ img[src*="hair"] {
 }
 
 .makeup-item {
-	border-top: 1px solid rgb(30,30,30);
+	border-top: 2px solid $primary_neutral_light;
 	padding-top: 1rem;
 	margin-top: .5rem;
 }
@@ -264,7 +274,7 @@ img[src*="hair"] {
 
 #editCustom, 
 #createCustom			{
-	color:rgb(30,30,30);
+	color:$black;
 }
 
 #showEntry i,
@@ -294,7 +304,7 @@ input::-webkit-input-placeholder {
 
 #footer {
 	font-family: monospace;
-	margin-top: 2rem;
+	margin-top: 4rem;
 }
 
 #footer a {
