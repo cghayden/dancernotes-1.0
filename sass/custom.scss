@@ -33,6 +33,11 @@ a {
 
 #disclaimer {
 	color: $black;
+	ul {
+		list-style: disc;
+		padding-right: 5px;
+		margin-left: 5px;
+	}
 }
 
 ul {

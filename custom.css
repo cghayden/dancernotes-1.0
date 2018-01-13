@@ -157,6 +157,10 @@ a {
 
 #disclaimer {
   color: #1c1c1c; }
+  #disclaimer ul {
+    list-style: disc;
+    padding-right: 5px;
+    margin-left: 5px; }
 
 ul {
   list-style: none;
