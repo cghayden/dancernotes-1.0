@@ -1,4 +1,8 @@
+// import {storageAvailable, contains} from 'helpers';
+
 // ** return true or false for localStorage available ** //
+// import {studioDances} from '/studioDances.js';
+
 function storageAvailable(type) {
 	try {
 		const storage = window[type],
@@ -23,178 +27,22 @@ function contains(arr, obj) {
 }
 
 function Dance(id, name, song, tights, shoes, notes, num, day, time) {
-	this.id = id;
-	this.name = name;
-	this.song = song;
-	this.tights = tights;
-	this.shoes = shoes;
-	this.notes = notes;
-	this.num = num || "";
-	this.day = day || "";
+		this.id = id;
+		this.name = name;
+		this.song = song;
+		this.tights = tights;
+		this.shoes = shoes;
+		this.notes = notes;
+		this.num = num || "";
+		this.day = day || "";
 	this.time = time || "";
 }
 
-function customNote(id, notes) {
+function CustomNote(id, notes) {
 	this.id = id;
 	this.notes = notes;
 }
 
-/// will be populated from studio, each parameter in a variable
-var studioDances = []; // array of stock dance OBJ's supplied by app.js used to populate checkboxes and div for each dance
-function populateStudioDances() {
-	var teen1Hiphop = new Dance (
-		"teen1Hiphop", 
-		"Teen 1 Hip Hop",
-		"Instruction",
-		"N/A (Black Pants)",
-		"Pastry White Pop Tart Glitter",
-		["Jacket: Zip up to bottom of sports bra"],
-		"",
-		"",
-		""
-	);
-	studioDances.push(teen1Hiphop);
-	
-	var teen1Jazz = new Dance (
-		"teen1Jazz",
-		"Teen 1 Jazz",
-		"Outlaw Pete",
-		"N/A (Black Pants)",
-		"None",
-		["Flannel Shirt: Button only the 2nd and 3rd buttons down from the top "],
-		"",
-		"",
-		""
-	);
-	studioDances.push(teen1Jazz);
-	
-	var teen1Lyric = new Dance ("teen1Lyric",
-															"Teen 1 Lyric",
-															"What the World Needs Now",
-															"Light Suntan Capezio Ultra Soft Stirrup",
-															"None",
-															["Dress should fall 3 inches below the back crease of the knee"],
-															"",
-															"",
-															""
-															);
-	studioDances.push(teen1Lyric);
-	
-	var teen1Tap = new Dance("teen1Tap",
-													 "Teen 1 Tap",
-													 "Ricochet",
-													 "N/A (Black Pants)",
-													 "Bloch Respect Oxford S0361 - Black",
-													 [""],
-													 "",
-													 "",
-													 ""
-													 );
-	studioDances.push(teen1Tap);
-	
-	var acro = new Dance("acro",
-											"Acro Team",
-											"",
-											"",
-											"None",
-											[""],
-											"",
-											"",
-											""
-											);
-	studioDances.push(acro);
-	
-	var production = new Dance ("production",
-														 "Production",
-															"Vegas",
-														 "Black Fishnet Tights OVER Light Suntan Capezio",
-														 "Black Glittered Jazz Boots",
-														 [""],
-														 "",
-														 "",
-														 ""
-															);
-	studioDances.push(production);
-	
-	var smallGroupTap = new Dance (
-		"smallGroupTap",
-		"Small Group Tap",
-		"In the Mood",
-		"Black Fishnet Tights (Body Wrappers Seamless) OVER Light Suntan Capezio",
-		"Bloch Respect Oxford S0361 - Black",
-		["Gloves: Plain Red, (NOT the sequined ones)", "Tank top should fall below the hips"],
-		"",
-		"",
-		""
-	);
-	studioDances.push(smallGroupTap);
-
-	var juniorContemporary = new Dance (
-		"juniorContemporary",
-		"Junior Contemporary",
-		"Sound of Silence",
-		"Light Suntan Capezio Ultra Soft Stirrup",
-		"None",
-		[""],
-		"",
-		"",
-		""
-	);
-	studioDances.push(juniorContemporary);
-
-	var miniLyric = new Dance (
-		"miniLyric",
-		"Mini Lyric",
-		"The Children Will Listen",
-		"Light Suntan Capezio Ultra Soft Stirrup",
-		"None",
-		[""],
-		"",
-		"",
-		""
-	);
-	studioDances.push(miniLyric);
-
-	var miniJazz = new Dance (
-		"miniJazz",
-		"Mini Jazz",
-		"Candy Girl",
-		"Light Suntan Capezio Ultra Soft Stirrup",
-		"None",
-		[""],
-		"",
-		"",
-		""
-	);
-	studioDances.push(miniJazz);
-
-	var juniorBallet = new Dance (
-		"juniorBallet",
-		"Junior Ballet",
-		"Guests From the Orient (Snow White)",
-		"Body Wrappers mesh seamed tights in Ballet Pink",
-		"Danshuz Pro Soft Canvas Ballet Slippers",
-		["Remove top two layers from the tutu","Hair piece above bun in center"],
-		"",
-		"",
-		""
-	);
-	studioDances.push(juniorBallet);
-
-	var teenBallet = new Dance (
-		"teenBallet",
-		"Teen Ballet",
-		"The Flower Garden (Alice in Wonderland)",
-		"Body Wrappers mesh seamed tights in Ballet Pink",
-		"Danshuz Pro Soft Canvas Ballet Slippers",
-		[""],
-		"",
-		"",
-		""
-	);
-	studioDances.push(teenBallet);
-
-}; // end populateDances
 var customDances = [];  // array of custom dance objects to render ...
 var hiddenStudioDances = []; //array of ids; studio dances the user never wants to see
 var displayedDances = [];  // array of ids; dances checked to display on load
@@ -202,7 +50,6 @@ var idContainer;  //when selecting a dance to edit, save its id to be used in a 
 var customStudioNotes = [];
 
 $(document).ready( function() {
-	populateStudioDances();
 	if (storageAvailable('localStorage')) {
 	// if (localStorage.getItem('access') !== 'true'){  
 	// 	unlock();  // run password prompt if access !true
@@ -573,7 +420,7 @@ $("#addStudioNote").click(function(evt){
 			var $note = $(this).val(); 
 			customNotes.push($note);
 		});
-		const newNote = new customNote(danceId, customNotes);
+		const newNote = new CustomNote(danceId, customNotes);
 		if(customStudioNotes.length>0) {
 			customStudioNotes.forEach(function(item){
 				if(item.id === danceId) {
