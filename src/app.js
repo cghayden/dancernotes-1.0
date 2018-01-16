@@ -1,8 +1,10 @@
+require('./sass/custom.scss');
+
 // import {storageAvailable, contains} from 'helpers';
 
-// ** return true or false for localStorage available ** //
-// import {studioDances} from '/studioDances.js';
+import {studioDances, Dance} from './jsmodules/studioDances.js';
 
+// ** return true or false for localStorage available ** //
 function storageAvailable(type) {
 	try {
 		const storage = window[type],
@@ -26,18 +28,6 @@ function contains(arr, obj) {
 	return false;
 }
 
-function Dance(id, name, song, tights, shoes, notes, num, day, time) {
-		this.id = id;
-		this.name = name;
-		this.song = song;
-		this.tights = tights;
-		this.shoes = shoes;
-		this.notes = notes;
-		this.num = num || "";
-		this.day = day || "";
-	this.time = time || "";
-}
-
 function CustomNote(id, notes) {
 	this.id = id;
 	this.notes = notes;
@@ -51,11 +41,6 @@ var customStudioNotes = [];
 
 $(document).ready( function() {
 	if (storageAvailable('localStorage')) {
-	// if (localStorage.getItem('access') !== 'true'){  
-	// 	unlock();  // run password prompt if access !true
-	// } 
-	// hiddenStudioDances = retrieveFromLocalStorage("hiddenStudioDances");
-
 	parseHiddenStudioDances("hiddenStudioDances"); 
 	parseCustomDances("customDances"); 
 	parseDisplayedDances("displayedDances");
@@ -68,11 +53,6 @@ $(document).ready( function() {
 	alert("Local Storage is not available on this device. You will not be able to create your own dances, and the studio dances you choose to display in 'Setup' will not be saved when your browser is refreshed");
 	renderDances(studioDances);
 }
-		
-	$('form input').on('keypress', function(e) {  //disable return button trigger submit on form input
-    return e.which !== 13;
-	});
-});
 
 //add/remove danceId in an array 
 function toggleDance(danceid, array) {
@@ -119,42 +99,55 @@ function parseCustomStudioNotes(str) {
 // }
 
 function renderDances(array) {
-	for (var i = 0; i < array.length; i++) {
-		createCheckbox(array[i].id, array[i].name, array[i].song);
-		renderNewDance(	array[i].id,
-										array[i].name, 
-										array[i].song, 
-										array[i].tights, 
-										array[i].shoes, 
-										array[i].notes,
-										array[i].num,
-										array[i].day,
-										array[i].time);
-		if ( contains(displayedDances, array[i].id)) {
-				$("input[value=" + array[i].id +"]").prop("checked", true);
+	array.forEach(dance => {
+		createCheckbox(dance.id, dance.name, dance.song);
+		renderNewDance(	dance.id,
+										dance.name, 
+										dance.song, 
+										dance.tights, 
+										dance.shoes, 
+										dance.notes,
+										dance.num,
+										dance.day,
+										dance.time);
+		if ( contains(displayedDances, dance.id)) {
+				$("input[value=" + dance.id +"]").prop("checked", true);
 				} else {
-					$('#'+array[i].id).hide(); // hide if not in displayedDances
+					$('#'+dance.id).hide(); // hide if not in displayedDances
 					} 
-		if ( contains(hiddenStudioDances, array[i].id) ) {
-			$("input[value="+ array[i].id +"]").parent().parent().hide();
-				$("#"+ array[i].id).hide();
+		if ( contains(hiddenStudioDances, dance.id) ) {
+			$("input[value="+ dance.id +"]").parent().parent().hide();
+				$("#"+ dance.id).hide();
 		}	
-	}
+	});
 }
 
 //show dance div and check its checkbox
 function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
-	let customHtml = '<div class="col-12 col-md-6 dance-container" id="'+ id + '">';
-	customHtml += '<div class="dance-header row" data-toggle="collapse" href="#' + id + '-body">';
-	customHtml += '<div class="col-3 text-left align-self-end time">';
-	customHtml += '<h5>'+ num + '</h5></div>';
-	customHtml += '<div class="col-6"><h4>'+ title + '</h4><p>' + song +'</p></div>';  
-	customHtml += '<div class="col-3 align-self-end time"><p>'+ day +'</p>';
-	customHtml += '<h5>' + time + '</h5></div></div>';
-	customHtml += '<div class="dance-body collapse" id="'+ id + '-body"><dl class="row mx-auto">';
-	customHtml += '<dt class="col-2 text-right">Tights: </dt><dd class="col-10">' + tights + '</dd>';
-	customHtml += '<dt class="col-2 text-right">Shoes: </dt><dd class="col-10">' + shoes + '</dd>';
-	customHtml += '<dt class="col-2 text-right">Notes: </dt><dd class="col-10"><ul>';
+	let customHtml = `
+		<div class="col-12 col-md-6 dance-container" id="${id}">
+			<div class="dance-header row" data-toggle="collapse" href="#${id}-body">
+				<div class="col-3 text-left align-self-end time">
+					<h5>${num}</h5>
+				</div>
+			<div class="col-6">
+				<h4>${title}</h4>
+				<p>${song}</p>
+			</div>
+			<div class="col-3 align-self-end time">
+				<p>${day}</p>
+				<h5>${time}</h5>
+			</div>
+		</div>
+		<div class="dance-body collapse" id="${id}-body">
+			<dl class="row mx-auto">
+				<dt class="col-2 text-right">Tights: </dt>
+				<dd class="col-10">${tights}</dd>
+				<dt class="col-2 text-right">Shoes: </dt>
+				<dd class="col-10"> ${shoes} </dd>
+				<dt class="col-2 text-right">Notes: </dt>
+				<dd class="col-10">
+				<ul>`;
 	for (var i = 0; i<notes.length; i++) {
 		var notesHTML = '<li>' + notes[i] + '</li>';
 		customHtml += notesHTML;
@@ -184,7 +177,7 @@ function createCheckbox(id, title, song) {
 	$("#setup__allDancesList").append(checkboxHTML);
 }
 
-$('#setup__allDancesList').change(function(event) {
+$('#setup__allDancesList').change(event => {
 	var checkbox = event.target;
 	var choice = $(checkbox).val();
 	console.log(choice);
@@ -574,6 +567,11 @@ function sort(){
 	$("#dancesRow").html(numOrdered);
 };
 
+//disable return button trigger submit on form input
+$('form input').on('keypress', function(e) {
+	return e.which !== 13;
+});
+});
 
 
 // function unlock() {

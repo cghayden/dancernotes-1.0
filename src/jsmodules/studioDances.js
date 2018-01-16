@@ -1,3 +1,15 @@
+function Dance(id, name, song, tights, shoes, notes, num, day, time) {
+	this.id = id;
+	this.name = name;
+	this.song = song;
+	this.tights = tights;
+	this.shoes = shoes;
+	this.notes = notes;
+	this.num = num || "";
+	this.day = day || "";
+this.time = time || "";
+}
+
 const studioDances = [
 	new Dance (
 	"teen1Hiphop", 
@@ -133,4 +145,4 @@ const studioDances = [
 		)
 ];
 
-// export default {studioDances};
+export {studioDances, Dance};
