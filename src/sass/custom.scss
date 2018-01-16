@@ -22,11 +22,28 @@ a {
 	:active {
 		text-decoration: none !important;
 	}
+<<<<<<< HEAD:sass/custom.scss
 }
 
 .highlight {
 	color: yellow;
 	font-size: 1.1rem;
+=======
+}
+
+.highlight {
+	color: yellow;
+	font-size: 1.1rem;
+}
+
+#disclaimer {
+	color: $black;
+	ul {
+		list-style: disc;
+		padding-right: 5px;
+		margin-left: 5px;
+	}
+>>>>>>> treeshake:src/sass/custom.scss
 }
 
 ul {
@@ -46,6 +63,7 @@ dl .col-2 {
 	padding-left: 0;
 }
 
+<<<<<<< HEAD:sass/custom.scss
 #disclaimer {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	background-color: $black;
@@ -58,6 +76,10 @@ dl .col-2 {
 	.close {
 		color: $white;
 	}
+=======
+#aboutModal {
+	background-color: $black;
+>>>>>>> treeshake:src/sass/custom.scss
 }
 
 .navbar {

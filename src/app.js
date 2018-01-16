@@ -1,3 +1,9 @@
+require('./sass/custom.scss');
+
+// import {storageAvailable, contains} from 'helpers';
+
+import {studioDances, Dance} from './jsmodules/studioDances.js';
+
 // ** return true or false for localStorage available ** //
 function storageAvailable(type) {
 	try {
@@ -22,23 +28,12 @@ function contains(arr, obj) {
 	return false;
 }
 
-function Dance(id, name, song, tights, shoes, notes, num, day, time) {
-	this.id = id;
-	this.name = name;
-	this.song = song;
-	this.tights = tights;
-	this.shoes = shoes;
-	this.notes = notes;
-	this.num = num || "";
-	this.day = day || "";
-	this.time = time || "";
-}
-
-function customNote(id, notes) {
+function CustomNote(id, notes) {
 	this.id = id;
 	this.notes = notes;
 }
 
+<<<<<<< HEAD:app.js
 /// will be populated from studio, each parameter in a variable
 var studioDances = []; // array of stock dance OBJ's supplied by app.js used to populate checkboxes and div for each dance
 function populateStudioDances() {
@@ -195,6 +190,8 @@ function populateStudioDances() {
 	studioDances.push(teenBallet);
 
 }; // end populateDances
+=======
+>>>>>>> treeshake:src/app.js
 var customDances = [];  // array of custom dance objects to render ...
 var hiddenStudioDances = []; //array of ids; studio dances the user never wants to see
 var displayedDances = [];  // array of ids; dances checked to display on load
@@ -202,13 +199,7 @@ var idContainer;  //when selecting a dance to edit, save its id to be used in a 
 var customStudioNotes = [];
 
 $(document).ready( function() {
-	populateStudioDances();
 	if (storageAvailable('localStorage')) {
-	// if (localStorage.getItem('access') !== 'true'){  
-	// 	unlock();  // run password prompt if access !true
-	// } 
-	// hiddenStudioDances = retrieveFromLocalStorage("hiddenStudioDances");
-
 	parseHiddenStudioDances("hiddenStudioDances"); 
 	parseCustomDances("customDances"); 
 	parseDisplayedDances("displayedDances");
@@ -221,11 +212,6 @@ $(document).ready( function() {
 	alert("Local Storage is not available on this device. You will not be able to create your own dances, and the studio dances you choose to display in 'Setup' will not be saved when your browser is refreshed");
 	renderDances(studioDances);
 }
-		
-	$('form input').on('keypress', function(e) {  //disable return button trigger submit on form input
-    return e.which !== 13;
-	});
-});
 
 //add/remove danceId in an array 
 function toggleDance(danceid, array) {
@@ -272,42 +258,55 @@ function parseCustomStudioNotes(str) {
 // }
 
 function renderDances(array) {
-	for (var i = 0; i < array.length; i++) {
-		createCheckbox(array[i].id, array[i].name, array[i].song);
-		renderNewDance(	array[i].id,
-										array[i].name, 
-										array[i].song, 
-										array[i].tights, 
-										array[i].shoes, 
-										array[i].notes,
-										array[i].num,
-										array[i].day,
-										array[i].time);
-		if ( contains(displayedDances, array[i].id)) {
-				$("input[value=" + array[i].id +"]").prop("checked", true);
+	array.forEach(dance => {
+		createCheckbox(dance.id, dance.name, dance.song);
+		renderNewDance(	dance.id,
+										dance.name, 
+										dance.song, 
+										dance.tights, 
+										dance.shoes, 
+										dance.notes,
+										dance.num,
+										dance.day,
+										dance.time);
+		if ( contains(displayedDances, dance.id)) {
+				$("input[value=" + dance.id +"]").prop("checked", true);
 				} else {
-					$('#'+array[i].id).hide(); // hide if not in displayedDances
+					$('#'+dance.id).hide(); // hide if not in displayedDances
 					} 
-		if ( contains(hiddenStudioDances, array[i].id) ) {
-			$("input[value="+ array[i].id +"]").parent().parent().hide();
-				$("#"+ array[i].id).hide();
+		if ( contains(hiddenStudioDances, dance.id) ) {
+			$("input[value="+ dance.id +"]").parent().parent().hide();
+				$("#"+ dance.id).hide();
 		}	
-	}
+	});
 }
 
 //show dance div and check its checkbox
 function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
-	let customHtml = '<div class="col-12 col-md-6 dance-container" id="'+ id + '">';
-	customHtml += '<div class="dance-header row" data-toggle="collapse" href="#' + id + '-body">';
-	customHtml += '<div class="col-3 text-left align-self-end time">';
-	customHtml += '<h5>'+ num + '</h5></div>';
-	customHtml += '<div class="col-6"><h4>'+ title + '</h4><p>' + song +'</p></div>';  
-	customHtml += '<div class="col-3 align-self-end time"><p>'+ day +'</p>';
-	customHtml += '<h5>' + time + '</h5></div></div>';
-	customHtml += '<div class="dance-body collapse" id="'+ id + '-body"><dl class="row mx-auto">';
-	customHtml += '<dt class="col-2 text-right">Tights: </dt><dd class="col-10">' + tights + '</dd>';
-	customHtml += '<dt class="col-2 text-right">Shoes: </dt><dd class="col-10">' + shoes + '</dd>';
-	customHtml += '<dt class="col-2 text-right">Notes: </dt><dd class="col-10"><ul>';
+	let customHtml = `
+		<div class="col-12 col-md-6 dance-container" id="${id}">
+			<div class="dance-header row" data-toggle="collapse" href="#${id}-body">
+				<div class="col-3 text-left align-self-end time">
+					<h5>${num}</h5>
+				</div>
+			<div class="col-6">
+				<h4>${title}</h4>
+				<p>${song}</p>
+			</div>
+			<div class="col-3 align-self-end time">
+				<p>${day}</p>
+				<h5>${time}</h5>
+			</div>
+		</div>
+		<div class="dance-body collapse" id="${id}-body">
+			<dl class="row mx-auto">
+				<dt class="col-2 text-right">Tights: </dt>
+				<dd class="col-10">${tights}</dd>
+				<dt class="col-2 text-right">Shoes: </dt>
+				<dd class="col-10"> ${shoes} </dd>
+				<dt class="col-2 text-right">Notes: </dt>
+				<dd class="col-10">
+				<ul>`;
 	for (var i = 0; i<notes.length; i++) {
 		var notesHTML = '<li>' + notes[i] + '</li>';
 		customHtml += notesHTML;
@@ -331,13 +330,18 @@ function createCheckbox(id, name, song) {
 	<div class="form-check col-6 col-lg-4">
 		<label class="form-check-label">
 			<input class="form-check-input" type="checkbox" data-toggles="${id}" value="${id}">
+<<<<<<< HEAD:app.js
 			<span>${name}</span>  <p>${song}</p>
+=======
+			<span>${name}</span> <p>${song}</p>
+>>>>>>> treeshake:src/app.js
 		</label>
 	</div>`;
 	$("#setup__allDancesList").append(checkboxHTML);
 }
 
-$('#setup__allDancesList').change(function(event) {
+
+$('#setup__allDancesList').change(event => {
 	var checkbox = event.target;
 	var choice = $(checkbox).val();
 	console.log(choice);
@@ -402,10 +406,14 @@ $("#inline_addCustomForm").click( function(evt){
 });
 	
 // create a list of all custom dances with edit and delete buttons
-function renderEditList(customDances, studioDances) { 
-	for(var i = 0; i < customDances.length; i++) {
-		var editListItemHTML= '<li class="' + customDances[i].id + ' list-group-item">' + customDances[i].name + `<button class="btn btn-primary btn-sm">Edit</button>
+function renderEditList(customDances, studioDances) {
+	let editListItemHTML;  
+	customDances.forEach(dance => {
+		editListItemHTML= `
+			<li class="${dance.id} list-group-item">${dance.name}
+				<button class="btn btn-primary btn-sm">Edit</button>
 				<button class="btn btn-danger btn-sm">Delete</button>					
+<<<<<<< HEAD:app.js
 				</li>`;
 		$('#edit-delete-list').append(editListItemHTML);
 	}
@@ -415,16 +423,34 @@ function renderEditList(customDances, studioDances) {
 		<button class="btn btn-primary btn-sm">+Note</button>
 		<button class="btn btn-danger btn-sm">Delete</button>					
 		</li>`;
+=======
+				</li>
+				`;
+>>>>>>> treeshake:src/app.js
 		$('#edit-delete-list').append(editListItemHTML);
-		};
-	}
+	});
+	studioDances.forEach(dance => {
+		if ( !contains(hiddenStudioDances, dance.id) ){
+			editListItemHTML= `
+			<li class="${dance.id} list-group-item">${dance.name}
+			<button class="btn btn-primary btn-sm">+Note</button>
+			<button class="btn btn-danger btn-sm">Delete</button>					
+			</li>
+			`;
+			$('#edit-delete-list').append(editListItemHTML);
+		}
+	});
 	$('#edit-delete-list').append('<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>');
 	// render hidden dances with 'restore' button
 	if(hiddenStudioDances.length>0) {
 		$('#deleteOrEditList__restoreListButton').prop('disabled', false);
 		studioDances.forEach(function(dance) {
 			if ( contains(hiddenStudioDances, dance.id) ) {
-			var restoreListItemHtml= '<li class="' + dance.id + ' list-group-item restore">' + dance.name + '<button class="btn btn-danger btn-sm">Restore</button></li>';
+			let restoreListItemHtml=`
+				<li class="${dance.id} list-group-item restore">${dance.name} 
+			<button class="btn btn-danger btn-sm">Restore</button>
+			</li>
+			`;
 			$('#edit-delete-list').append(restoreListItemHtml);
 			};
 		});
@@ -569,7 +595,7 @@ $("#addStudioNote").click(function(evt){
 			var $note = $(this).val(); 
 			customNotes.push($note);
 		});
-		const newNote = new customNote(danceId, customNotes);
+		const newNote = new CustomNote(danceId, customNotes);
 		if(customStudioNotes.length>0) {
 			customStudioNotes.forEach(function(item){
 				if(item.id === danceId) {
@@ -642,17 +668,19 @@ function saveChanges(id){
 function restoreStudioDance(danceId) {
 	toggleDance(danceId, hiddenStudioDances);
 	saveInLocalStorage('hiddenStudioDances', hiddenStudioDances);
-	for (var i = 0; i < studioDances.length; i++){
-		if (studioDances[i].id === danceId) {
+	studioDances.forEach(dance => {
+		if (dance.id === danceId) {
 			$("."+ danceId).remove();
 			$("input[value="+ danceId +"]").parent().parent().show();
 			$("input[value=" + danceId +"]").prop("checked", false);
-			// $("#"+ danceId).show();
-			var editListItemHTML= '<li class="' + danceId + ' list-group-item">' + studioDances[i].name +  '  -  ' + studioDances[i].song + `<button class="btn btn-danger btn-sm">Delete</button>
-			</li>`;
+			var editListItemHTML=`
+			<li class="${danceId} list-group-item">${dance.name}
+			<button class="btn btn-danger btn-sm">Delete</button>
+			</li>
+			`;
 			$('#edit-delete-list').prepend(editListItemHTML);
 		}
-	}
+	});
 	if(hiddenStudioDances.length === 0) {
 		$('#hideRestoreList').click();
 		$('#deleteOrEditList__restoreListButton').prop('disabled', true);
@@ -708,6 +736,7 @@ $("#edit_custom_container").click( function(event){
 		$("#editNumTimeDiv").toggle("blind");
 	}
 	if (event.target.id === "closeEditCustom") {
+		$('#hideRestoreList').click();
 		$("#editCustomNotesList li").remove();
 		$("#editNumTimeDiv input").val('');
 		$("#edit_custom_container").hide("slide", function() {
@@ -744,6 +773,11 @@ function sort(){
 	$("#dancesRow").html(numOrdered);
 };
 
+//disable return button trigger submit on form input
+$('form input').on('keypress', function(e) {
+	return e.which !== 13;
+});
+});
 
 
 // function unlock() {
