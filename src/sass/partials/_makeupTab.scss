@@ -1,0 +1,69 @@
+
+
+#hair {
+	font-size: larger;
+	text-align: center;
+	padding-top: 1rem;
+}
+
+#makeup {
+	background-color: $black;
+	color: $white;
+  padding: 1rem;
+  header {
+    text-align: center;
+    border-bottom: 2px solid $primary_neutral_light;
+    padding-top: 1rem;
+  }
+  h5 {
+    text-align: center;
+  } 
+  a {
+    color: $cyan;
+  } 
+}
+
+#makeup .container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#preMakeup {
+	text-align: center;
+  margin: 1rem;
+  h4 {
+    display: inline-block;
+    border-bottom: 2px solid $primary_neutral_light;
+    margin-bottom: 1rem;
+  }
+  header {
+    text-align: center;
+    border-bottom: 2px solid $primary_neutral_light;
+    padding-top: 1rem;
+  }
+} 
+
+.makeup-item:first-of-type {
+	border: none;
+}
+
+.makeup-item {
+	border-top: 2px solid $primary_neutral_light;
+	padding-top: 1rem;
+  margin-top: .5rem;
+  ul {
+    list-style-type: disc;
+    margin-left: 1rem;
+  }
+  .col-4 {
+    padding-left: 0;
+  }
+  .col-8 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+img[src*="hair"] {
+	width: 270px;
+}
