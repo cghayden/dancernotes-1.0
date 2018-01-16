@@ -33,165 +33,6 @@ function CustomNote(id, notes) {
 	this.notes = notes;
 }
 
-<<<<<<< HEAD:app.js
-/// will be populated from studio, each parameter in a variable
-var studioDances = []; // array of stock dance OBJ's supplied by app.js used to populate checkboxes and div for each dance
-function populateStudioDances() {
-	var teen1Hiphop = new Dance (
-		"teen1Hiphop", 
-		"Teen 1 Hip Hop",
-		"Instruction",
-		"N/A (Black Pants)",
-		"Pastry White Pop Tart Glitter",
-		["Jacket: Zip up to bottom of sports bra"],
-		"",
-		"",
-		""
-	);
-	studioDances.push(teen1Hiphop);
-	
-	var teen1Jazz = new Dance (
-		"teen1Jazz",
-		"Teen 1 Jazz",
-		"Outlaw Pete",
-		"N/A (Black Pants)",
-		"None",
-		["Flannel Shirt: Button only the 2nd and 3rd buttons down from the top "],
-		"",
-		"",
-		""
-	);
-	studioDances.push(teen1Jazz);
-	
-	var teen1Lyric = new Dance ("teen1Lyric",
-															"Teen 1 Lyric",
-															"What the World Needs Now",
-															"Light Suntan Capezio Ultra Soft Stirrup",
-															"None",
-															["Dress should fall 3 inches below the back crease of the knee"],
-															"",
-															"",
-															""
-															);
-	studioDances.push(teen1Lyric);
-	
-	var teen1Tap = new Dance("teen1Tap",
-													 "Teen 1 Tap",
-													 "Ricochet",
-													 "N/A (Black Pants)",
-													 "Bloch Respect Oxford S0361 - Black",
-													 [""],
-													 "",
-													 "",
-													 ""
-													 );
-	studioDances.push(teen1Tap);
-	
-	var acro = new Dance("acro",
-											"Acro Team",
-											"Egypt",
-											"",
-											"None",
-											[""],
-											"",
-											"",
-											""
-											);
-	studioDances.push(acro);
-	
-	var production = new Dance ("production",
-														 "Production",
-															"Vegas",
-														 "Black Fishnet Tights OVER Light Suntan Capezio",
-														 "Black Glittered Jazz Boots",
-														 [""],
-														 "",
-														 "",
-														 ""
-															);
-	studioDances.push(production);
-	
-	var smallGroupTap = new Dance (
-		"smallGroupTap",
-		"Small Group Tap",
-		"In the Mood",
-		"Black Fishnet Tights (Body Wrappers Seamless) OVER Light Suntan Capezio",
-		"Bloch Respect Oxford S0361 - Black",
-		["Gloves: Plain Red, (NOT the sequined ones)", "Tank top should fall below the hips"],
-		"",
-		"",
-		""
-	);
-	studioDances.push(smallGroupTap);
-
-	var juniorContemporary = new Dance (
-		"juniorContemporary",
-		"Junior Contemporary",
-		"Sound of Silence",
-		"Light Suntan Capezio Ultra Soft Stirrup",
-		"None",
-		[""],
-		"",
-		"",
-		""
-	);
-	studioDances.push(juniorContemporary);
-
-	var miniLyric = new Dance (
-		"miniLyric",
-		"Mini Lyric",
-		"The Children Will Listen",
-		"Light Suntan Capezio Ultra Soft Stirrup",
-		"None",
-		["Tie to secure the back, do not snap"],
-		"",
-		"",
-		""
-	);
-	studioDances.push(miniLyric);
-
-	var miniJazz = new Dance (
-		"miniJazz",
-		"Mini Jazz",
-		"Candy Girl",
-		"Light Suntan Capezio Ultra Soft Stirrup",
-		"None",
-		[""],
-		"",
-		"",
-		""
-	);
-	studioDances.push(miniJazz);
-
-	var juniorBallet = new Dance (
-		"juniorBallet",
-		"Junior Ballet",
-		"Guests From the Orient (Snow White)",
-		"Body Wrappers mesh seamed tights in Ballet Pink",
-		"Danshuz Pro Soft Canvas Ballet Slippers",
-		["Remove top two layers from the tutu","Hair piece above bun in center"],
-		"",
-		"",
-		""
-	);
-	studioDances.push(juniorBallet);
-
-	var teenBallet = new Dance (
-		"teenBallet",
-		"Teen Ballet",
-		"The Flower Garden (Alice in Wonderland)",
-		"Body Wrappers mesh seamed tights in Ballet Pink",
-		"Danshuz Pro Soft Canvas Ballet Slippers",
-		[""],
-		"",
-		"",
-		""
-	);
-	studioDances.push(teenBallet);
-
-}; // end populateDances
-=======
->>>>>>> treeshake:src/app.js
 var customDances = [];  // array of custom dance objects to render ...
 var hiddenStudioDances = []; //array of ids; studio dances the user never wants to see
 var displayedDances = [];  // array of ids; dances checked to display on load
@@ -330,11 +171,7 @@ function createCheckbox(id, name, song) {
 	<div class="form-check col-6 col-lg-4">
 		<label class="form-check-label">
 			<input class="form-check-input" type="checkbox" data-toggles="${id}" value="${id}">
-<<<<<<< HEAD:app.js
-			<span>${name}</span>  <p>${song}</p>
-=======
 			<span>${name}</span> <p>${song}</p>
->>>>>>> treeshake:src/app.js
 		</label>
 	</div>`;
 	$("#setup__allDancesList").append(checkboxHTML);
@@ -407,26 +244,13 @@ $("#inline_addCustomForm").click( function(evt){
 	
 // create a list of all custom dances with edit and delete buttons
 function renderEditList(customDances, studioDances) {
-	let editListItemHTML;  
+	let editListItemHTML;
 	customDances.forEach(dance => {
 		editListItemHTML= `
 			<li class="${dance.id} list-group-item">${dance.name}
-				<button class="btn btn-primary btn-sm">Edit</button>
-				<button class="btn btn-danger btn-sm">Delete</button>					
-<<<<<<< HEAD:app.js
+				<button class="btn btn-edit btn-sm">Edit</button>
+				<button class="btn btn-danger btn-sm">Delete</button>
 				</li>`;
-		$('#edit-delete-list').append(editListItemHTML);
-	}
-	for(var i = 0; i < studioDances.length; i++) {
-		if ( !contains(hiddenStudioDances, studioDances[i].id) ){
-		var editListItemHTML= '<li class="' + studioDances[i].id + ' list-group-item">' + studioDances[i].name  + `
-		<button class="btn btn-primary btn-sm">+Note</button>
-		<button class="btn btn-danger btn-sm">Delete</button>					
-		</li>`;
-=======
-				</li>
-				`;
->>>>>>> treeshake:src/app.js
 		$('#edit-delete-list').append(editListItemHTML);
 	});
 	studioDances.forEach(dance => {
@@ -443,8 +267,8 @@ function renderEditList(customDances, studioDances) {
 	$('#edit-delete-list').append('<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>');
 	// render hidden dances with 'restore' button
 	if(hiddenStudioDances.length>0) {
-		$('#deleteOrEditList__restoreListButton').prop('disabled', false);
-		studioDances.forEach(function(dance) {
+		$('#showRestoreList').prop('disabled', false);
+		studioDances.forEach(dance => {
 			if ( contains(hiddenStudioDances, dance.id) ) {
 			let restoreListItemHtml=`
 				<li class="${dance.id} list-group-item restore">${dance.name} 
@@ -458,8 +282,7 @@ function renderEditList(customDances, studioDances) {
 }
 
 // listeners for 'edit' 'delete' 'restore' 
-$("#edit-delete-list").click(function (){
-	console.log('click');
+$("#edit-delete-list").click(() => {
 	let danceId = event.target.parentNode.classList[0];
 	if (event.target.textContent === 'Delete') {
 		for (var i = 0; i < customDances.length; i++){
@@ -490,18 +313,16 @@ $("#edit-delete-list").click(function (){
 	}
 });
 
-$('#deleteOrEditList__restoreListButton').click(function() {
+$('#showRestoreList').click(function() {
 	$('.restore').css("display", "flex");
 	$(this).hide();
 	$('#hideRestoreList').show();
-	// $('.restoreButton-hide').toggle();
-	// $('.restoreButton-show').toggle();
 });
 
 $('#hideRestoreList').click(function() {
 	$('.restore').css("display", "none");
 	$(this).hide();
-	$('#deleteOrEditList__restoreListButton').show();
+	$('#showRestoreList').show();
 });
 
 $('#editCustomDanceButton').click(function() {
@@ -675,6 +496,7 @@ function restoreStudioDance(danceId) {
 			$("input[value=" + danceId +"]").prop("checked", false);
 			var editListItemHTML=`
 			<li class="${danceId} list-group-item">${dance.name}
+			<button class="btn btn-primary btn-sm">+Note</button>
 			<button class="btn btn-danger btn-sm">Delete</button>
 			</li>
 			`;
@@ -683,7 +505,7 @@ function restoreStudioDance(danceId) {
 	});
 	if(hiddenStudioDances.length === 0) {
 		$('#hideRestoreList').click();
-		$('#deleteOrEditList__restoreListButton').prop('disabled', true);
+		$('#showRestoreList').prop('disabled', true);
 	}
 }
 
@@ -691,7 +513,7 @@ function deleteStudioDance(danceId) {
 	toggleDance(danceId, hiddenStudioDances);
 	saveInLocalStorage("hiddenStudioDances", hiddenStudioDances);
 	//enable button to show list of restored dances
-	$('#deleteOrEditList__restoreListButton').prop('disabled', false);
+	$('#showRestoreList').prop('disabled', false);
 		// remove from displayed dances, Not Toggle!!
 	if ( contains(displayedDances, danceId) ) {
 		var index = displayedDances.indexOf(danceId);
@@ -736,7 +558,6 @@ $("#edit_custom_container").click( function(event){
 		$("#editNumTimeDiv").toggle("blind");
 	}
 	if (event.target.id === "closeEditCustom") {
-		$('#hideRestoreList').click();
 		$("#editCustomNotesList li").remove();
 		$("#editNumTimeDiv input").val('');
 		$("#edit_custom_container").hide("slide", function() {
@@ -750,15 +571,11 @@ $("#deleteOrEditModal-CloseIcon").click( function () {
 });
 
 $("#close_deleteOrEditModal").click( function() {
+	// $('#showRestoreList').show
+	$('#hideRestoreList').click();
 	$('#edit-delete-list').empty();
 	$('#restoreDanceList').empty();
-});
 
-// toggle accordion arrows when clicked
-$(".fa-angle-double-up").hide();
-
-$("#compsHeading a").click(function (){
-		$("#compsHeading i").toggle();
 });
 
 $("#noticesHeading a").click(function (){
@@ -779,6 +596,14 @@ $('form input').on('keypress', function(e) {
 });
 });
 
+
+
+// toggle accordion arrows when clicked
+// $(".fa-angle-double-up").hide();
+
+// $("#compsHeading a").click(function (){
+// 		$("#compsHeading i").toggle();
+// });
 
 // function unlock() {
 // 	enableSite = prompt("please enter the password");
