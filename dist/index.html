@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<title>Dancer Notes</title>
+		<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Kalam:300, 400, 700|Lobster|Raleway" rel="stylesheet">
+		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script src="https://use.fontawesome.com/214013aa72.js"></script>
+		<link rel="stylesheet" href="custom.css">
+	</head>
+
+	<body>
+		
+			<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div id="disclaimer" class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="aboutModalLabel"></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>Disclaimer: This is a parent-run site, not meant to replace official studio communcation. Please verify all information!!!<br>
+				All Scheduled times are approximate.  Be ready to dance two hours early!!
+				</p>
+				<h5> About dancer notes </h5>
+				<ul>
+					<li>Choose the dances you want to view information for in Setup by checking the boxes</li>
+					<li>On the front page, click on the dance name to show/hide the notes for that dance</li>
+					<li>Customize your view, or add your own notes to any Dance using the 'Edit / Delete' button at the bottom of the 'Setup' tab</li>
+					<li>Create an unlimited number of your own routines with the 'Create' button</li>
+					<li>(Enter competition entry information to have them put in scheduled order.  Entry can be edited or deleted after the comps)</li>
+				
+				</ul>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+		<div class="pos-f-t"> <!-- nav/brand bar and content behind it-->
+			<div class="collapse" id="navlinks"> <!-- content -->
+
+
+			</div>
+			<nav class="navbar navbar-inverse sticky-top"> <!--bar-->
+				<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="modal" data-target="#aboutModal" aria-controls="navlinks" aria-expanded="false" aria-label="Toggle navigation">
+					<span><i class="fa fa-lg fa-exclamation-circle" aria-hidden="true"></i></span>
+				</button>
+				<a class="navbar-brand pt-1.5" href="#" target="_blank">dancer notes</a>
+			</nav>
+		</div><!--nav/brand bar -->
+		
+		<div id="accordion" role="tablist" aria-multiselectable="true"> <!-- begin all accordions -->
+			
+			<div> <!-- start comps card/accordion -->
+					<!-- anchor tab -->
+				<div class="card-header" role="tab" id="compsHeading">
+					<h5 class="mb-0">
+						<a data-toggle="collapse" data-parent="#accordion" href="#competitions" aria-expanded="false" aria-controls="competitions">
+							<!-- <i class="fa fa-angle-double-down fa-lg text-primary" aria-hidden="true"></i>
+							<i class="fa fa-angle-double-up fa-lg text-primary" aria-hidden="true"></i> -->
+							Competitions
+						</a> 
+					</h5>
+				</div>
+					
+					<!-- content -->
+				<div id="competitions" class="collapse container-fluid" role="tabpanel" aria-labelledby="compsHeading">			 
+					<h2>Competitions</h2>
+					<div class="row">	
+
+						<div class="col-12 comp">
+							<h4><a href="http://www.bravocompetition.com/event/worcester-ma/" target="_blank">BRAVO</a></h4><i class="fa fa-external-link" aria-hidden="true"></i>
+							
+							<p>Mar. 2 - 4</p>
+							<p>Worcester North High School</p>
+							<p>140 Harrington Way</p>
+							<p>Worcester, MA 01604</p>
+							<a href="http://maps.google.com/?&daddr=140+Harrington+Way+Worcester+MA+01604" target="_blank"><p class="highlight">Directions</p></a>
+							<div class="hotel">
+									<a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/auburn/orhma/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-ORHMA" target="_blank"><h5 class="highlight">Holiday Inn Express</h5></a>
+								
+								<p>10-12 Johnson St.</p>
+								<p>Auburn, MA 01501</p>
+								<p>Mention "Bravo Attendees" for discounted rate of $125</p>
+							</div>
+						</div> 
+
+						<div class="col-12 comp">
+							<h4><a href="http://www.spiritofdanceawards.com/competition/" target="_blank">Spirit Of Dance Awards</a></h4>
+							<p>March 23 - 25</p>
+							<p>Location TBA</p>
+							<!-- <p>232 Pearl St</p>
+							<p>Stoughton, MA 02072</p>
+							<a href="http://maps.google.com/?&daddr=232+Pearl+Street+Stoughton+MA" target="_blank">Directions</a> -->
+						</div> 
+						
+
+						<div class="col-12 comp">
+							<h4><a href="https://www.legacydancechampionships.com/2018/woonsocket" target="_blank">Legacy Dance Championships</a></h4>
+							<p>May 4 - 6 </p>
+							<p>Woonsocket High School</p>
+							<p>777 Cass Ave</p>
+							<p>Woonsocket, RI 02895</p>
+							<!-- <h5 class = "schedule"><a href="https://www.youtube.com/watch?v=6sjla0zk6Kk">LIVESTREAM</a></h5> -->
+							<a href="http://maps.google.com/?&daddr=777+Cass+Avenue+Woonsocket+RI+02895" target="_blank"><p class="highlight">Directions</p></a>
+							<div class="hotel">
+								<a href="https://www.hiexpress.com/hotels/us/en/woonsocket/wskri/hoteldetail?qAdlt=1&qBrs=6c.hi.ex.rs.ic.cp.in.sb.cw.cv.ul.vn.ki.sp.nd.ct&qChld=0&qFRA=1&qGRM=0&qIta=99504425&qPSt=0&qRRSrt=rt&qRef=df&qRms=1&qRpn=1&qRpp=20&qSHp=1&qSmP=3&qSrt=sBR&qWch=0&srb_u=1&icdv=99504425&dp=true" target="_blank">
+									<h5 class="highlight">Holiday Inn Express</h5>
+								</a>
+								<p>Providence/Woonsocket</p>
+								<p>194 Fortin Dr</p>
+								<p>Woonsocket, RI 02895</p>
+								<p>Ask for Legacy Dance Championships group rate of $159</p>
+								<p>Reservation Deadline = Apr. 4</p>
+							</div>
+						</div>
+
+
+						<div class="col-12 comp">
+							<h4><a href="http://www.thepowerofdance.net/schedule2010final.html" target="_blank">Power of Dance</a></h4>
+							<p>May 18 - 20</p>
+							<p>Taunton High School</p>
+							<p>50 Williams St</p>
+							<p>Taunton, Ma 02780</p>
+							<a href="http://maps.google.com/?&daddr=50+Williams+Street+Taunton+MA+02780" target="_blank"><p class="highlight">Directions</p></a>
+							<!-- <p><a href="https://livestream.com/accounts/12181907" target="_blank">Live Stream</a></p> -->
+						</div> 
+						
+					</div> <!-- end row of comps -->	
+				</div> <!-- end #competitions (accordioncontent) -->
+			</div> <!-- end comps card/accordion -->
+			
+		</div> <!-- end all accordions -->
+
+		<!-- navtabs "routines | Hair | Makeup | Setup" -->
+		<ul class="nav nav-tabs sticky-top" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#dances" role="tab">Routines</a>
+			</li>
+			<!-- <li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#hair" role="tab">Hair</a>
+			</li> -->
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#makeup" role="tab">Hair / Makeup</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#setup" role="tab">Setup</a>
+			</li>
+		</ul>
+		<!-- /Nav tabs -->
+		
+		
+		<!-- Tab panes -->
+			
+		<div class="tab-content"> <!-- all tabs -->
+
+			<div class="tab-pane active container-fluid" id="dances" role="tabpanel"> <!-- dances tab content -->
+				<!-- <h4 class = "stream text-center"><a href="https://livestream.com/wctedance/wctenationalsva" target="_blank"> NATIONALS LIVESTREAM</a></h4>
+					<div class="text-center">
+					<a href="nationalsEvents.pdf" target="_blank" class="front_page_schedule">
+
+						<h5 >Nationals<br>Events Schedule</h5>				
+					</a>
+
+					<a href="nationalsCompSchedule.docx" target="_blank" class="front_page_schedule">
+
+						<h5 >Nationals<br>Competiton Schedule</h5>				
+					</a>
+					</div>
+					<div class="text-center">
+					
+					</div> -->
+
+
+				<div class="row" id="dancesRow">
+						<!-- dynamically filled from local storage object -->
+				</div> <!-- end dances row -->								
+			</div> <!-- end #dances tab content-->
+
+			<!-- <div class="tab-pane" id="hair" role="tabpanel">						
+				<div class="container-fluid">
+					<h3>"Twisty Faux-Hawk"</h3>
+					<p>For all dances unless otherwise noted.</p>
+					<p>Hair clips go on the right side unless noted.</p>
+					<h2><a href="https://youtu.be/IeqUWG9JxxI" target="_blank">Go to Hair Tutorial</a></h2>
+					<div>
+						<img src="img/hair-twisty-faux-hawk2.jpg" alt="image of hairstyle">
+					</div>
+				</div>
+			</div> -->
+
+			<div class="tab-pane" id="makeup" role="tabpanel">
+				<div class="container-fluid">
+					<header>
+						<h3>Hair</h4>
+						<h5>Center Part, Low Bun</h5>
+						<p>For All Dances, Unless Otherwise Noted</p>
+						<p>🍩 <strong>No Donuts! </strong> 🍩 </p>
+						<h5> <a href="https://m.youtube.com/watch?feature=youtu.be&v=GmIQWRgaZHE" target="_blank"> View Hair Video</a></h5>
+						</header>
+					<header>
+						<h4>Makeup</h4>
+						<p>This is the makeup used for all dances unless otherwise noted.</p>
+
+						<h4><a href="https://youtu.be/_eBVI_cqbNo" target="_blank">View Makeup Tutorial</a></h4>
+					</header>
+					<div class="row">
+						
+						<div class="col-12 col-md-6 makeup-item">
+							<h5>Eyes </h5>
+							<dl class="row">
+								<dt class="col-4 text-right">Eye Shadow: </dt>
+								<dd class="col-8">Lorac Pocket Pro Palette<a href="http://www.ulta.com/pocket-pro-palette?productId=xlsImpprod6371214"> (Get it here) </a>Apply with shadow brushes and Angle liner/shadow brush. </dd>
+
+								<dt class="col-4 text-right">Eye Liner: </dt>
+								<dd class="col-8">Revlon Color Stay liquid eye pen #01 Blackest Black</dd>
+
+								<dt class="col-4 text-right">Mascara: </dt>
+								<dd class="col-8"> Black</dd>
+
+								<dt class="col-4 text-right">Lashes: </dt>
+								<dd class="col-8"> EYELURE Volume No. 083 or Ardell #105 Black</dd>
+								</dl>
+
+							<h5>Recommended:</h5>
+							<ul>
+								<li>Eye Shadow Primer: NYX Proof it!  Waterproof Eye Shadow</li>
+								<li>Eyebrows: </li>
+							</ul>
+						</div>
+						
+						<div class="col-12 col-md-6 makeup-item">
+							<h5>Blush</h5>
+							<dl class="row">
+								<dt class="col-3 text-right">Color: </dt>
+								<dd class="col-9">Rose</dd>
+							</dl>
+						</div>
+						
+						<div class="col-12 col-md-6 makeup-item">
+							<h5>Lips</h5>
+							<dl class="row">
+								<dt class="col-3 text-right">Brand: </dt>
+								<dd class="col-9">MAC</dd>
+								<dt class="col-3 text-right">Color: </dt>
+								<dd class="col-9">Red</dd>
+							</dl>
+						</div>
+						
+						<div class="col-12 col-md-6 makeup-item">
+							<h5>Foundation:</h5>
+							<ul>
+								<li>Liquid foundation to match your dancer's skin tone. We recommend a long wearing formula.</li>
+								<li>Apply with foundation sponges or brush</li>
+							</ul>
+						</div>
+						
+						<div class="col-12 col-md-6 makeup-item">
+							<h5>Optional</h5>
+								<ul>
+									<li>Bronzer to enhance your dancer's skin tone.</li>
+								</ul>
+						</div>
+					</div>	<!-- end row -->
+				 </div> <!-- end makeup-contianer -->
+			</div>  <!-- end #makeup tab -->
+
+			<div class="tab-pane" id="setup" role="tabpanel">
+				<div class="container pt-3">
+					<div id="setup__checkboxes">
+						<h5>Routines to Display:</h5>
+						<p>Check to display in 'Routines'Tab'</p>
+						<div class="row pt-2" id="setup__allDancesList">								
+						</div> <!-- end row -->	
+						<div class="row justify-content-around" id="setupButtons">
+							<button type="button" class="btn btn-primary" id="create">Create My Own</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteOrEditModal" data-dismiss="modal" id="editCustomDanceButton">Delete / Edit</button>							
+						</div>
+					</div> <!--end setup__checkboxes div-->
+					
+					<div id="custom_input_container">
+						<form id="inline_addCustomForm">				
+							<div class="form-group row">
+								<label for="customTitle" class="col-2 col-form-label">Title:</label>
+								<div class="col-10">
+									<input class="form-control" type="text" name = "customTitle" value="" id="customTitle" placeholder="solo/duo etc.">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="customSong" class="col-2 col-form-label">Song:</label>
+								<div class="col-10">
+									<input class="form-control" type="text" name = "customSong" value="" id="customSong" placeholder="song/name of routine">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="customTights" class="col-2 col-form-label">Tights: </label>
+								<div class="col-10">
+									<input class="form-control" type="text" name = "customTights" value=" " id="customTights">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="customShoes" class="col-2 col-form-label">Shoes: </label>
+								<div class="col-10">
+									<input class="form-control" type="text" name="customShoes" value=" " id="customShoes">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="customNotes" class="col-2 col-form-label">Notes: </label>
+								<div class="col-10">
+									<ul id="customNotesList">
+										<li><input class="form-control" type="text" value=""></li>
+									</ul>
+									<span>
+									<i class="fa fa-plus-circle fa-lg" aria-hidden="true" id="addNoteInput"></i>
+										Note
+									</span>
+								</div>
+							</div>
+							<div id="numTimeDiv">
+								<div class="form-group row">					
+									<label for="customNum" class="col-3 col-form-label">Number: </label>
+									<div class="col-5">
+										<input class="form-control" type="text" value="" id="customNum">
+									</div>
+								</div>
+								<div class="form-group row">					
+									<label for="customDay" class="col-3 col-form-label">Day:</label>
+									<div class="col-5">
+										<input class="form-control" type="text" value="" id="customDay">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="customTime" class="col-3 col-form-label">Time: </label>
+									<div class="col-5">
+										<input class="form-control" type="text" value="" id="customTime">
+									</div>
+								</div>
+							</div> <!-- end numTimeDiv (entry inputs) -->
+							<div class="modal-footer d-flex justify-content-around">
+								<button class="btn btn-sm btn-outline-danger" id ="showEntry"><i class="fa fa-plus-circle" aria-hidden="true"></i>Entry #</button>
+								<button type="submit" class="btn btn-primary btn-lg" id="submitCustom">Save</button>
+								<button type="button" class="btn btn-danger btn-sm" id="cancelCustom">Cancel</button>
+							</div>
+						</form>
+					</div> <!--end form div-->
+
+					<div id="edit_custom_container">
+						<form id="editCustomForm">
+							
+							<div class="form-group row">
+								<label for="editTitle" class="col-2 col-form-label">Title</label>
+								<div class="col-10">
+									<input class="form-control" type="text" name = "editTitle" value="" id="editTitle">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="editSong" class="col-2 col-form-label">Song</label>
+								<div class="col-10">
+									<input class="form-control" type="text" name = "editsong" value="" id="editSong">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="editTights" class="col-2 col-form-label">Tights: </label>
+								<div class="col-10">
+									<input class="form-control" type="text" name = "editTights" value="" id="editTights">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="editShoes" class="col-2 col-form-label">Shoes: </label>
+								<div class="col-10">
+									<input class="form-control" type="text" name = "editShoes" value="" id="editShoes">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="editCustomNotesList" class="col-2 col-form-label">Notes: </label>
+								<div class="col-10">
+									<ul id ="editCustomNotesList">
+
+									</ul>
+									<span>
+									<i class="fa fa-plus-circle fa-lg" aria-hidden="true" id="editAddNoteInput"></i>
+										Note
+									</span>
+								</div>
+							</div>
+
+							<div id="editNumTimeDiv">
+								<div class="form-group row">	
+									<label for="editCustomNum" class="col-3 col-form-label">Number: </label>
+									<div class="col-5">
+										<input class="form-control" type="text" value="" id="editCustomNum">
+									</div>
+								</div>
+								<div class="form-group row">	
+									<label for="editCustomDay" class="col-3 col-form-label">Day: </label>
+									<div class="col-5">
+										<input class="form-control" type="text" value="" id="editCustomDay">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="editCustomTime" class="col-3 col-form-label">Time: </label>
+									<div class="col-5">
+										<input class="form-control" type="text" value="" id="editCustomTime">
+									</div>
+								</div>
+							</div>	
+								
+							<div class="modal-footer d-flex justify-content-between">
+								<button class="btn btn-sm btn-outline-danger" id ="showEditEntry"><i class="fa fa-plus-circle" aria-hidden="true"></i>Entry #</button>
+								<button type="submit" class="btn btn-primary" id ="submitChanges">Save</button>
+								<button type="button" class="btn btn-danger btn-sm" id="closeEditCustom">Cancel</button>
+							</div>
+						</form>
+					</div>
+
+					<div id="addStudioNote">
+						<h3>Add notes to...</h3>
+						<form>
+							<div id="addStudioNote-header">
+
+							</div>
+							<div class="form-group row" id="addStudioNote-body">
+								<label for="addStudioNotes" class="col-2 col-form-label">My Notes: </label>
+								<div class="col-10">
+									<ul id="addStudioNotes-list">
+											<!-- <li><input class="form-control" type="text" value=""></li> -->
+									</ul>
+									<span>
+										<i class="fa fa-plus-circle fa-lg" aria-hidden="true" id="anotherCustomNote"></i>
+												Note
+									</span>
+								</div>
+							</div>
+							<div class="form-group" id="addStudioNotes-buttons">
+								<button type="submit" class="btn btn-primary" id ="addStudioNote-save">Save</button>
+								<button type="button" class="btn btn-danger btn-sm" id="addStudioNote-cancel">Cancel</button>
+							</div>
+						</form>
+					</div>
+
+				</div> <!--end container -->
+			</div> <!-- end setup tab -->
+		</div> <!-- / end all tabs content .tabs-content -->
+
+		<div data-backdrop="static" class="modal fade" id="deleteOrEditModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+							<h5 class="modal-title">Choose a Dance to Edit or Delete</h5>
+							<button type="button" id="deleteOrEditModal-CloseIcon" class="close" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					<div class="modal-body">
+						<ul class="list-group" id="edit-delete-list">
+						</ul>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-sm" id="showRestoreList" disabled>
+							<span class="restoreButton-show">Restore Deleted Studio Dances</span>
+						</button>
+						<button type="button" class="btn btn-sm restoreButton-hide" id="hideRestoreList">Hide Deleted Studios</button>
+						<button type="button" class="btn btn-danger" id="close_deleteOrEditModal" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>				
+
+		<footer>
+			<nav class="navbar sticky-bottom" id="footer">
+
+				<a class="navbar-brand-left" href="mailto:cghayden@gmail.com">cghayden@gmail.com</a>
+				<a href="http://www.coreygene.com" target="_blank"><span class="navbar-text">&copy; 2017 Corey Hayden</span></a>
+			</nav>	
+		</footer>
+
+		
+    <!-- jQuery first, then Tether, then Bootstrap JS, then custom js. -->
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+
+		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="bundle.js"></script>
+			
+  </body>
+</html>
