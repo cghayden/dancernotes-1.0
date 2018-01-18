@@ -28,14 +28,9 @@
 	}
 }
 
-$black: hsl(0, 0%, 11%);
-$white: hsl(240, 23%, 97%);
-$whiteActive: #fbfbfc;
-
 $lime: hsl(120, 100%, 50%);
 $darkgreen: hsl(120, 100%, 25%);
 $pastelgreen: hsl(120, 75%, 75%);
-
 $violet: rgb(203, 14, 255);
 $hello: #FFC40E;
 $red: 	 	hsl(355, 100%, 50%);
@@ -46,23 +41,34 @@ $green:  	hsl(120, 100%, 50%);
 $cyan:   	hsl(180, 100%, 50%);
 $dark_indigo: hsl(235, 66%, 30%);
 $blue:   	hsl(240, 94%, 43%);
-$blueBackground:   	hsla(236, 67%, 53%, 0.7);
 $pink: 	hsl(300, 100%, 50%);
 
+$blueBackground:   	hsla(240, 67%, 53%, 0.7);
 $first-color: $blueBackground;
-$second-color: complement($first-color);
+
+$black: hsl(0, 0%, 11%);
+$primary-white: hsl(240, 50%, 97%);
+$white: hsl(240, 40%, 97%);
+$whiteActive: hsl(240, 24%, 98%);
+
+$anchor-hover: lighten($first-color, 15%);
+$primary-light: lighten($first-color, 30%);
+
+$primary-bold: hsl(240, 90%, 40%);
 $primary_dark: darken($first-color, 20%);
-$primary_light: lighten($first-color, 40%);
+
 $primary_neutral: mix-neutral($first-color);
 $primary_neutral_dark: darken($primary_neutral, 35%);
 $primary_neutral_light: lighten($primary_neutral, 35%);
+
+$second-color: complement($first-color);
 $secondary_neutral: mix-neutral($second-color);
 $secondary_neutral_dark: darken($secondary_neutral, 35%);
 $secondary_neutral_light: lighten($secondary_neutral, 35%);
 
 .btn-primary {
-	color: $white;
-	background-color: $primary_neutral_dark;
+	color: $black;
+	background-color: $primary-light;
 }
 
 .btn-danger {

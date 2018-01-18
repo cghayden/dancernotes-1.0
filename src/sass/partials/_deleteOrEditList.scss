@@ -28,7 +28,7 @@
 }
 
 .restore{
-  background-color: rgb(244, 224, 224);
+  background-color: $secondary_neutral_light;
 }
 
 .deleteOrEditList__message {
@@ -45,7 +45,6 @@
 .restoreButton-hide {
   display: none;
   background-color: rgb(244, 224, 224);
-
 }
 
 .restore {
