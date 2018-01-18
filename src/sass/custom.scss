@@ -28,7 +28,7 @@ a {
 }
 
 .highlight {
-	color: yellow;
+	color: $highlight;
 	font-size: 1.1rem;
 }
 
@@ -89,8 +89,9 @@ dl .col-2 {
 	border: none;
 }
 
-.fa-exclamation-circle {
-	color: red;
+.fa-exclamation {
+	color: $secondary_neutral_dark;
+	font-size: 1.1rem;
 }
 
 #competitions {
@@ -175,7 +176,7 @@ dl .col-2 {
 }
 
 .time {
-	color: yellow;	
+	color: $highlight;	
 }
 
 .time h5 {
@@ -234,26 +235,26 @@ input::-webkit-input-placeholder {
 .stream {
 	padding-top: 2rem;
 	a {
-		color: yellow;
+		color: $highlight;
 		padding-top: 1rem;
 	}
 }
 
 .schedule {
 	/*background: #eee;	*/
-	color: yellow;
+	color: $highlight;
   	display: inline-block;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 17px 15px;
-	border: 2px solid yellow;
+	border: 2px solid $highlight;
 	border-radius: 45%;
 	font-size: 1.2rem;
 }
 
 .front_page_schedule {
 	background: radial-gradient($blueBackground, $black 80%);	
-	color: yellow;
+	color: $highlight;
   	display: inline-block;
 	margin-top: 10px;
 	margin-bottom: -5px;
@@ -276,7 +277,7 @@ input::-webkit-input-placeholder {
 .front_page_schedule:hover,
 .front_page_schedule:visited,
 .front_page_schedule:focus {
-	color: yellow;
+	color: $highlight;
 }
 
 /*** iphone 5 media query ***/

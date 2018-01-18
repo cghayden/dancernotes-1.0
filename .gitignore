@@ -3,4 +3,5 @@
 .DS_Store
 /dist/bundle.js
 /dist/custom.css
+/dist/custom.css.map
 

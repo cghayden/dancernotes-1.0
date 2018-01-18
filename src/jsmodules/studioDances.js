@@ -17,7 +17,10 @@ const studioDances = [
 	"Instruction",
 	"N/A (Black Pants)",
 	"Pastry White Pop Tart Glitter",
-	["Jacket: Zip up to bottom of sports bra"],
+	[
+		"Jacket: Zip up to bottom of sports bra",
+		"Hair = Low Pony Tail, Center Part"
+	],
 	"",
 	"",
 	""
@@ -28,7 +31,10 @@ const studioDances = [
 		"Outlaw Pete",
 		"N/A (Black Pants)",
 		"None",
-		["Flannel Shirt: Button only the 2nd and 3rd buttons down from the top "],
+		[
+			"Flannel Shirt: Button only the 2nd and 3rd buttons down from the top",
+			"Black Bandana"
+		],
 		"",
 		"",
 		""
