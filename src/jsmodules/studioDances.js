@@ -15,9 +15,11 @@ const studioDances = [
 	"teen1Hiphop", 
 	"Teen 1 Hip Hop",
 	"Instruction",
-	"N/A (Black Pants)",
+	"Light Suntan Capezio Ultra Soft (+ Black Pants)",
 	"Pastry White Pop Tart Glitter",
-	[
+	[ 
+		"Pants: Should fit like leggings with no bunched bottoms", "Jacket: Hem sleeves, take in at waist if needed",
+		"Return jackets for stoning",
 		"Jacket: Zip up to bottom of sports bra",
 		"Hair = Low Pony Tail, Center Part"
 	],
@@ -29,7 +31,7 @@ const studioDances = [
 		"teen1Jazz",
 		"Teen 1 Jazz",
 		"Outlaw Pete",
-		"N/A (Black Pants)",
+		"Light Suntan Capezio Ultra Soft Stirrup (+ Black Pants)",
 		"None",
 		[
 			"Flannel Shirt: Button only the 2nd and 3rd buttons down from the top",
@@ -54,9 +56,9 @@ const studioDances = [
 		"teen1Tap",
 		"Teen 1 Tap",
 		"Ricochet",
-		"N/A (Black Pants)",
+		"Black Opaque Trouser Socks (+ Black Pants)",
 		"Bloch Respect Oxford S0361 - Black",
-		[""],
+		["Coat: Do not roll sleeves, hem if needed"],
 		"",
 		"",
 		""
@@ -64,8 +66,8 @@ const studioDances = [
 	new Dance(
 		"acro",
 		"Acro Team",
-		"",
-		"",
+		"Egypt",
+		"Light Suntan Capezio Ultra Soft Stirrup",
 		"None",
 		[""],
 		"",
@@ -76,7 +78,7 @@ const studioDances = [
 			"production",
 			"Production",
 			"Vegas",
-			"Black Fishnet Tights OVER Light Suntan Capezio",
+			"Black Semless Fishnet Tights OVER Light Suntan Capezio",
 			"Black Glittered Jazz Boots",
 			[""],
 			"",
