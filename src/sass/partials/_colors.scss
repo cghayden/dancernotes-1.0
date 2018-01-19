@@ -28,14 +28,18 @@
 	}
 }
 
-$blueBackground:   	hsla(240, 67%, 53%, 0.7);
+/* primary */
+$blueBackground: hsla(240, 67%, 53%, 0.6);
 $first-color: $blueBackground;
-
 $black: hsl(240, 33%, 7%);
 $primary-white: hsl(240, 50%, 97%);
-$white: hsl(240, 40%, 97%);
-$whiteActive: hsl(240, 24%, 98%);
+$white: hsl(240, 40%, 96%);
+$white-text: hsl(240, 40%, 92%);
+$white-text-shadow: hsl(240, 40%, 50%);
+$whiteActive: hsl(240, 24%, 97%);
 $highlight: hsla(60, 90%, 70%, 0.95);
+$highlight-cool: hsl(240,75%, 85%);
+
 $anchor-hover: lighten($first-color, 15%);
 $primary-light: lighten($first-color, 30%);
 
@@ -60,7 +64,7 @@ $secondary_neutral_light: lighten($secondary_neutral, 35%);
 
 .btn-danger {
 	background-color: $secondary_neutral_dark;
-	color: $white;
+	color: $white-text;
 }
 
 .card-header {

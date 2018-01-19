@@ -132,7 +132,7 @@ function renderNewDance(id, title, song, tights, shoes, notes, num, day, time) {
 				</div>
 			<div class="col-6">
 				<h4>${title}</h4>
-				<p>${song}</p>
+				<p class="highlight-cool">${song}</p>
 			</div>
 			<div class="col-3 align-self-end time">
 				<p>${day}</p>

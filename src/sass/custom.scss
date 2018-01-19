@@ -2,12 +2,13 @@
 @import 'partials/makeupTab';
 @import 'partials/setupTab';
 @import 'partials/deleteOrEditList';
+@import 'partials/utilities';
 
 
 body {
 	background-color: $black;
 	font-family: "Kalam", 'Comic Sans MS', 'cursive';
-	color: $white;
+	color: $white-text;
 	font-weight: 300;
 }
 
