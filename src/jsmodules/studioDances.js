@@ -15,7 +15,7 @@ const studioDances = [
 	"teen1Hiphop", 
 	"Teen 1 Hip Hop",
 	"Instruction",
-	"Light Suntan Capezio Ultra Soft (+ Black Pants)",
+	"Light Suntan Capezio Ultra Soft (+ Silver Pants)",
 	"Pastry White Pop Tart Glitter",
 	[ 
 		"Pants: Should fit like leggings with no bunched bottoms", "Jacket: Hem sleeves, take in at waist if needed",
@@ -124,7 +124,7 @@ const studioDances = [
 			"Candy Girl",
 			"Light Suntan Capezio Ultra Soft Stirrup",
 			"None",
-			[""],
+			["Bow: Right side of bun"],
 			"",
 			"",
 			""
