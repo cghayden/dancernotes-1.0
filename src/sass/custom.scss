@@ -17,11 +17,14 @@ body {
 }
 
 a {
-	color: $blueBackground;
+	color: $blue-text;
 	text-decoration: none !important;
 	:active {
 		text-decoration: none !important;
 	}
+	:hover {
+		color: $anchor-hover
+	} 
 }
 
 .card-header a:hover {
@@ -99,6 +102,8 @@ dl .col-2 {
 	padding-top: 1rem;
 	padding-bottom: 0;
 	text-align: center;
+	max-height: 400px;
+	overflow: scroll;
 }
 
 .comp {
@@ -136,11 +141,6 @@ dl .col-2 {
 		background-color: $whiteActive !important;
 		font-size: 1.3rem;
 		font-weight: bolder;
-	} 
-	 a {
-		color: $blueBackground;
-	} :hover {
-		color: $anchor-hover
 	} 
 }
 

@@ -282,7 +282,7 @@ function renderEditList(customDances, studioDances) {
 }
 
 // listeners for 'edit' 'delete' 'restore' 
-$("#edit-delete-list").click(() => {
+$("#edit-delete-list").click((event) => {
 	let danceId = event.target.parentNode.classList[0];
 	if (event.target.textContent === 'Delete') {
 		for (var i = 0; i < customDances.length; i++){
@@ -298,7 +298,8 @@ $("#edit-delete-list").click(() => {
 	}
 	if (event.target.textContent === 'Edit') {
 		$("#setup__checkboxes").hide("slide", function() {
-		$("#edit_custom_container").show("slide"); });
+			$("#edit_custom_container").show("slide"); 
+			});
 		renderEditForm(danceId);
 		$("#close_deleteOrEditModal").click();
 	}
