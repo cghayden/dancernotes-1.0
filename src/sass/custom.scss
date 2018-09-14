@@ -1,325 +1,270 @@
-@import 'partials/colors';
-@import 'partials/makeupTab';
-@import 'partials/setupTab';
-@import 'partials/deleteOrEditList';
-@import 'partials/utilities';
+@import "partials/colors";
+@import "partials/makeupTab";
+@import "partials/setupTab";
+@import "partials/deleteOrEditList";
+@import "partials/utilities";
+@import "partials/dance-container";
+@import "partials/footer";
 
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	background-color: $black;
-	font-family: 'Kalam', 'Comic Sans MS', 'cursive';
-	color: $white-text;
-	font-weight: 300;
-	letter-spacing: 1px;
-	position: relative;
-	min-height: 100%;
+  background-color: $black;
+  font-family: "Kalam", "Comic Sans MS", "cursive";
+  color: $white-text;
+  font-weight: 300;
+  letter-spacing: 1px;
+  position: relative;
+  min-height: 100%;
 }
 
 .btn {
-	border: 0 !important; 
+  border: 0 !important;
 }
 
 a {
-	color: $blue-text;
-	text-decoration: none !important;
-	:active {
-		text-decoration: none !important;
-	}
-	:hover {
-		color: $anchor-hover
-	} 
+  color: $blue-text;
+  text-decoration: none !important;
+  :active {
+    text-decoration: none !important;
+  }
+  :hover {
+    color: $anchor-hover;
+  }
 }
 
 .card-header a:hover {
-	color: $anchor-hover;
+  color: $anchor-hover;
 }
 
 .highlight {
-	color: $highlight;
-	font-size: 1.1rem;
+  color: $highlight;
+  font-size: 1.1rem;
 }
 
 #disclaimer {
-	color: $black;
-	ul {
-		list-style: disc;
-		padding-right: 5px;
-		margin-left: 5px;
-	}
+  color: $black;
+  ul {
+    list-style: disc;
+    padding-right: 5px;
+    margin-left: 5px;
+  }
 }
 
 ul {
-	list-style: none;
-	padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 dt {
- 	font-size: larger;
+  font-size: larger;
 }
 
 dl .col-10 {
-	padding-right: 0;
+  padding-right: 0;
 }
 
 dl .col-2 {
-	padding-left: 0;
+  padding-left: 0;
 }
 
 #aboutModal {
-	background-color: $black;
+  background-color: $black;
 }
 
 .navbar {
-	background: linear-gradient(to top, $blueGradient, $black 120%);
-	font-family: 'Dancing Script', cursive;
-	i {
-		margin-top: 6px;
-	}
-	a {
-		font-size: 1.5rem;
-	}
+  background: linear-gradient(to top, $blueGradient, $black 120%);
+  font-family: "Dancing Script", cursive;
+  i {
+    margin-top: 6px;
+  }
+  a {
+    font-size: 1.5rem;
+  }
 }
 
 #navlinks {
-	padding: 1rem;
-	background: linear-gradient($black, $blueGradient);
-	a {
-		color: $white;
-	}
+  padding: 1rem;
+  background: linear-gradient($black, $blueGradient);
+  a {
+    color: $white;
+  }
 }
 
 .navbar-brand {
-	text-align: center;
+  text-align: center;
 }
 
 .navbar-toggler {
-	border: none;
+  border: none;
 }
 
 .fa-exclamation {
-	color: $secondary_neutral_dark;
-	font-size: 1.1rem;
+  color: $secondary_neutral_dark;
+  font-size: 1.1rem;
 }
 
 #competitions {
-	padding-top: 1rem;
-	padding-bottom: 0;
-	text-align: center;
-	max-height: 400px;
-	overflow: scroll;
+  padding-top: 1rem;
+  padding-bottom: 0;
+  text-align: center;
+  max-height: 400px;
+  overflow: scroll;
 }
 
 .comp {
-	padding: 1.5rem;
-	margin-bottom: 2rem;
-	background: radial-gradient($blueGradient, $black 80%);
-	p {
-		margin-bottom: 0;
-	}
-	a {
-		color: aqua;
-	}
-	h4 {
-		display: inline-block;
-	}
-	i {
-		margin-left: .3rem;
-		font-size: .5rem;
-	}
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: radial-gradient($blueGradient, $black 80%);
+  p {
+    margin-bottom: 0;
+  }
+  a {
+    color: aqua;
+  }
+  h4 {
+    display: inline-block;
+  }
+  i {
+    margin-left: 0.3rem;
+    font-size: 0.5rem;
+  }
 }
 
 .hotel {
-	margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .nav-tabs {
   font-size: 1.2rem;
-	border-bottom: 3px solid $blueBackground;
-	background-color: $primary-white;
-	margin-bottom: .5rem;
-	.nav-link.active{
-		color: $blueBackground;
-	}
-	.active {
-		background-color: $whiteActive !important;
-		font-size: 1.3rem;
-		font-weight: bolder;
-	} 
-}
-
-.dance-container {
-	padding-top: 10px;
-	background: radial-gradient($blueGradient, $black 80%);
-}
-
-.dance-container dl {
-	border-top: 1px solid $white;
-	padding-top: 5px;
-}
-
-.dance-container dd ul li {
-	padding-bottom: 7px;
-}
-
-.dance-body {
-	font-weight: 300;
-}
-
-.dance-header {
-	text-align: center;
-	/*border-bottom: 1px solid white;*/
-	margin-bottom: 10px;
-}
-
-.dance-header p {
-	margin-bottom: 5px;
-}
-
-.dance-header-title {
-	flex: 2;
-}
-
-.time {
-	color: $highlight;	
-}
-
-.time h5 {
-	font-size: 1rem;
-	font-weight: 400;
-	text-align: center;
-	display: inline;
+  border-bottom: 3px solid $blueBackground;
+  background-color: $primary-white;
+  margin-bottom: 0.5rem;
+  .nav-link {
+    padding: 0.5em 0.6em;
+  }
+  .nav-link.active {
+    color: $blueBackground;
+  }
+  .active {
+    background-color: $whiteActive !important;
+    font-size: 1.3rem;
+    font-weight: bolder;
+  }
 }
 
 #custom_input_container,
 #edit_custom_container {
-	display: none;
+  display: none;
 }
 
-#editCustom, 
-#createCustom			{
-	color:$black;
+#editCustom,
+#createCustom {
+  color: $black;
 }
 
 #showEntry i,
 #showEditEntry i {
-	margin-right: 3px;
-	color: red;
+  margin-right: 3px;
+  color: red;
 }
 
 input::-webkit-input-placeholder {
-	color: darkgrey !important;
+  color: darkgrey !important;
 }
 
 #customNotesList input,
 #editCustomNotesList input {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 #numTimeDiv,
 #editNumTimeDiv {
-	display: none;
+  display: none;
 }
 
 #addNoteInput,
 #editAddNoteInput {
-	color: red;
+  color: red;
 }
 
 .wrapper {
-	padding-bottom: 90px;
-}
-#footer {
-	font-family: monospace;
-	// margin-top: 4rem;
-	background: $black;
-	height:90px;
-	position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-#footer a {
-	color: inherit;
-	font-size: 1.25rem;
+  padding-bottom: 90px;
 }
 
 //** comp time add-ons **//
 .stream {
-	padding-top: 2rem;
-	a {
-		color: $highlight;
-		padding-top: 1rem;
-	}
+  padding-top: 2rem;
+  a {
+    color: $highlight;
+    padding-top: 1rem;
+  }
 }
 
 .schedule {
-	/*background: #eee;	*/
-	color: $highlight;
-  	display: inline-block;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding: 17px 15px;
-	border: 2px solid $highlight;
-	border-radius: 45%;
-	font-size: 1.2rem;
+  /*background: #eee;	*/
+  color: $highlight;
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 17px 15px;
+  border: 2px solid $highlight;
+  border-radius: 45%;
+  font-size: 1.2rem;
 }
 
 .front_page_schedule {
-	background: radial-gradient($blueGradient, $black 80%);	
-	color: $highlight;
-  	display: inline-block;
-	margin-top: 10px;
-	margin-bottom: -5px;
-	padding: 20px 20px;
-	border-radius: 45%;
-	font-size: 1.2rem;
-	h5 {
-		margin: 0;
-	}
+  background: radial-gradient($blueGradient, $black 80%);
+  color: $highlight;
+  display: inline-block;
+  padding: 20px 20px;
+  border-radius: 45%;
+  font-size: 1.2rem;
+  h5 {
+    margin: 0;
+  }
 }
 
 .revised {
-	font-size: .9rem;
-	padding: 0;
-	font-weight: 300;
-	margin: 0;
+  font-size: 0.9rem;
+  padding: 0;
+  font-weight: 300;
+  margin: 0;
 }
 
 .front_page_schedule:link,
 .front_page_schedule:hover,
 .front_page_schedule:visited,
 .front_page_schedule:focus {
-	color: $highlight;
+  color: $highlight;
 }
 
 /*** iphone 5 media query ***/
 
 @media screen and (max-width: 370px) {
-	.nav-tabs {
-		font-size: 1rem;
-	}
-	
-	dt {
-		font-size: 1rem;
-	}
-	
-	dd {
-		padding-top: 0;
-	}
+  .nav-tabs {
+    font-size: 1rem;
+  }
 
-	.time h5 {
-		font-size: 1rem;
-		font-weight: 300;
-	}
+  .dance-header .name {
+    max-width: 71%;
+  }
+  dt {
+    font-size: 1rem;
+  }
+
+  dd {
+    padding-top: 0;
+  }
+
+  .time h5 {
+    font-size: 1rem;
+    font-weight: 300;
+  }
 }
-
 
 [data-toggle~="collapse"] {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-

@@ -1,0 +1,41 @@
+
+.dance-container {
+	padding-top: 10px;
+  background: radial-gradient($blueGradient, $black 80%);
+  dl {
+    border-top: 1px solid $white;
+    padding-top: 5px;
+  }
+  dd ul li {
+    padding-bottom: 7px;
+  }
+}
+
+.dance-body {
+	font-weight: 300;
+}
+
+.dance-header {
+	text-align: center;
+  margin-bottom: 10px;
+  p { margin-bottom: 5px; }
+  h4 { font-size: 1.3rem; }
+}
+
+.dance-header-title {
+	flex: 2;
+}
+
+.dance-song {
+  font-size: 1.25rem;
+}
+
+.time {
+  color: $highlight;
+  h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    display: inline;
+  }
+}

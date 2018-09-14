@@ -1,10 +1,14 @@
 #deleteOrEditModal {
-  color: #1e1e1e;
+  color: $black;
   .modal-header {
     padding: 10px 15px;
   }
   .modal-body {
-    padding-bottom: 0;
+    padding: 0 0;
+    p {
+      margin: 0.4rem 0.9rem;
+      font-size: 0.9rem;
+    }
   }
   .modal-footer {
     justify-content: space-between;
@@ -14,25 +18,25 @@
 
 #edit-delete-list {
   li button:first-child {
-    margin-left: auto; 
+    margin-left: auto;
   }
   li button + button {
-  margin-left: 1rem; 
+    margin-left: 1rem;
   }
   p {
     padding-left: 1rem;
-    margin-top: .5rem;
-    border-top-left-radius: .4em;
-    border-top-right-radius: .4em;
+    margin-top: 0.5rem;
+    border-top-left-radius: 0.4em;
+    border-top-right-radius: 0.4em;
   }
 }
 
-.restore{
+.restore {
   background-color: $secondary_neutral_light;
 }
 
 .deleteOrEditList__message {
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   text-align: center;
   margin: 0;
   font-size: 1.1rem;

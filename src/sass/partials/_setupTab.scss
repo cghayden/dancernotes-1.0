@@ -1,27 +1,28 @@
-
 #setup {
-	color: $black;
-	background: $white;
-	font-weight: 400;
+  color: $black;
+  background: $white;
+  font-weight: 400;
+}
+
+#setup__checkboxes {
+  max-width: 700px;
+  padding-bottom: 1.5rem;
 }
 
 #setup__allDancesList {
-	span {
-		font-size: 1.1rem;
-	}
-	p {
-		font-size: .9rem;
-		color: $primary_dark;
-		margin-bottom: 0;
-	}
-}
-
-#setup label {
-	padding-bottom: 1rem;
+  span {
+    // font-size: 1.1rem;
+    color: $black;
+  }
+  p {
+    font-size: 1rem;
+    color: $primary_dark;
+    margin-bottom: 0.5rem;
+  }
 }
 
 #setupButtons {
-	padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
 }
 
 .dance__delete {
@@ -30,25 +31,29 @@
 }
 
 #addStudioNote {
-	display: none;
-	padding: 1rem 0;
-} 
+  display: none;
+  padding: 1rem 0;
+}
 
 #addStudioNotes-buttons {
-	display: flex;
-	justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 #addStudioNote {
-	li {
-		margin-bottom: .25rem;
-		span {
-			font-size: 1.25rem;
-		}
-	}
+  li {
+    margin-bottom: 0.25rem;
+    span {
+      font-size: 1.25rem;
+    }
+  }
 }
 
 .btn-edit {
-	background-color: $primary_dark;
-	color: $white;
+  background-color: $primary_dark;
+  color: $white;
+}
+
+#edit-delete-list .list-group-item {
+  padding: 0.75rem;
 }
