@@ -1,5 +1,5 @@
 require("./sass/custom.scss");
-
+import moment from "moment";
 // import {storageAvailable, contains} from 'helpers';
 
 import { studioDances, Dance } from "./jsmodules/studioDances.js";
@@ -50,7 +50,7 @@ $(document).ready(function() {
   } else {
     console.log("no local storage available");
     alert(
-      "Local Storage is not available on this device. You will not be able to create your own dances, and the studio dances you choose to display in 'Setup' will not be saved when your browser is refreshed"
+      "Local Storage is not available on this device. You will not be able to create your own dances, and the studio dances you choose to display in 'Setup' will not be saved when your browser is refreshed",
     );
     renderDances(studioDances);
   }
@@ -111,7 +111,7 @@ $(document).ready(function() {
         dance.notes,
         dance.num,
         dance.day,
-        dance.time
+        dance.time,
       );
       if (contains(displayedDances, dance.id)) {
         $("input[value=" + dance.id + "]").prop("checked", true);
@@ -138,7 +138,7 @@ $(document).ready(function() {
     notes,
     num,
     day,
-    time
+    time,
   ) {
     let customHtml = `
 		<div class="col-12 col-md-6 dance-container" id="${id}">
@@ -157,11 +157,12 @@ $(document).ready(function() {
 		</div>
 		<div class="dance-body collapse" id="${id}-body">
 			<dl class="row mx-auto">
-				<dt class="col-2 text-right">Tights: </dt>
-				<dd class="col-10">${tights}</dd>
-				<dt class="col-2 text-right">Shoes: </dt>
-				<dd class="col-10"> ${shoes} </dd>
-				<dt class="col-2 text-right">Notes: </dt>
+      <dt class="col-2 text-right">Tights: </dt>
+        <dd class="col-10">${tights}</dd>
+        <dt class="col-2 text-right">Shoes: </dt>
+        <dd class="col-10"> ${shoes} </dd>
+        <dt class="col-2 text-right">Notes: </dt>
+
 				<dd class="col-10">
 				<ul>`;
     for (var i = 0; i < notes.length; i++) {
@@ -227,7 +228,7 @@ $(document).ready(function() {
       customNotes,
       customNum,
       customDay,
-      customTime
+      customTime,
     );
     displayedDances.push(customId);
     customDances.push(custom);
@@ -243,12 +244,12 @@ $(document).ready(function() {
       customNotes,
       customNum,
       customDay,
-      customTime
+      customTime,
     );
     $("input[value=" + customId + "]").prop("checked", true);
     $("#customNotesList").empty();
     $("#customNotesList").append(
-      '<li><input class="form-control" type="text" value=""></li>'
+      '<li><input class="form-control" type="text" value=""></li>',
     );
     document.getElementById("inline_addCustomForm").reset();
     sort();
@@ -272,7 +273,7 @@ $(document).ready(function() {
     }
     if (evt.target.id === "addNoteInput") {
       $("#customNotesList").append(
-        '<li><input class="form-control" type="text"  value=""></li>'
+        '<li><input class="form-control" type="text"  value=""></li>',
       );
     }
     if (evt.target.id === "cancelCustom") {
@@ -305,7 +306,7 @@ $(document).ready(function() {
       }
     });
     $("#edit-delete-list").append(
-      '<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>'
+      '<p class="restore deleteOrEditList__message">The following studio dances can be restored to your site</p>',
     );
     // render hidden dances with 'restore' button
     if (hiddenStudioDances.length > 0) {
@@ -389,7 +390,7 @@ $(document).ready(function() {
           $("#editCustomNotesList").append(
             '<li><input class="form-control" type="text" value="' +
               liValue +
-              '"></li>'
+              '"></li>',
           );
         }
         if (customDances[i].num || customDances[i].time) {
@@ -421,7 +422,7 @@ $(document).ready(function() {
         html += `</ul>`;
         $("#addStudioNote-header").append(html);
         $("#addStudioNote-body").append(
-          `<input id="studioNote-DanceId" name="studioNote-DanceId" type="hidden" value="${danceId}">`
+          `<input id="studioNote-DanceId" name="studioNote-DanceId" type="hidden" value="${danceId}">`,
         );
       }
     });
@@ -434,19 +435,19 @@ $(document).ready(function() {
           console.log(notes);
           notes.forEach(function(note) {
             $("#addStudioNotes-list").append(
-              `<li><input class="form-control" type="text" value="${note}"></li>`
+              `<li><input class="form-control" type="text" value="${note}"></li>`,
             );
           });
         }
       });
       if (match === 0) {
         $("#addStudioNotes-list").append(
-          `<li><input class="form-control" type="text" value=""></li>`
+          `<li><input class="form-control" type="text" value=""></li>`,
         );
       }
     } else {
       $("#addStudioNotes-list").append(
-        `<li><input class="form-control" type="text" value=""></li>`
+        `<li><input class="form-control" type="text" value=""></li>`,
       );
     }
     $("#addStudioNote").show();
@@ -465,7 +466,7 @@ $(document).ready(function() {
     event.preventDefault();
     if (evt.target.id === "anotherCustomNote") {
       $("#addStudioNotes-list").append(
-        '<li><input class="form-control" type="text" value=""></li>'
+        '<li><input class="form-control" type="text" value=""></li>',
       );
     }
     if (evt.target.id === "addStudioNote-save") {
@@ -500,7 +501,7 @@ $(document).ready(function() {
             dance.notes,
             dance.num,
             dance.day,
-            dance.time
+            dance.time,
           );
         }
         if (contains(displayedDances, dance.id)) {
@@ -541,7 +542,7 @@ $(document).ready(function() {
       customNotes,
       customNum,
       customDay,
-      customTime
+      customTime,
     );
     displayedDances.push(customId);
     customDances.push(custom);
@@ -557,7 +558,7 @@ $(document).ready(function() {
       customNotes,
       customNum,
       customDay,
-      customTime
+      customTime,
     );
     $("input[value=" + customId + "]").prop("checked", true);
     $("#editCustomNotesList li").remove();
@@ -646,7 +647,7 @@ $(document).ready(function() {
     event.preventDefault();
     if (event.target.id === "editAddNoteInput") {
       $("#editCustomNotesList").append(
-        '<li><input class="form-control" type="text"  value=""></li>'
+        '<li><input class="form-control" type="text"  value=""></li>',
       );
     }
     if (event.target.id === "submitChanges") {
@@ -680,17 +681,41 @@ $(document).ready(function() {
     $("#noticesHeading i").toggle();
   });
 
+  // takes a time and day input as strings with any form of am or pm included in time string and converts to a numeric value, to be used in a reduce function to rank by chronology.
+  function timeCalc(time, day) {
+    let pm = /p/i.test(time);
+    let sunday = /u/i.test(day);
+    time = time.replace(/[a-z]/gi, "").trim();
+    let timeArray = time.split(":");
+    let past_noon = pm && parseInt(timeArray[0]) < 12;
+    time = time.replace(/:/, "");
+    let timeInt = parseInt(time);
+    if (past_noon) {
+      timeInt += 1200;
+    }
+    if (sunday) {
+      timeInt += 10000;
+    }
+    return timeInt;
+  }
+
   function sort() {
     var $dancedivs = $(".dance-container");
     var numOrdered = $dancedivs.sort(function(a, b) {
-      return (
-        $(a)
-          .find("h5:first")
-          .text() -
-        $(b)
-          .find("h5:first")
-          .text()
-      );
+      let timeA = $(a)
+        .find(".time h5")
+        .text();
+      let dayA = $(a)
+        .find(".time p")
+        .text();
+      let timeB = $(b)
+        .find(".time h5")
+        .text();
+      let dayB = $(b)
+        .find(".time p")
+        .text();
+
+      return timeCalc(timeA, dayA) - timeCalc(timeB, dayB);
     });
     $("#dancesRow").html(numOrdered);
   }

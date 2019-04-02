@@ -14,8 +14,8 @@ body {
   background-color: $black;
   font-family: "Kalam", "Comic Sans MS", "cursive";
   color: $white-text;
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
   position: relative;
   min-height: 100%;
 }
@@ -59,7 +59,7 @@ ul {
 }
 
 dt {
-  font-size: larger;
+  font-weight: 500;
 }
 
 dl .col-10 {
@@ -165,6 +165,13 @@ dl .col-2 {
   color: $black;
 }
 
+#editNumTimeDiv,
+#numTimeDiv {
+  span {
+    font-size: 0.5em;
+  }
+}
+
 #showEntry i,
 #showEditEntry i {
   margin-right: 3px;
@@ -216,6 +223,11 @@ input::-webkit-input-placeholder {
 }
 
 .front_page_schedule {
+  button,
+  a {
+    background-color: $highlight-cool;
+    // color: $blueGradient;
+  }
   background: radial-gradient($blueGradient, $black 80%);
   color: $highlight;
   display: inline-block;
@@ -243,16 +255,16 @@ input::-webkit-input-placeholder {
 
 /*** iphone 5 media query ***/
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 16px;
+  }
   .nav-tabs {
     font-size: 1rem;
   }
 
   .dance-header .name {
     max-width: 71%;
-  }
-  dt {
-    font-size: 1rem;
   }
 
   dd {
